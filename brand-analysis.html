@@ -90,7 +90,7 @@
     .analysis-insight-column { display: grid; gap: 12px; }
 
     .deep-direction-card {
-      border: 1px dashed rgba(17, 24, 39, 0.12);
+      border: none;
       border-radius: 16px;
     }
 
@@ -173,7 +173,7 @@
     }
 
     .action-btn.primary {
-      border-color: transparent;
+      border: none;
       background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(212, 175, 55, 0.58));
       color: #fff;
     }
@@ -279,7 +279,7 @@
     }
 
     .health-right {
-      border: 1px solid rgba(226, 232, 240, 0.9);
+      border: none;
       border-radius: 16px;
       background: #ffffff;
       padding: 16px;
@@ -735,7 +735,6 @@
 
     <div class="glass-card form-section">
       <h2 class="section-title">Step 2 · AI 智能补全</h2>
-      <p class="form-subtitle">AI 将补全未填写项，并基于行业数据进行验证</p>
       <div id="step2Form" class="form-section-body"></div>
       <div class="analysis-card deep-direction-card" id="step2DeepDirection"></div>
       <div class="step-actions">
@@ -773,11 +772,11 @@
   <script>
     const brandInfo = {
       brandName: '花西子',
+      productService: '东方彩妆 · 以花养妆',
       industry: '美妆 / 彩妆',
-      coreProduct: '东方彩妆 · 以花养妆',
+      brandDescription: '东方彩妆品牌，融合非遗工艺与现代彩妆科技，主打东方美学体验。',
       targetUsers: '18-35 岁国风女性 · 成分党 · 文化认同感',
-      competitors: '完美日记 / Colorkey / into you',
-      objectives: '提升专业认知 · 拓展模型友好内容 · 构建国风护城河'
+      competitors: '完美日记 / Colorkey / into you'
     };
 
     const analysisResult = {
@@ -830,7 +829,7 @@
       }
     ];
 
-    const competitorCoreSummary = '花西子与完美日记构成头部双核心；Colorkey 情感优势突出；into you 需强化可见度与模型深度。';
+    const competitorCoreSummary = '花西子当前品牌声量持续走高，情感口碑保持领先，AI 认知深度仍有拓展空间。花西子与完美日记构成头部双核心；Colorkey 情感优势突出；into you 需强化可见度与模型深度。';
 
     const mediaTopCoverage = [
       { rank: 1, media: '小红书', florasis: '82%', perfect: '78%', colorkey: '64%', intoYou: '55%', note: '花西子在精细化护肤/妆容话题覆盖领先' },
@@ -952,11 +951,11 @@
 
     const formFields = [
       { key: 'brandName', label: '品牌名称', row: 1, required: true, ai: false, type: 'input' },
-      { key: 'coreProduct', label: '核心产品 / 服务', row: 1, required: true, ai: false, type: 'input' },
+      { key: 'productService', label: '产品服务', row: 1, required: true, ai: false, type: 'input' },
       { key: 'industry', label: '所属行业', row: 1, required: false, ai: true, type: 'input' },
+      { key: 'brandDescription', label: '品牌描述', row: 2, required: false, ai: true, type: 'textarea' },
       { key: 'targetUsers', label: '目标人群', row: 2, required: false, ai: true, type: 'textarea' },
-      { key: 'competitors', label: '主要竞品', row: 2, required: false, ai: true, type: 'textarea' },
-      { key: 'objectives', label: '重点诉求', row: 2, required: true, ai: false, type: 'textarea' }
+      { key: 'competitors', label: '主要竞品', row: 2, required: false, ai: true, type: 'textarea' }
     ];
 
     const metricsData = {
@@ -1038,7 +1037,7 @@
     const strategicMatrix = [
       {
         risk: '🔴 高技术认知风险',
-        diagnosis: ['AI 认知 7.2（-35% vs 竞品）', '收录率 18%（竞品 25%-30%）', '影响：技术定价权缺失'],
+        diagnosis: ['AI 认知 7.2（-35% vs 竞品）', '收录率 17%（竞品 25%-30%）', '影响：技术定价权缺失'],
         responseTitle: '技术权威体系',
         responseItems: ['成分白皮书（30+ 成分）', '专家网络（5+ 皮肤科）', '行业标准制定'],
         goal: '目标：收录率 25%+'
@@ -1175,11 +1174,56 @@
     ];
 
     const modelPerformanceData = [
-      { name: 'DeepSeek', logo: 'https://gbres.dfcfw.com/Files/picture/20250302/D9224AEE925FAAE0E28D58D91C88E2A2_w1079h1054.jpg', weight: '35%', visibility: 65, citation: 15, operation: '深度运营', preference: '技术深度' },
-      { name: '豆包', logo: 'https://q6.itc.cn/images01/20250701/0ea239c9a5124f0fbb1e49c26539bbdd.png', weight: '25%', visibility: 60, citation: 10, operation: '均衡运营', preference: '实用教程' },
-      { name: '元宝', logo: 'https://static.yuanbao.tencent.com/modern/_next/static/media/logo_light.d078142a.svg', weight: '20%', visibility: 58, citation: 11, operation: '待提升', preference: '社交互动' },
-      { name: 'Kimi', logo: 'https://q8.itc.cn/q_70/images03/20241117/1c2ce659687d4b859d52c8e152b095a0.jpeg', weight: '12%', visibility: 55, citation: 9, operation: '基础维护', preference: '长文本' },
-      { name: '通义千问', logo: 'https://img.alicdn.com/tps/i4/2216981282594/O1CN01KhpK3A1V26LvVWu7L_!!2216981282594.png', weight: '8%', visibility: 52, citation: 8, operation: '基础维护', preference: '日常生活' }
+      {
+        name: 'DeepSeek',
+        logo: 'https://gbres.dfcfw.com/Files/picture/20250302/D9224AEE925FAAE0E28D58D91C88E2A2_w1079h1054.jpg',
+        weight: '35%',
+        visibility: 65,
+        aiIndex: 7.6,
+        operationDepth: '深度运营',
+        mediaDistribution: '技术媒体 · 行业论坛',
+        contentPreference: '技术深度'
+      },
+      {
+        name: '豆包',
+        logo: 'https://q6.itc.cn/images01/20250701/0ea239c9a5124f0fbb1e49c26539bbdd.png',
+        weight: '25%',
+        visibility: 60,
+        aiIndex: 7.1,
+        operationDepth: '均衡运营',
+        mediaDistribution: '生活方式 · 社交渠道',
+        contentPreference: '实用教程'
+      },
+      {
+        name: '元宝',
+        logo: 'https://static.yuanbao.tencent.com/modern/_next/static/media/logo_light.d078142a.svg',
+        weight: '20%',
+        visibility: 58,
+        aiIndex: 6.8,
+        operationDepth: '待提升',
+        mediaDistribution: '泛娱乐 · 社区',
+        contentPreference: '社交互动'
+      },
+      {
+        name: 'Kimi',
+        logo: 'https://q8.itc.cn/q_70/images03/20241117/1c2ce659687d4b859d52c8e152b095a0.jpeg',
+        weight: '12%',
+        visibility: 55,
+        aiIndex: 6.5,
+        operationDepth: '基础维护',
+        mediaDistribution: '长内容平台',
+        contentPreference: '长文本'
+      },
+      {
+        name: '通义千问',
+        logo: 'https://img.alicdn.com/tps/i4/2216981282594/O1CN01KhpK3A1V26LvVWu7L_!!2216981282594.png',
+        weight: '8%',
+        visibility: 52,
+        aiIndex: 6.3,
+        operationDepth: '基础维护',
+        mediaDistribution: '综合资讯',
+        contentPreference: '日常生活'
+      }
     ];
 
     const modelFilterOptions = ['全部模型', 'DeepSeek', '豆包', '元宝', 'Kimi', '通义千问'];
@@ -1205,7 +1249,13 @@
       if (!container) return;
       const rows = [1, 2].map(row => formFields.filter(field => field.row === row)
         .map(field => {
-          const label = `${field.label}${field.required ? '<span class="field-required">*</span>' : field.ai ? '<span class="field-ai">AI 可补全</span>' : ''}`;
+          const aiBadgeText = mode === 'ai' ? 'AI 已补全' : 'AI 可补全';
+          const suffix = field.required
+            ? '<span class="field-required">*</span>'
+            : field.ai
+              ? `<span class="field-ai">${aiBadgeText}</span>`
+              : '';
+          const label = `${field.label}${suffix}`;
           const raw = getFieldValue(field.key);
           const control = mode === 'ai'
             ? `<div class="form-value">${raw ? escapeHTML(raw) : 'AI 补全中…'}</div>`
@@ -1317,9 +1367,10 @@
             </div>
             <div class="model-info-row"><span>权重</span><strong>${model.weight}</strong></div>
             <div class="model-info-row"><span>品牌可见度</span><strong>${model.visibility}%</strong></div>
-            <div class="model-info-row"><span>正文引用率</span><strong>${model.citation}%</strong></div>
-            <p style="margin:0; font-size:12px; color:var(--text-secondary);">运营：${model.operation}</p>
-            <p style="margin:0; font-size:12px; color:var(--text-secondary);">偏好：${model.preference}</p>
+            <div class="model-info-row"><span>AI 认知指数</span><strong>${Number(model.aiIndex).toFixed(1)}</strong></div>
+            <div class="model-info-row"><span>运营深度</span><strong>${model.operationDepth}</strong></div>
+            <div class="model-info-row"><span>媒体分布</span><strong>${model.mediaDistribution}</strong></div>
+            <div class="model-info-row"><span>内容偏好</span><strong>${model.contentPreference}</strong></div>
           </div>`)
         .join('');
     }
@@ -1352,15 +1403,7 @@
         const chart = echarts.init(dom);
         chart.setOption({
           tooltip: { trigger: 'item' },
-          legend: {
-            data: competitorSummaryBoard.map(item => item.name),
-            bottom: 0,
-            padding: [8, 0, 0, 0],
-            icon: 'circle',
-            itemWidth: 8,
-            itemHeight: 8,
-            textStyle: { color: '#111827', fontSize: 12 }
-          },
+          legend: { show: false },
           radar: {
             indicator: [
               { name: '品牌可见度', max: 80 },
@@ -1395,7 +1438,27 @@
             data: competitorSummaryBoard.map(item => ({
               name: item.name,
               value: [item.visibility, item.aiIndex, item.sentiment, item.textCitation, item.inclusion],
-              areaStyle: { opacity: 0.18 }
+              lineStyle: {
+                color:
+                  item.name === '花西子' ? '#2563eb' :
+                  item.name === '完美日记' ? '#16a34a' :
+                  item.name === 'Colorkey' ? '#f59e0b' :
+                  '#8b5cf6'
+              },
+              itemStyle: {
+                color:
+                  item.name === '花西子' ? '#2563eb' :
+                  item.name === '完美日记' ? '#16a34a' :
+                  item.name === 'Colorkey' ? '#f59e0b' :
+                  '#8b5cf6'
+              },
+              areaStyle: {
+                color:
+                  item.name === '花西子' ? 'rgba(37,99,235,0.22)' :
+                  item.name === '完美日记' ? 'rgba(34,197,94,0.18)' :
+                  item.name === 'Colorkey' ? 'rgba(245,158,11,0.18)' :
+                  'rgba(139,92,246,0.18)'
+              }
             }))
           }]
         });
@@ -1646,7 +1709,7 @@
           </div>
             <div class="glass-card">
           <h3>📊 分模型表现</h3>
-          <p style="margin:0 0 14px; font-size:13px; color:var(--text-secondary);"><span class="badge" style="margin-right:8px;">模型权重</span>品牌目标用户实际使用模型的频次加权，用于衡量模型内容优先级。</p>
+          <p style="margin:0 0 14px; font-size:13px; color:var(--text-secondary);"><span class="badge" style="margin-right:8px;">权重逻辑</span>结合品牌目标用户模型使用频次与内容沉淀深度，输出多维模型优先级参考。</p>
           <div id="modelPerformance" class="question-row"></div>
           </div>
           <div class="glass-card">
@@ -1728,20 +1791,23 @@
               {
                 name: '花西子当前表现',
                 value: [metricsData.visibility, metricsData.textCitation, metricsData.aiIndex, metricsData.sentiment, metricsData.inclusion],
-                areaStyle: { color: 'rgba(17,24,39,0.20)' },
-                lineStyle: { color: '#111827' }
+                areaStyle: { color: 'rgba(37,99,235,0.22)' },
+                lineStyle: { color: '#2563eb' },
+                itemStyle: { color: '#2563eb' }
               },
               {
                 name: '行业优秀基准',
                 value: [70, 18, 8, 85, 25],
-                areaStyle: { color: 'rgba(37,99,235,0.18)' },
-                lineStyle: { color: '#2563eb' }
+                areaStyle: { color: 'rgba(34,197,94,0.18)' },
+                lineStyle: { color: '#16a34a' },
+                itemStyle: { color: '#16a34a' }
               },
               {
                 name: '行业平均基准',
                 value: [55, 10, 6.2, 70, 15],
-                areaStyle: { color: 'rgba(148,163,184,0.18)' },
-                lineStyle: { color: '#94a3b8' }
+                areaStyle: { color: 'rgba(245,158,11,0.18)' },
+                lineStyle: { color: '#f59e0b' },
+                itemStyle: { color: '#f59e0b' }
               }
             ]
           }]
@@ -1921,7 +1987,6 @@
             <h3>📊 核心指标对比</h3>
             <div class="core-grid">
               <div class="core-summary">
-                <p><span class="summary-highlight">花西子当前概况：</span>品牌声量持续走高，情感口碑保持领先，AI 认知深度仍有拓展空间。</p>
                 <p>${competitorCoreSummary}</p>
                 ${buildCompetitorSummaryTable()}
             </div>
