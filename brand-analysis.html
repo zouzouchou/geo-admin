@@ -305,9 +305,9 @@
       border: 1px solid var(--card-border);
       border-radius: 14px;
       background: #ffffff;
-      padding: 16px;
+      padding: 14px;
       display: grid;
-      gap: 12px;
+      gap: 10px;
     }
 
     .keyword-line {
@@ -319,7 +319,7 @@
     }
 
     .keyword-line + .keyword-line {
-      margin-top: 6px;
+      margin-top: 4px;
     }
 
     .keyword-label {
@@ -453,6 +453,17 @@
     .question-card h4 { font-size: 13px; color: var(--text-primary); }
 
     .question-card ul { margin: 0; font-size: 12.5px; color: var(--text-secondary); line-height: 1.7; list-style: none; padding-left: 0; }
+    .question-card ul { display: grid; gap: 8px; }
+    .question-card ul li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 6px; border-bottom: 1px solid rgba(17, 24, 39, 0.06); }
+    .question-card ul li:last-child { border-bottom: none; padding-bottom: 0; }
+    .question-card ul li a {
+      flex: 1;
+      color: var(--accent-dark);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .question-card ul li a:hover { color: rgba(17, 24, 39, 0.72); }
+    .question-card ul li span:first-child { flex: 1; color: var(--text-secondary); }
 
     .question-group-title { font-size: 12.5px; color: var(--accent-dark); font-weight: 600; }
 
@@ -467,18 +478,104 @@
       font-weight: 600;
     }
 
-    .strategy-table-wrapper { border: 1px solid rgba(17, 24, 39, 0.08); border-radius: 16px; overflow: hidden; background: #ffffff; }
+    .strategy-table-wrapper {
+      border-radius: 16px;
+      background: #ffffff;
+      padding: 0;
+      display: grid;
+      gap: 18px;
+    }
 
-    .strategy-table { width: 100%; border-collapse: collapse; }
+    .strategy-summary-inline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 16px;
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+    }
 
-    .strategy-table th,
-    .strategy-table td { padding: 14px 16px; border-bottom: 1px solid rgba(17, 24, 39, 0.08); font-size: 12.5px; vertical-align: top; }
+    .strategy-flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
 
-    .strategy-table th { background: rgba(17, 24, 39, 0.04); color: var(--accent-dark); text-align: left; }
+    .strategy-node {
+      border: 1px solid rgba(17, 24, 39, 0.08);
+      border-radius: 16px;
+      background: #ffffff;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
 
-    .strategy-table td strong { display: block; margin-bottom: 6px; font-size: 13px; color: var(--text-primary); }
+    .strategy-node-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-    .strategy-summary { display: flex; justify-content: space-between; gap: 12px; font-size: 12.5px; color: var(--text-secondary); padding: 12px 16px; background: rgba(17, 24, 39, 0.02); border-top: 1px solid rgba(17, 24, 39, 0.06); }
+    .strategy-step {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.08);
+      color: var(--accent-dark);
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .strategy-risk {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
+    .strategy-risk.high { color: #991b1b; }
+    .strategy-risk.medium { color: #854d0e; }
+    .strategy-risk.low { color: #166534; }
+
+    .strategy-node-body {
+      display: grid;
+      gap: 12px;
+    }
+
+    .strategy-node-section {
+      display: grid;
+      gap: 8px;
+    }
+
+    .strategy-node-label {
+      font-size: 12px;
+      color: var(--accent-dark);
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    .strategy-node-section ul {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 4px;
+      font-size: 12.5px;
+      color: var(--text-secondary);
+    }
+
+    .strategy-node-foot {
+      font-size: 12.5px;
+      color: var(--accent-dark);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .strategy-summary {
+      display: none;
+    }
 
     @media (max-width: 1200px) {
       .health-metrics { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
@@ -1006,32 +1103,52 @@
     ];
 
     const socialQuestions = [
-      { platform: '小红书', items: [
-        { title: '学生党第一套彩妆怎么选？', badge: '🔥 1.7万浏览' },
-        { title: '脱妆快怎么办？', badge: '🔥 1.4万浏览' }
-      ]},
-      { platform: '知乎', items: [
-        { title: '花西子 vs 完美日记哪个好？', badge: '🔥 1.6万回答' },
-        { title: '雕花口红工艺解析', badge: '🔥 9千讨论' }
-      ]},
-      { platform: '电商平台', items: [
-        { title: '双十一彩妆折扣力度', badge: '🔥 1.8万搜索' },
-        { title: '不同肤质粉底推荐', badge: '🔥 1.3万搜索' }
-      ]}
+      {
+        platform: '小红书',
+        items: [
+          { title: '花西子雕花口红值得买吗？', badge: '🔥 2.1万收藏', url: 'https://www.xiaohongshu.com/explore/65ff23a4c123000001234567' },
+          { title: '花西子定妆散粉真的不脱妆吗？', badge: '🔥 1.9万浏览', url: 'https://www.xiaohongshu.com/explore/6620a0bd8123000001123456' },
+          { title: '敏感肌可以用花西子底妆吗？', badge: '🔥 1.6万讨论', url: 'https://www.xiaohongshu.com/explore/65d210fbc456000001234567' },
+          { title: '花西子新手彩妆套装怎么选？', badge: '🔥 1.4万收藏', url: 'https://www.xiaohongshu.com/explore/660a1b24a123000001234abc' },
+          { title: '东方美学妆容怎么画？', badge: '🔥 1.2万浏览', url: 'https://www.xiaohongshu.com/explore/65c1e0fa9123000001abc234' }
+        ]
+      },
+      {
+        platform: '知乎',
+        items: [
+          { title: '花西子的彩妆到底好用吗？', badge: '🔥 2.3万关注', url: 'https://www.zhihu.com/question/667712345' },
+          { title: '花西子和完美日记哪个更值得买？', badge: '🔥 1.8万回答', url: 'https://www.zhihu.com/question/666123987' },
+          { title: '花西子的品牌故事是真实的吗？', badge: '🔥 1.3万浏览', url: 'https://www.zhihu.com/question/668001234' },
+          { title: '敏感肌使用花西子会过敏吗？', badge: '🔥 9千讨论', url: 'https://www.zhihu.com/question/665890123' },
+          { title: '如何评价花西子的产品线布局？', badge: '🔥 8千回答', url: 'https://www.zhihu.com/question/669120456' }
+        ]
+      },
+      {
+        platform: '什么值得买',
+        items: [
+          { title: '花西子雕花口红值得入手吗？', badge: '🔥 2.0万值友热议', url: 'https://www.smzdm.com/p/123456789/' },
+          { title: '花西子粉底液和完美日记怎么选？', badge: '🔥 1.6万值友点评', url: 'https://www.smzdm.com/p/223344556/' },
+          { title: '花西子有哪些必买彩妆单品？', badge: '🔥 1.4万值友推荐', url: 'https://www.smzdm.com/p/334455667/' },
+          { title: '花西子限定礼盒值不值得？', badge: '🔥 1.2万值友收藏', url: 'https://www.smzdm.com/p/445566778/' },
+          { title: '花西子新品上市有哪些亮点？', badge: '🔥 9千值友关注', url: 'https://www.smzdm.com/p/556677889/' }
+        ]
+      }
     ];
 
     const aiHighFrequency = [
       { text: '日常通勤持妆方案？', badge: '🔍 搜索量+意图' },
       { text: '敏感肌可以用哪些彩妆？', badge: '🔍 成分安全' },
       { text: '冬季底妆如何防脱？', badge: '🔍 季节需求' },
-      { text: '学生党性价比彩妆？', badge: '🔍 价格敏感' }
+      { text: '学生党性价比彩妆？', badge: '🔍 价格敏感' },
+      { text: '花西子新品首发哪里买？', badge: '🔍 交易闭环' }
     ];
 
     const aiDeepQuestions = [
       { text: '花西子雕花口红适合什么场合？', badge: '🔍 场景映射' },
       { text: '花西子粉底遮瑕度如何？', badge: '🔍 功能参数' },
       { text: '敏感肌选择花西子哪些产品？', badge: '🔍 成分匹配' },
-      { text: '东方美学差异点是什么？', badge: '🔍 品牌定位' }
+      { text: '东方美学差异点是什么？', badge: '🔍 品牌定位' },
+      { text: '花西子如何构建品牌护城河？', badge: '🔍 策略延展' }
     ];
 
     const strategicMatrix = [
@@ -1059,8 +1176,8 @@
     ];
 
     const strategicSummary = {
-      priority: '执行优先级：1. 技术权威 → 2. 内容质量 → 3. 情感优化',
-      timeline: '时间框架：技术（1-3 月） · 内容（持续） · 情感（2-4 周）'
+      priority: '1. 技术权威 → 2. 内容质量 → 3. 情感优化',
+      timeline: '技术（1-3 月） · 内容（持续） · 情感（2-4 周）'
     };
 
     const competitorSummaryBoard = [
@@ -1335,23 +1452,47 @@
     }
 
     function buildStrategicTable() {
-      const rows = strategicMatrix
-        .map(item => `
-          <tr>
-            <th>${item.risk}</th>
-            <td>${item.diagnosis.map(line => `<div>${line}</div>`).join('')}</td>
-            <td><strong>${item.responseTitle}</strong><ul style="margin:0; padding-left:18px; font-size:12.5px; color:var(--text-secondary);">${item.responseItems.map(t => `<li>${t}</li>`).join('')}</ul><div style="margin-top:8px; font-size:12.5px; color:var(--text-secondary);">${item.goal}</div></td>
-          </tr>`)
+      const flow = strategicMatrix
+        .map((item, index) => {
+          const riskName = item.risk.replace(/^[^\u4e00-\u9fa5a-zA-Z0-9]+\s*/, '');
+          const severity = item.risk.startsWith('🔴')
+            ? 'high'
+            : item.risk.startsWith('🟡')
+              ? 'medium'
+              : 'low';
+          const diagnosisList = item.diagnosis.map(line => `<li>${line}</li>`).join('');
+          const solutionList = item.responseItems.map(entry => `<li>${entry}</li>`).join('');
+          const goal = item.goal ? `<div class="strategy-node-foot">${item.goal}</div>` : '';
+          return `
+            <div class="strategy-node">
+              <div class="strategy-node-header">
+                <span class="strategy-step">${String(index + 1).padStart(2, '0')}</span>
+                <span class="strategy-risk ${severity}">${riskName}</span>
+              </div>
+              <div class="strategy-node-body">
+                <div class="strategy-node-section">
+                  <span class="strategy-node-label">挑战诊断</span>
+                  <ul>${diagnosisList}</ul>
+                </div>
+                <div class="strategy-node-section">
+                  <span class="strategy-node-label">战略破局 · ${item.responseTitle}</span>
+                  <ul>${solutionList}</ul>
+                  ${goal}
+                </div>
+              </div>
+            </div>`;
+        })
         .join('');
+
       return `
         <div class="strategy-table-wrapper">
-          <table class="strategy-table">
-            <tbody>${rows}</tbody>
-              </table>
-          <div class="strategy-summary">
+          <div class="strategy-summary-inline">
+            <span class="analysis-badge">执行优先级</span>
             <span>${strategicSummary.priority}</span>
+            <span class="analysis-badge">时间框架</span>
             <span>${strategicSummary.timeline}</span>
-            </div>
+          </div>
+          <div class="strategy-flow">${flow}</div>
         </div>`;
     }
 
@@ -1686,7 +1827,7 @@
         .map(group => `
           <div class="question-card">
             <h4>${group.platform}</h4>
-            <ul>${group.items.map(item => `<li><span>${item.title}</span><span class="badge">${item.badge}</span></li>`).join('')}</ul>
+            <ul>${group.items.map(item => `<li><a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a><span class="badge">${item.badge}</span></li>`).join('')}</ul>
           </div>`)
         .join('');
 
@@ -1725,7 +1866,7 @@
               <div id="questionWordCloud" class="chart-container" style="height:260px;"></div>
           </div>
           </div>
-          <h4 class="subheading">社交媒体参考问题</h4>
+          <h4 class="subheading">参考问题</h4>
           <div class="question-row social-row">${socialHTML}</div>
           <div class="question-row">
             <div class="question-card">
