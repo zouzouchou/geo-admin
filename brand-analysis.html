@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>硕芽GEO品牌分析平台 - 花西子案例</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-primary: #f8f9fb;
+      --bg-secondary: #ffffff;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --accent-dark: #111827;
+      --accent-gold: #d4af37;
+      --accent-blue: #2563eb;
+      --card-border: rgba(17, 24, 39, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      letter-spacing: 0.2px;
+    }
+
+    h1, h2, h3, h4 { margin: 0; font-weight: 600; }
+
+    .tech-shell {
+      min-height: 100vh;
+      padding: 56px 40px 80px;
+      background: linear-gradient(145deg, rgba(17, 24, 39, 0.05) 0%, rgba(248, 249, 251, 0.95) 55%, rgba(212, 175, 55, 0.18) 100%);
+    }
+
+    .page-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 32px;
+      letter-spacing: 1.5px;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .glass-card {
+      background: var(--bg-secondary);
+      border-radius: 18px;
+      border: 1px solid var(--card-border);
+      padding: 26px;
+      margin-bottom: 24px;
+      box-shadow: 0 14px 28px -24px rgba(17, 24, 39, 0.25);
+    }
+
+    .section-title {
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-gold), transparent);
+    }
+
+    .form-section { display: grid; gap: 18px; }
+
+    .form-section-body { display: grid; gap: 14px; }
+
+    .form-insight-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: minmax(360px, 1fr) minmax(260px, 320px);
+      align-items: start;
+    }
+
+    .analysis-insight-column { display: grid; gap: 12px; }
+
+    .deep-direction-card {
+      border: 1px dashed rgba(17, 24, 39, 0.12);
+      border-radius: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+    }
+
+    .form-field { display: grid; gap: 6px; }
+
+    .form-field textarea,
+    .form-field input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      font-size: 13px;
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.98);
+    }
+
+    .form-field textarea { min-height: 96px; resize: vertical; }
+
+    .form-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .field-required { color: #b91c1c; font-weight: 600; }
+
+    .field-ai {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.06);
+      color: var(--accent-dark);
+      font-size: 11px;
+    }
+
+    .form-value {
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px dashed rgba(17, 24, 39, 0.12);
+      background: rgba(17, 24, 39, 0.02);
+      font-size: 13px;
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    .step-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .step-btn {
+      padding: 10px 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(17, 24, 39, 0.16);
+      background: rgba(17, 24, 39, 0.04);
+      color: var(--accent-dark);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .step-btn.primary {
+      border: none;
+      background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(212, 175, 55, 0.58));
+      color: #fff;
+    }
+
+    .action-btn {
+      padding: 10px 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      background: rgba(17, 24, 39, 0.04);
+      color: var(--accent-dark);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .action-btn.primary {
+      border-color: transparent;
+      background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(212, 175, 55, 0.58));
+      color: #fff;
+    }
+
+    .action-btn.outline {
+      background: #ffffff;
+      color: var(--accent-dark);
+    }
+
+    .action-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 16px -14px rgba(17, 24, 39, 0.6);
+    }
+
+    .subheading {
+      font-size: 13px;
+      color: var(--accent-dark);
+      margin: 12px 0 8px;
+      font-weight: 600;
+    }
+
+    .methodology-line {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      margin: 8px 0 16px;
+    }
+
+    .deep-analysis-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin: 36px 0 18px;
+    }
+
+    .analysis-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .tab-group { display: flex; gap: 12px; }
+
+    .tab-btn {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      background: rgba(17, 24, 39, 0.04);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .tab-btn.active { background: rgba(17, 24, 39, 0.92); color: #fff; }
+
+    .filter-chip-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+
+    .filter-chip {
+      padding: 8px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      background: rgba(17, 24, 39, 0.04);
+      color: var(--text-secondary);
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .filter-chip.active { background: rgba(17, 24, 39, 0.9); color: #fff; border-color: transparent; }
+
+    .health-grid {
+      display: grid;
+      grid-template-columns: minmax(420px, 1fr) 360px;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .health-left {
+      border-radius: 14px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.96);
+      display: grid;
+      gap: 18px;
+    }
+
+    .health-left p { font-size: 13.5px; color: var(--text-secondary); margin: 0; line-height: 1.8; }
+
+    .health-metrics { display: grid; gap: 12px; grid-template-columns: repeat(4, minmax(150px, 1fr)); }
+
+    .metric-card {
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.96);
+      display: grid;
+      gap: 6px;
+      min-height: 108px;
+    }
+
+    .health-right {
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 16px;
+      background: #ffffff;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .chart-container { width: 100%; height: 300px; }
+
+    .radar-legend { text-align: center; font-size: 12px; color: var(--text-secondary); }
+
+    .keyword-cloud-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 20px;
+    }
+
+    .keyword-design-card,
+    .question-cloud,
+    .question-card {
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      background: #ffffff;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .keyword-line {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 12.5px;
+      color: var(--text-secondary);
+    }
+
+    .keyword-line + .keyword-line {
+      margin-top: 6px;
+    }
+
+    .keyword-label {
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
+    .keyword-value {
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      .keyword-line {
+        flex-direction: row;
+        align-items: baseline;
+      }
+
+      .keyword-value {
+        margin-left: 6px;
+      }
+    }
+
+    .analysis-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(212, 175, 55, 0.16);
+      color: #735610;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .question-row {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .question-row:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .question-row.full-width {
+      grid-template-columns: 1fr;
+    }
+
+    .question-row.social-row {
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+    }
+
+    @media (max-width: 960px) {
+      .question-row.social-row {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+    }
+
+    .content-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      align-items: stretch;
+    }
+
+    .content-card {
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      background: #ffffff;
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .content-card header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    .content-item {
+      display: grid;
+      gap: 6px;
+    }
+
+    .content-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .content-bar {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(148, 163, 184, 0.2);
+      overflow: hidden;
+    }
+
+    .content-bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(17, 24, 39, 0.85), rgba(212, 175, 55, 0.45));
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+      text-align: left;
+      color: var(--text-secondary);
+    }
+
+    .data-table th {
+      background: rgba(17, 24, 39, 0.04);
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    .keyword-design-card h4,
+    .question-card h4 { font-size: 13px; color: var(--text-primary); }
+
+    .question-card ul { margin: 0; font-size: 12.5px; color: var(--text-secondary); line-height: 1.7; list-style: none; padding-left: 0; }
+
+    .question-group-title { font-size: 12.5px; color: var(--accent-dark); font-weight: 600; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(212, 175, 55, 0.18);
+      color: #735610;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .strategy-table-wrapper { border: 1px solid rgba(17, 24, 39, 0.08); border-radius: 16px; overflow: hidden; background: #ffffff; }
+
+    .strategy-table { width: 100%; border-collapse: collapse; }
+
+    .strategy-table th,
+    .strategy-table td { padding: 14px 16px; border-bottom: 1px solid rgba(17, 24, 39, 0.08); font-size: 12.5px; vertical-align: top; }
+
+    .strategy-table th { background: rgba(17, 24, 39, 0.04); color: var(--accent-dark); text-align: left; }
+
+    .strategy-table td strong { display: block; margin-bottom: 6px; font-size: 13px; color: var(--text-primary); }
+
+    .strategy-summary { display: flex; justify-content: space-between; gap: 12px; font-size: 12.5px; color: var(--text-secondary); padding: 12px 16px; background: rgba(17, 24, 39, 0.02); border-top: 1px solid rgba(17, 24, 39, 0.06); }
+
+    @media (max-width: 1200px) {
+      .health-metrics { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+    }
+
+    @media (max-width: 960px) {
+      .health-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+      .form-insight-grid { grid-template-columns: 1fr; }
+    }
+
+    .tab-section { display: grid; gap: 24px; }
+
+    .section-grid { display: grid; gap: 20px; }
+
+    .overview-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .overview-card {
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      background: #fff;
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .overview-card.primary {
+      border-color: rgba(212, 175, 55, 0.7);
+      box-shadow: 0 12px 24px -20px rgba(212, 175, 55, 0.55);
+    }
+
+    .overview-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    .brand-tag .badge { background: rgba(17, 24, 39, 0.85); color: #fff; }
+
+    .brand-meta { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+
+    .brand-meta strong { color: var(--accent-dark); }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      background: #f8f9fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
+    .brand-logo span { font-size: 12px; color: var(--accent-dark); font-weight: 600; }
+
+    .model-card {
+      display: grid;
+      gap: 12px;
+    }
+
+    .model-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .model-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(17, 24, 39, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .model-logo img { width: 100%; height: 100%; object-fit: cover; }
+    .model-logo span { font-size: 11px; color: var(--accent-dark); font-weight: 600; }
+
+    .model-info-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      color: var(--text-secondary);
+    }
+
+    .model-info-row strong { color: var(--text-primary); }
+
+    .analysis-flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      align-items: stretch;
+      margin-top: 8px;
+    }
+
+    .analysis-flow-item {
+      position: relative;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,249,251,0.94));
+      display: grid;
+      gap: 6px;
+    }
+
+    .analysis-flow-item::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      width: 20px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(17, 24, 39, 0.45), rgba(212, 175, 55, 0.65));
+      transform: translateY(-50%);
+      display: none;
+    }
+
+    .analysis-flow-item:not(:last-child)::after {
+      display: block;
+    }
+
+    @media (max-width: 960px) {
+      .analysis-flow {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      .analysis-flow-item::after {
+        display: none !important;
+      }
+    }
+
+    .analysis-flow-item strong { font-size: 13.2px; letter-spacing: 0.4px; }
+    .analysis-flow-item span { color: var(--text-secondary); }
+
+    .core-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) minmax(320px, 380px);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .core-summary { display: grid; gap: 16px; }
+
+    .core-summary p { margin: 0; font-size: 13px; color: var(--text-secondary); }
+
+    .summary-highlight { font-weight: 600; color: var(--accent-dark); }
+
+    .heatmap-table td strong { display: inline-block; margin-bottom: 4px; color: var(--accent-dark); }
+
+    .score-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: rgba(17, 24, 39, 0.06);
+      color: var(--accent-dark);
+    }
+
+    .score-badge.good { background: rgba(34, 197, 94, 0.12); color: #166534; }
+    .score-badge.warn { background: rgba(234, 179, 8, 0.16); color: #854d0e; }
+    .score-badge.risk { background: rgba(220, 38, 38, 0.15); color: #991b1b; }
+
+    .insight-board {
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) minmax(300px, 1fr);
+      gap: 18px;
+    }
+
+    .insight-block { border: 1px solid rgba(17, 24, 39, 0.08); border-radius: 16px; padding: 18px; background: #fff; display: grid; gap: 12px; }
+
+    .insight-block h4 { margin: 0; font-size: 14px; color: var(--accent-dark); }
+
+    .insight-list { margin: 0; padding-left: 18px; font-size: 12.5px; color: var(--text-secondary); line-height: 1.7; }
+
+    .media-grid { display: grid; gap: 20px; }
+
+    .media-dual { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+
+    .media-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+    .media-table th, .media-table td { padding: 12px 14px; border-bottom: 1px solid rgba(17, 24, 39, 0.08); text-align: left; }
+    .media-table th { background: rgba(17, 24, 39, 0.04); color: var(--accent-dark); }
+
+    .content-metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+    .content-metric-card { border: 1px solid var(--card-border); border-radius: 14px; background: #fff; padding: 14px; display: grid; gap: 6px; }
+    .content-metric-card strong { font-size: 14px; color: var(--accent-dark); }
+    .content-metric-card span { font-size: 12.5px; color: var(--text-secondary); }
+
+    .timeline-wrapper { display: grid; gap: 12px; }
+    .timeline-row { display: grid; gap: 6px; }
+    .timeline-meta { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--accent-dark); }
+    .timeline-bar { position: relative; height: 12px; border-radius: 6px; background: rgba(17, 24, 39, 0.08); overflow: hidden; }
+    .timeline-bar span { position: absolute; top: 0; left: 0; bottom: 0; border-radius: 6px; background: linear-gradient(90deg, rgba(17, 24, 39, 0.9), rgba(212, 175, 55, 0.55)); }
+
+    .platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .platform-card { border: 1px solid var(--card-border); border-radius: 16px; background: #fff; padding: 16px; display: grid; gap: 8px; }
+    .platform-card h4 { margin: 0; font-size: 14px; color: var(--accent-dark); }
+    .platform-card ul { margin: 0; padding-left: 16px; font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; }
+
+    .guideline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .guideline-card { border: 1px solid rgba(17, 24, 39, 0.08); border-radius: 14px; background: #fff; padding: 16px; display: grid; gap: 8px; }
+    .guideline-card h4 { margin: 0; font-size: 14px; color: var(--accent-dark); }
+    .guideline-card ul { margin: 0; padding-left: 18px; font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; }
+
+    @media (max-width: 1080px) {
+      .core-grid { grid-template-columns: 1fr; }
+      .insight-board { grid-template-columns: 1fr; }
+    }
+
+    .chart-fallback {
+      padding: 48px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-secondary);
+      background: rgba(17, 24, 39, 0.02);
+      border: 1px dashed rgba(17, 24, 39, 0.08);
+      border-radius: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="tech-shell">
+    <h1 class="page-title">硕芽GEO品牌分析平台 · 花西子案例</h1>
+    <p class="page-subtitle">GEO Alpha · AI 驱动品牌全域洞察镜像（Beta）</p>
+
+    <div class="glass-card form-section">
+      <h2 class="section-title">Step 1 · 品牌信息录入</h2>
+      <div id="step1Form" class="form-section-body"></div>
+      <div class="step-actions">
+        <button class="step-btn primary">下一步 · AI 智能分析</button>
+            </div>
+            </div>
+
+    <div class="glass-card form-section">
+      <h2 class="section-title">Step 2 · AI 智能补全</h2>
+      <p class="form-subtitle">AI 将补全未填写项，并基于行业数据进行验证</p>
+      <div id="step2Form" class="form-section-body"></div>
+      <div class="analysis-card deep-direction-card" id="step2DeepDirection"></div>
+      <div class="step-actions">
+        <button class="step-btn">返回修改</button>
+        <button class="step-btn primary">确认并开始深度分析</button>
+            </div>
+            </div>
+
+    <div class="deep-analysis-header">
+      <h2>Step 3 · 深度分析</h2>
+      <div class="header-actions">
+        <button class="action-btn primary">立即推广</button>
+        <button class="action-btn outline">导出数据</button>
+            </div>
+            </div>
+
+    <div class="analysis-toolbar">
+      <div class="tab-group">
+        <button class="tab-btn active" data-tab="brand">品牌诊断</button>
+        <button class="tab-btn" data-tab="competitor">竞品对比</button>
+        <button class="tab-btn" data-tab="media">媒体分布</button>
+        <button class="tab-btn" data-tab="content">内容策略</button>
+      </div>
+      <div class="filter-chip-row" id="modelFilterChips"></div>
+      </div>
+
+    <div id="tab-brand"></div>
+    <div id="tab-competitor" style="display:none;"></div>
+    <div id="tab-media" style="display:none;"></div>
+    <div id="tab-content" style="display:none;"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2/dist/echarts-wordcloud.min.js"></script>
+  <script>
+    const brandInfo = {
+      brandName: '花西子',
+      industry: '美妆 / 彩妆',
+      coreProduct: '东方彩妆 · 以花养妆',
+      targetUsers: '18-35 岁国风女性 · 成分党 · 文化认同感',
+      competitors: '完美日记 / Colorkey / into you',
+      objectives: '提升专业认知 · 拓展模型友好内容 · 构建国风护城河'
+    };
+
+    const analysisResult = {
+      summary: '花西子在 AI 搜索中表现良好，品牌可见度 62%，行业排名第 3；情感度 78% 保持健康。但收录率与正文引用率仍有提升空间，需要强化结构化内容与技术权威建设。',
+      optimizedModels: [
+        { name: 'DeepSeek', focus: '技术深度 · 专业内容' },
+        { name: '豆包', focus: '实用教程 · 用户指南' },
+        { name: '元宝', focus: '社交表达 · 场景沟通' }
+      ],
+      keyMedia: [
+        { platform: '小红书', strategy: '真实使用故事 + 专业测评' },
+        { platform: '抖音', strategy: '妆容教程 + 国潮场景' },
+        { platform: '知乎', strategy: '成分技术解析 + 权威答疑' },
+        { platform: '搜狐美妆', strategy: '行业白皮书 + 数据发布' }
+      ]
+    };
+
+    const deepAnalysisFlow = [
+      { title: '看透 AI', description: '解析不同模型的推荐逻辑，梳理影响排序的关键因子。' },
+      { title: '对标竞品', description: '精准定位自身优势与短板，锁定赶超路径。' },
+      { title: '优化媒介', description: '聚焦关键渠道与触点，提升模型可见度与收录率。' },
+      { title: '制定策略', description: '生成专属内容蓝图，支撑排名与转化持续增长。' }
+    ];
+
+    const competitorOverview = [
+      {
+        name: '花西子 Florasis',
+        highlight: '本品牌',
+        logo: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA4MCA4MCc+CiAgPHJlY3Qgd2lkdGg9JzgwJyBoZWlnaHQ9JzgwJyByeD0nMTgnIGZpbGw9JyMxMTE4MjcnIC8+CiAgPHRleHQgeD0nNTAlJyB5PSc1MiUnIGRvbWluYW50LWJhc2VsaW5lPSdtaWRkbGUnIHRleHQtYW5jaG9yPSdtaWRkbGUnIGZvbnQtZmFtaWx5PSciUGluZ0ZhbmcgU0MiLCAiU2Vnb2UgVUkiLCBzYW5zLXNlcmlmJyBmb250LXNpemU9JzI4JyBmaWxsPScjZjhmOWZiJz5GWjwvdGV4dD4KPC9zdmc+',
+        filters: '行业：彩妆 · 目标用户：东方审美 · 品牌定位：国风高端',
+        insight: '品牌声量与情感度领先，需加速技术沉淀与模型深度。'
+      },
+      {
+        name: '完美日记 Perfect Diary',
+        logo: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA4MCA4MCc+CiAgPHJlY3Qgd2lkdGg9JzgwJyBoZWlnaHQ9JzgwJyByeD0nMTgnIGZpbGw9JyM3YzJkMTInIC8+CiAgPHRleHQgeD0nNTAlJyB5PSc1MiUnIGRvbWluYW50LWJhc2VsaW5lPSdtaWRkbGUnIHRleHQtYW5jaG9yPSdtaWRkbGUnIGZvbnQtZmFtaWx5PSciUGluZ0ZhbmcgU0MiLCAiU2Vnb2UgVUkiLCBzYW5zLXNlcmlmJyBmb250LXNpemU9JzI4JyBmaWxsPScjZjhmOWZiJz5QRDwvdGV4dD4KPC9zdmc+',
+        filters: '行业：彩妆 · 目标用户：大众女性 · 品牌定位：性价比国货',
+        insight: '渠道覆盖广、模型基础扎实，是主要对标对象。'
+      },
+      {
+        name: 'Colorkey',
+        logo: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA4MCA4MCc+CiAgPHJlY3Qgd2lkdGg9JzgwJyBoZWlnaHQ9JzgwJyByeD0nMTgnIGZpbGw9JyM4MzE4NDMnIC8+CiAgPHRleHQgeD0nNTAlJyB5PSc1MiUnIGRvbWluYW50LWJhc2VsaW5lPSdtaWRkbGUnIHRleHQtYW5jaG9yPSdtaWRkbGUnIGZvbnQtZmFtaWx5PSciUGluZ0ZhbmcgU0MiLCAiU2Vnb2UgVUkiLCBzYW5zLXNlcmlmJyBmb250LXNpemU9JzI4JyBmaWxsPScjZjhmOWZiJz5DSzwvdGV4dD4KPC9zdmc+',
+        filters: '行业：彩妆 · 目标用户：年轻潮流 · 品牌定位：色彩专家',
+        insight: '情感优势突出，可借鉴其社交化内容打法与人群运营。'
+      },
+      {
+        name: 'into you',
+        logo: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA4MCA4MCc+CiAgPHJlY3Qgd2lkdGg9JzgwJyBoZWlnaHQ9JzgwJyByeD0nMTgnIGZpbGw9JyMxZTNhOGEnIC8+CiAgPHRleHQgeD0nNTAlJyB5PSc1MiUnIGRvbWluYW50LWJhc2VsaW5lPSdtaWRkbGUnIHRleHQtYW5jaG9yPSdtaWRkbGUnIGZvbnQtZmFtaWx5PSciUGluZ0ZhbmcgU0MiLCAiU2Vnb2UgVUkiLCBzYW5zLXNlcmlmJyBmb250LXNpemU9JzI4JyBmaWxsPScjZjhmOWZiJz5JWTwvdGV4dD4KPC9zdmc+',
+        filters: '行业：彩妆 · 目标用户：Z 世代 · 品牌定位：新国潮彩妆',
+        insight: '可见度与模型沉淀偏弱，存在追赶与超越空间。'
+      }
+    ];
+
+    const competitorCoreSummary = '花西子与完美日记构成头部双核心；Colorkey 情感优势突出；into you 需强化可见度与模型深度。';
+
+    const mediaTopCoverage = [
+      { rank: 1, media: '小红书', florasis: '82%', perfect: '78%', colorkey: '64%', intoYou: '55%', note: '花西子在精细化护肤/妆容话题覆盖领先' },
+      { rank: 2, media: '抖音', florasis: '76%', perfect: '80%', colorkey: '58%', intoYou: '52%', note: '完美日记直播矩阵更强，花西子需补齐短视频节奏' },
+      { rank: 3, media: '知乎', florasis: '61%', perfect: '68%', colorkey: '54%', intoYou: '42%', note: '花西子专业问答占比提升，但结构化内容仍有空间' },
+      { rank: 4, media: '微博', florasis: '58%', perfect: '63%', colorkey: '47%', intoYou: '41%', note: '情感口碑稳定，需继续强化价值沟通与危机处理' },
+      { rank: 5, media: '搜狐美妆', florasis: '49%', perfect: '56%', colorkey: '44%', intoYou: '36%', note: '深度报告仍是蓝海，可加大权威合作输出力度' }
+    ];
+
+    const strategyMetrics = [
+      { label: '总任务', value: '48 项' },
+      { label: '重点平台', value: '6 个' },
+      { label: '内容类型', value: '8 类' },
+      { label: '执行周期', value: '12 周' },
+      { label: '预期提升', value: '收录率 +12%' }
+    ];
+
+    const strategyTimeline = [
+      { phase: '第 1-2 周', task: '技术白皮书 · 结构化论据搭建', progress: 38 },
+      { phase: '第 3-4 周', task: '模型友好内容集成 · 教程体系化', progress: 58 },
+      { phase: '第 5-8 周', task: '案例资产沉淀 · 场景化内容矩阵', progress: 82 },
+      { phase: '第 9-12 周', task: '行业报告发布 · 舆情/情感巩固', progress: 100 }
+    ];
+
+    const platformStrategies = [
+      {
+        name: 'DeepSeek',
+        weight: '计划权重：35%',
+        goals: ['技术深度内容', '权威数据引用', '结构化表达']
+      },
+      {
+        name: '知乎',
+        weight: '计划权重：20%',
+        goals: ['专业答疑强化', '引用率提升 12%', '专家背书体系']
+      },
+      {
+        name: '抖音',
+        weight: '计划权重：18%',
+        goals: ['场景化教程', '模型友好脚本', '用户见证直播']
+      },
+      {
+        name: '小红书',
+        weight: '计划权重：15%',
+        goals: ['真实体验故事', '成分差异化叙事', '情绪触达']
+      }
+    ];
+
+    const contentGuidelines = [
+      {
+        title: '模型友好标准',
+        items: ['使用结构化标题 + 摘要格式', '关键论据配套数据与权威引用', '引导模型理解品牌差异点']
+      },
+      {
+        title: '质量检验流程',
+        items: ['三轮事实校验与语言润色', 'AI 核心问答覆盖率 ≥ 90%', '上线前舆情敏感词审查']
+      }
+    ];
+
+    const mediaTypeDistribution = {
+      brands: ['花西子', '完美日记', 'Colorkey', 'into you'],
+      categories: ['结构化内容', '权威引用', '实用教程', '用户UGC', '直播场景'],
+      values: [
+        [32, 24, 26, 22, 18],
+        [28, 21, 30, 24, 26],
+        [18, 16, 24, 28, 20],
+        [14, 12, 20, 26, 24]
+      ]
+    };
+
+    const mediaRecommendations = {
+      risk: [
+        '小红书：围绕“脱妆”与“持妆”议题，推送权威测试与用户见证',
+        '微博：强化价值沟通，突出产品工艺与成分优势',
+        '建立 7×24 小时舆情监控机制，敏捷处理潜在风险'
+      ],
+      growth: [
+        '搜狐美妆：深化技术内容合作，打造行业权威背书',
+        '知乎：扩充专业问答覆盖，提升收录率与情感度',
+        '抖音：引入场景化解决方案，提升模型可见度'
+      ]
+    };
+
+    const modelOperationHeatmap = [
+      { model: 'DeepSeek', florasis: { score: 8.5, level: '🟢 优秀' }, perfect: { score: 6.2, level: '🟡 良好' }, colorkey: { score: 8.8, level: '🟢 优秀' }, intoYou: { score: 5.8, level: '🔴 需改善' }, average: 7.3 },
+      { model: '豆包', florasis: { score: 6.8, level: '🟡 良好' }, perfect: { score: 8.5, level: '🟢 优秀' }, colorkey: { score: 6.2, level: '🟡 良好' }, intoYou: { score: 6.5, level: '🟡 良好' }, average: 7.0 },
+      { model: '元宝', florasis: { score: 5.2, level: '🔴 需改善' }, perfect: { score: 8.2, level: '🟢 优秀' }, colorkey: { score: 6.8, level: '🟡 良好' }, intoYou: { score: 5.5, level: '🔴 需改善' }, average: 6.4 },
+      { model: 'Kimi', florasis: { score: 6.5, level: '🟡 良好' }, perfect: { score: 7.2, level: '🟡 良好' }, colorkey: { score: 7.5, level: '🟢 优秀' }, intoYou: { score: 6.2, level: '🟡 良好' }, average: 6.9 },
+      { model: '通义千问', florasis: { score: 5.8, level: '🔴 需改善' }, perfect: { score: 6.8, level: '🟡 良好' }, colorkey: { score: 6.5, level: '🟡 良好' }, intoYou: { score: 5.2, level: '🔴 需改善' }, average: 6.1 }
+    ];
+
+    const competitorRiskMatrix = [
+      { dimension: '技术被赶超', florasis: '中风险🟡', perfect: '低风险🟢', colorkey: '高风险🔴', intoYou: '中风险🟡' },
+      { dimension: '情感度下滑', florasis: '低风险🟢', perfect: '中风险🟡', colorkey: '低风险🟢', intoYou: '中风险🟡' },
+      { dimension: '平台依赖', florasis: '中风险🟡', perfect: '低风险🟢', colorkey: '高风险🔴', intoYou: '高风险🔴' },
+      { dimension: '增长乏力', florasis: '低风险🟢', perfect: '中风险🟡', colorkey: '中风险🟡', intoYou: '中风险🟡' }
+    ];
+
+    const competitorInsights = {
+      clusters: [
+        '🔵 领导阵营：完美日记 + 花西子，占据头部双核心',
+        '🟡 追赶阵营：Colorkey + into you，持续投入但深度不足'
+      ],
+      opportunities: [
+        '元宝模型竞争温和，投入 15% 资源可实现反超',
+        '技术赛道仍有深耕空间，可构建专业壁垒',
+        '情感优势可转化为口碑传播与推荐动能'
+      ],
+      tactics: [
+        '加强模型首选内容投放，实现多模型协同曝光',
+        '深挖技术差异化叙事，提升专业可信度',
+        '构建跨平台联动故事线，保持关注热度'
+      ],
+      defenses: [
+        '建立快速响应机制，降低舆情扩散风险',
+        '监测竞品投放节奏，灵活调整内容比重',
+        '维持正向内容占比，稳固用户情感认同'
+      ]
+    };
+
+    const formFields = [
+      { key: 'brandName', label: '品牌名称', row: 1, required: true, ai: false, type: 'input' },
+      { key: 'coreProduct', label: '核心产品 / 服务', row: 1, required: true, ai: false, type: 'input' },
+      { key: 'industry', label: '所属行业', row: 1, required: false, ai: true, type: 'input' },
+      { key: 'targetUsers', label: '目标人群', row: 2, required: false, ai: true, type: 'textarea' },
+      { key: 'competitors', label: '主要竞品', row: 2, required: false, ai: true, type: 'textarea' },
+      { key: 'objectives', label: '重点诉求', row: 2, required: true, ai: false, type: 'textarea' }
+    ];
+
+    const metricsData = {
+      visibility: 62,
+      aiIndex: 7.2,
+      rank: 3,
+      textCitation: 12,
+      inclusion: 18,
+      share: 1.1,
+      sentiment: 78,
+      risk: '正常'
+    };
+
+    const metricTrends = {
+      visibility: '↑ +8%',
+      aiIndex: '↑ +0.6',
+      rank: '↑1位',
+      textCitation: '→',
+      inclusion: '↑ +3%',
+      share: '→',
+      sentiment: '↑ +5%',
+      risk: '🟢'
+    };
+
+    const keywordDesign = {
+      '品牌核心层': ['品牌名', '产品型号', '专属功能名'],
+      '品类通用层': ['品类词', '使用场景', '解决方案'],
+      '问题模式层': ['怎么样', '如何', '为什么', '对比', '推荐', '求问', '请问', '哪'],
+      '痛点需求层': ['问题', '故障', '缺点', '不好用', '求助']
+    };
+
+    const questionWordCloudData = [
+      { name: '日常妆容', value: 68 },
+      { name: '约会妆容', value: 52 },
+      { name: '职场妆容', value: 45 },
+      { name: '敏感肌', value: 62 },
+      { name: '油皮问题', value: 58 },
+      { name: '持妆技巧', value: 71 },
+      { name: '成分安全', value: 49 },
+      { name: '学生党', value: 41 },
+      { name: '国风彩妆', value: 38 },
+      { name: '快速上妆', value: 55 },
+      { name: '不脱妆', value: 63 },
+      { name: '养肤彩妆', value: 35 },
+      { name: '雕花工艺', value: 42 },
+      { name: '东方美学', value: 37 },
+      { name: '孕妇可用', value: 28 }
+    ];
+
+    const socialQuestions = [
+      { platform: '小红书', items: [
+        { title: '学生党第一套彩妆怎么选？', badge: '🔥 1.7万浏览' },
+        { title: '脱妆快怎么办？', badge: '🔥 1.4万浏览' }
+      ]},
+      { platform: '知乎', items: [
+        { title: '花西子 vs 完美日记哪个好？', badge: '🔥 1.6万回答' },
+        { title: '雕花口红工艺解析', badge: '🔥 9千讨论' }
+      ]},
+      { platform: '电商平台', items: [
+        { title: '双十一彩妆折扣力度', badge: '🔥 1.8万搜索' },
+        { title: '不同肤质粉底推荐', badge: '🔥 1.3万搜索' }
+      ]}
+    ];
+
+    const aiHighFrequency = [
+      { text: '日常通勤持妆方案？', badge: '🔍 搜索量+意图' },
+      { text: '敏感肌可以用哪些彩妆？', badge: '🔍 成分安全' },
+      { text: '冬季底妆如何防脱？', badge: '🔍 季节需求' },
+      { text: '学生党性价比彩妆？', badge: '🔍 价格敏感' }
+    ];
+
+    const aiDeepQuestions = [
+      { text: '花西子雕花口红适合什么场合？', badge: '🔍 场景映射' },
+      { text: '花西子粉底遮瑕度如何？', badge: '🔍 功能参数' },
+      { text: '敏感肌选择花西子哪些产品？', badge: '🔍 成分匹配' },
+      { text: '东方美学差异点是什么？', badge: '🔍 品牌定位' }
+    ];
+
+    const strategicMatrix = [
+      {
+        risk: '🔴 高技术认知风险',
+        diagnosis: ['AI 认知 7.2（-35% vs 竞品）', '收录率 18%（竞品 25%-30%）', '影响：技术定价权缺失'],
+        responseTitle: '技术权威体系',
+        responseItems: ['成分白皮书（30+ 成分）', '专家网络（5+ 皮肤科）', '行业标准制定'],
+        goal: '目标：收录率 25%+'
+      },
+      {
+        risk: '🟡 中高内容质量风险',
+        diagnosis: ['正文引用率 12%（竞品 15%-22%）', '论据缺失 28%，长尾覆盖 65%', '影响：AI 回答缺乏支撑'],
+        responseTitle: '内容质量优化',
+        responseItems: ['关键词矩阵（200+）', '问答对库（500+）', '深度内容建设'],
+        goal: '目标：行业排名 第3→第2'
+      },
+      {
+        risk: '🟡 中用户情感风险',
+        diagnosis: ['情感度 78%（竞品 82%-85%）', '负面 3%（"脱妆快"）', '影响：转化率与复购下滑'],
+        responseTitle: '情感连接修复',
+        responseItems: ['持妆技术方案', '教程内容体系', '用户见证（1000+ 案例）'],
+        goal: '目标：情感度 85%+'
+      }
+    ];
+
+    const strategicSummary = {
+      priority: '执行优先级：1. 技术权威 → 2. 内容质量 → 3. 情感优化',
+      timeline: '时间框架：技术（1-3 月） · 内容（持续） · 情感（2-4 周）'
+    };
+
+    const competitorSummaryBoard = [
+      { name: '花西子', visibility: 62, aiIndex: 7.2, sentiment: 78, textCitation: 12, inclusion: 18, rank: '第3名' },
+      { name: '完美日记', visibility: 75, aiIndex: 7.8, sentiment: 72, textCitation: 15, inclusion: 22, rank: '第2名' },
+      { name: 'Colorkey', visibility: 45, aiIndex: 6.5, sentiment: 80, textCitation: 10, inclusion: 15, rank: '第5名' },
+      { name: 'into you', visibility: 38, aiIndex: 6.2, sentiment: 75, textCitation: 8, inclusion: 12, rank: '第6名' }
+    ];
+
+    const competitorTrendSeries = {
+      months: ['2024-10', '2024-11', '2024-12', '2025-01', '2025-02', '2025-03'],
+      visibility: {
+        '花西子': [54, 56, 58, 60, 62, 63],
+        '完美日记': [70, 71, 72, 73, 75, 76],
+        'Colorkey': [38, 39, 41, 43, 44, 45],
+        'into you': [34, 35, 36, 37, 38, 39]
+      },
+      aiIndex: {
+        '花西子': [6.8, 6.9, 7.0, 7.1, 7.2, 7.3],
+        '完美日记': [7.4, 7.5, 7.6, 7.7, 7.8, 7.9],
+        'Colorkey': [6.1, 6.2, 6.3, 6.4, 6.5, 6.6],
+        'into you': [5.9, 6.0, 6.1, 6.1, 6.2, 6.3]
+      }
+    };
+
+    const mediaHeatmapMatrix = {
+      platforms: ['小红书', '抖音', '知乎', '微博', '搜狐美妆', 'B站'],
+      metrics: ['收录率', '情感度', '正面声量', '负面声量', '风险等级'],
+      data: [
+        [25, 82, 85, 8, 65],
+        [20, 75, 78, 12, 70],
+        [18, 85, 88, 5, 85],
+        [15, 70, 73, 18, 55],
+        [12, 88, 90, 4, 90],
+        [14, 80, 84, 7, 75]
+      ]
+    };
+
+    const mediaEffectScatter = [
+      { name: '小红书', value: [85, 90, 12] },
+      { name: '抖音', value: [75, 65, 25] },
+      { name: '知乎', value: [70, 85, 18] },
+      { name: '微博', value: [60, 55, 15] },
+      { name: '搜狐美妆', value: [68, 92, 20] },
+      { name: 'B站', value: [72, 78, 14] }
+    ];
+
+    const mediaRiskRows = [
+      { platform: '小红书', status: '低风险', focus: '脱妆议题', action: '建立"国风不脱妆"守护计划' },
+      { platform: '抖音', status: '中风险', focus: '内容同质化', action: '升级教程脚本，加入差异化场景' },
+      { platform: '知乎', status: '低风险', focus: '专业答疑薄弱', action: '补充结构化技术问答' },
+      { platform: '微博', status: '中风险', focus: '价格讨论', action: '强化价值沟通 + 官方澄清' },
+      { platform: '搜狐美妆', status: '低风险', focus: '深度报道稀缺', action: '联合发布行业洞察' }
+    ];
+
+    const contentDistributions = [
+      {
+        brand: '花西子',
+        types: [
+          { label: '国风文化', value: 40 },
+          { label: '产品评测', value: 20 },
+          { label: '成分解析', value: 16 },
+          { label: '用户故事', value: 12 },
+          { label: '活动促销', value: 8 },
+          { label: '其他', value: 4 }
+        ]
+      },
+      {
+        brand: '完美日记',
+        types: [
+          { label: '产品评测', value: 32 },
+          { label: 'KOL 合作', value: 28 },
+          { label: '用户故事', value: 20 },
+          { label: '活动促销', value: 16 },
+          { label: '其他', value: 4 }
+        ]
+      },
+      {
+        brand: 'Colorkey',
+        types: [
+          { label: '色彩教程', value: 40 },
+          { label: '产品评测', value: 28 },
+          { label: '用户UGC', value: 20 },
+          { label: '活动促销', value: 8 },
+          { label: '其他', value: 4 }
+        ]
+      },
+      {
+        brand: 'into you',
+        types: [
+          { label: '色彩教程', value: 48 },
+          { label: '用户UGC', value: 20 },
+          { label: '产品评测', value: 20 },
+          { label: 'KOL 合作', value: 12 }
+        ]
+      }
+    ];
+
+    const contentPerformanceMetrics = [
+      { metric: '日更新量', data: { '花西子': 25, '完美日记': 38, 'Colorkey': 30, 'into you': 45 } },
+      { metric: '平均互动率', data: { '花西子': '3.2%', '完美日记': '2.8%', 'Colorkey': '4.1%', 'into you': '3.5%' } },
+      { metric: '爆文率', data: { '花西子': '12%', '完美日记': '15%', 'Colorkey': '18%', 'into you': '22%' } },
+      { metric: '内容深度', data: { '花西子': '高', '完美日记': '中', 'Colorkey': '中高', 'into you': '中' } }
+    ];
+
+    const contentTopicHighlights = [
+      { brand: '花西子', topics: ['国风彩妆', '东方美学', '成分安全', '非遗合作'] },
+      { brand: '完美日记', topics: ['动物眼影', '性价比', '学生党', '联名款'] },
+      { brand: 'Colorkey', topics: ['空气唇釉', '色彩专家', '质地创新', '明星同款'] },
+      { brand: 'into you', topics: ['唇泥开创者', '显白神器', '新国潮', '情绪表达'] }
+    ];
+
+    const modelPerformanceData = [
+      { name: 'DeepSeek', logo: 'https://gbres.dfcfw.com/Files/picture/20250302/D9224AEE925FAAE0E28D58D91C88E2A2_w1079h1054.jpg', weight: '35%', visibility: 65, citation: 15, operation: '深度运营', preference: '技术深度' },
+      { name: '豆包', logo: 'https://q6.itc.cn/images01/20250701/0ea239c9a5124f0fbb1e49c26539bbdd.png', weight: '25%', visibility: 60, citation: 10, operation: '均衡运营', preference: '实用教程' },
+      { name: '元宝', logo: 'https://static.yuanbao.tencent.com/modern/_next/static/media/logo_light.d078142a.svg', weight: '20%', visibility: 58, citation: 11, operation: '待提升', preference: '社交互动' },
+      { name: 'Kimi', logo: 'https://q8.itc.cn/q_70/images03/20241117/1c2ce659687d4b859d52c8e152b095a0.jpeg', weight: '12%', visibility: 55, citation: 9, operation: '基础维护', preference: '长文本' },
+      { name: '通义千问', logo: 'https://img.alicdn.com/tps/i4/2216981282594/O1CN01KhpK3A1V26LvVWu7L_!!2216981282594.png', weight: '8%', visibility: 52, citation: 8, operation: '基础维护', preference: '日常生活' }
+    ];
+
+    const modelFilterOptions = ['全部模型', 'DeepSeek', '豆包', '元宝', 'Kimi', '通义千问'];
+    let activeModelFilter = '全部模型';
+
+    function $(id) { return document.getElementById(id); }
+
+    function escapeHTML(str = '') {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function getFieldValue(key) {
+      return brandInfo[key] || '';
+    }
+
+    function renderFormSection(targetId, mode) {
+      const container = $(targetId);
+      if (!container) return;
+      const rows = [1, 2].map(row => formFields.filter(field => field.row === row)
+        .map(field => {
+          const label = `${field.label}${field.required ? '<span class="field-required">*</span>' : field.ai ? '<span class="field-ai">AI 可补全</span>' : ''}`;
+          const raw = getFieldValue(field.key);
+          const control = mode === 'ai'
+            ? `<div class="form-value">${raw ? escapeHTML(raw) : 'AI 补全中…'}</div>`
+            : field.type === 'textarea'
+              ? `<textarea>${escapeHTML(raw)}</textarea>`
+              : `<input type="text" value="${escapeHTML(raw)}" />`;
+          return `<div class="form-field"><label class="form-label">${label}</label>${control}</div>`;
+        }));
+      container.innerHTML = rows.map(rowFields => `<div class="form-row">${rowFields.join('')}</div>`).join('');
+    }
+
+    function renderStep2DeepDirection() {
+      const container = $('step2DeepDirection');
+      if (!container) return;
+      container.innerHTML = `
+        <h3 style="margin:0 0 12px; font-size:14px; color:var(--accent-dark);">🔭 深度分析方向</h3>
+        <div class="analysis-flow">
+          ${deepAnalysisFlow.map((step, index) => `
+            <div class="analysis-flow-item">
+              <span style="font-size:24px; color:var(--accent-dark);">${(index + 1).toString().padStart(2, '0')}</span>
+              <strong style="font-size:13px; color:var(--accent-dark);">${step.title}</strong>
+              <span style="font-size:12.5px; color:var(--text-secondary); line-height:1.6;">${step.description}</span>
+        </div>
+          `).join('')}
+        </div>`;
+    }
+
+    function buildMetricCard(title, value, trend, baseline) {
+      return `
+        <div class="metric-card">
+          <strong>${title}</strong>
+          <div class="metric-trend">${value} <span style="margin-left:6px; color:${trend.includes('↑') ? '#15803d' : trend.includes('↓') ? '#b91c1c' : '#4b5563'};">${trend}</span></div>
+          <div class="metric-baseline">${baseline}</div>
+        </div>`;
+    }
+
+    function renderGlobalModelFilters() {
+      const container = $('modelFilterChips');
+      if (!container) return;
+      container.innerHTML = modelFilterOptions
+        .map(option => `<button class="filter-chip${option === activeModelFilter ? ' active' : ''}" data-filter="${option}">${option}</button>`)
+        .join('');
+      container.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          activeModelFilter = chip.dataset.filter;
+          renderGlobalModelFilters();
+        });
+      });
+    }
+
+    function renderQuestionWordCloud() {
+      const dom = $('questionWordCloud');
+      if (!dom) return;
+      try {
+        const instance = echarts.init(dom);
+        const palette = ['#111827', '#d97706', '#2563eb', '#0f766e', '#ec4899', '#f97316', '#d4af37'];
+        instance.setOption({
+          tooltip: { show: false },
+          series: [{
+            type: 'wordCloud',
+            gridSize: 8,
+            sizeRange: [14, 46],
+            rotationRange: [0, 0],
+            shape: 'circle',
+            textStyle: {
+              fontFamily: 'PingFang SC, sans-serif',
+              color: () => palette[Math.floor(Math.random() * palette.length)],
+            },
+            data: questionWordCloudData,
+          }],
+        });
+        window.addEventListener('resize', () => instance.resize());
+      } catch (error) {
+        console.error('[GEO] word cloud error:', error);
+        dom.innerHTML = '<div class="chart-fallback">词云加载失败，请刷新重试</div>';
+      }
+    }
+
+    function buildStrategicTable() {
+      const rows = strategicMatrix
+        .map(item => `
+          <tr>
+            <th>${item.risk}</th>
+            <td>${item.diagnosis.map(line => `<div>${line}</div>`).join('')}</td>
+            <td><strong>${item.responseTitle}</strong><ul style="margin:0; padding-left:18px; font-size:12.5px; color:var(--text-secondary);">${item.responseItems.map(t => `<li>${t}</li>`).join('')}</ul><div style="margin-top:8px; font-size:12.5px; color:var(--text-secondary);">${item.goal}</div></td>
+          </tr>`)
+        .join('');
+      return `
+        <div class="strategy-table-wrapper">
+          <table class="strategy-table">
+            <tbody>${rows}</tbody>
+              </table>
+          <div class="strategy-summary">
+            <span>${strategicSummary.priority}</span>
+            <span>${strategicSummary.timeline}</span>
+            </div>
+        </div>`;
+    }
+
+    function renderModelPerformanceCards() {
+      const container = $('modelPerformance');
+      if (!container) return;
+      container.innerHTML = modelPerformanceData
+        .map(model => `
+          <div class="question-card model-card">
+            <div class="model-card-header">
+              <div class="model-logo">${model.logo ? `<img src="${model.logo}" alt="${model.name}" />` : `<span>${model.name.slice(0, 2)}</span>`}</div>
+              <h4 style="margin:0; font-size:13px; color:var(--accent-dark);">${model.name}</h4>
+            </div>
+            <div class="model-info-row"><span>权重</span><strong>${model.weight}</strong></div>
+            <div class="model-info-row"><span>品牌可见度</span><strong>${model.visibility}%</strong></div>
+            <div class="model-info-row"><span>正文引用率</span><strong>${model.citation}%</strong></div>
+            <p style="margin:0; font-size:12px; color:var(--text-secondary);">运营：${model.operation}</p>
+            <p style="margin:0; font-size:12px; color:var(--text-secondary);">偏好：${model.preference}</p>
+          </div>`)
+        .join('');
+    }
+
+    function buildCompetitorSummaryTable() {
+      const headers = ['品牌', '品牌可见度', 'AI 认知指数', '情感度', '正文引用率', '收录率', '行业排名'];
+      const rows = competitorSummaryBoard
+        .map(item => `
+          <tr>
+            <td>${item.name}</td>
+            <td>${item.visibility}%</td>
+            <td>${item.aiIndex.toFixed(1)}</td>
+            <td>${item.sentiment}%</td>
+            <td>${item.textCitation}%</td>
+            <td>${item.inclusion}%</td>
+            <td>${item.rank}</td>
+          </tr>`)
+        .join('');
+      return `
+        <table class="data-table">
+          <thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+    }
+
+    function renderCompetitorRadarChart() {
+      const dom = $('competitorRadarChart');
+      if (!dom) return;
+      try {
+        const chart = echarts.init(dom);
+        chart.setOption({
+          tooltip: { trigger: 'item' },
+          legend: {
+            data: competitorSummaryBoard.map(item => item.name),
+            bottom: 0,
+            padding: [8, 0, 0, 0],
+            icon: 'circle',
+            itemWidth: 8,
+            itemHeight: 8,
+            textStyle: { color: '#111827', fontSize: 12 }
+          },
+          radar: {
+            indicator: [
+              { name: '品牌可见度', max: 80 },
+              { name: 'AI 认知指数', max: 8 },
+              { name: '情感度', max: 85 },
+              { name: '正文引用率', max: 18 },
+              { name: '收录率', max: 25 }
+            ],
+            center: ['50%', '50%'],
+            radius: '65%',
+            splitNumber: 5,
+            splitLine: { lineStyle: { color: ['rgba(17,24,39,0.14)'] } },
+            splitArea: {
+              show: true,
+              areaStyle: { color: ['rgba(17,24,39,0.03)', 'rgba(212,175,55,0.05)'] }
+            },
+            axisLine: { lineStyle: { color: 'rgba(17,24,39,0.18)' } },
+            nameGap: 6,
+            name: {
+              color: '#111827',
+              fontSize: 12,
+              backgroundColor: 'rgba(255,255,255,0.9)',
+              padding: [3, 8],
+              borderRadius: 10
+            }
+          },
+          series: [{
+            type: 'radar',
+            lineStyle: { width: 2 },
+            symbol: 'circle',
+            symbolSize: 4,
+            data: competitorSummaryBoard.map(item => ({
+              name: item.name,
+              value: [item.visibility, item.aiIndex, item.sentiment, item.textCitation, item.inclusion],
+              areaStyle: { opacity: 0.18 }
+            }))
+          }]
+        });
+        window.addEventListener('resize', () => chart.resize());
+      } catch (error) {
+        console.error('[GEO] competitor radar error:', error);
+        dom.innerHTML = '<div class="chart-fallback">竞品雷达图加载失败，请刷新重试</div>';
+      }
+    }
+
+    function renderCompetitorTrendChart() {
+      const dom = $('competitorTrendChart');
+      if (!dom) return;
+      try {
+        const chart = echarts.init(dom);
+        const brands = Object.keys(competitorTrendSeries.visibility);
+        const palette = ['#111827', '#d97706', '#2563eb', '#ec4899'];
+        const series = [];
+        brands.forEach((brand, index) => {
+          series.push({
+            name: `${brand} · 可见度`,
+            type: 'line',
+            smooth: true,
+            data: competitorTrendSeries.visibility[brand],
+            lineStyle: { width: 2, color: palette[index] },
+            symbol: 'circle',
+            symbolSize: 4
+          });
+          series.push({
+            name: `${brand} · AI 指数`,
+            type: 'line',
+            smooth: true,
+            yAxisIndex: 1,
+            data: competitorTrendSeries.aiIndex[brand],
+            lineStyle: { width: 2, color: palette[index], type: 'dashed' },
+            symbol: 'circle',
+            symbolSize: 4
+          });
+        });
+        chart.setOption({
+          tooltip: { trigger: 'axis' },
+          legend: { type: 'scroll' },
+          grid: { left: '6%', right: '6%', top: '18%', bottom: '14%' },
+          xAxis: { type: 'category', data: competitorTrendSeries.months },
+          yAxis: [
+            { type: 'value', name: '可见度', min: 30, max: 80, axisLabel: { formatter: '{value}%' } },
+            { type: 'value', name: 'AI 指数', min: 5.5, max: 8.5 }
+          ],
+          series
+        });
+        window.addEventListener('resize', () => chart.resize());
+      } catch (error) {
+        console.error('[GEO] competitor trend error:', error);
+        dom.innerHTML = '<div class="chart-fallback">趋势对比加载失败，请刷新重试</div>';
+      }
+    }
+
+    function buildMediaRiskTable() {
+      const rows = mediaRiskRows
+        .map(row => `
+          <tr>
+            <td>${row.platform}</td>
+            <td>${row.status}</td>
+            <td>${row.focus}</td>
+            <td>${row.action}</td>
+          </tr>`)
+        .join('');
+      return `
+        <table class="data-table">
+          <thead><tr><th>平台</th><th>风险状态</th><th>关注议题</th><th>策略行动</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+    }
+
+    function renderMediaHeatmap() {
+      const dom = $('mediaHeatmapChart');
+      if (!dom) return;
+      try {
+        const chart = echarts.init(dom);
+        const data = [];
+        mediaHeatmapMatrix.data.forEach((row, rowIndex) => {
+          row.forEach((value, colIndex) => {
+            data.push([colIndex, rowIndex, value]);
+          });
+        });
+        chart.setOption({
+          tooltip: {
+            formatter: ({ value }) => `${mediaHeatmapMatrix.platforms[value[1]]}<br/>${mediaHeatmapMatrix.metrics[value[0]]}：${value[2]}%`
+          },
+          grid: { left: '10%', right: '4%', top: '10%', bottom: '12%' },
+          xAxis: {
+            type: 'category',
+            data: mediaHeatmapMatrix.metrics,
+            axisLine: { lineStyle: { color: '#9ca3af' } }
+          },
+          yAxis: {
+            type: 'category',
+            data: mediaHeatmapMatrix.platforms,
+            axisLine: { lineStyle: { color: '#9ca3af' } }
+          },
+          visualMap: {
+            min: 0,
+            max: 100,
+            orient: 'horizontal',
+            left: 'center',
+            bottom: 0,
+            inRange: { color: ['#fef3c7', '#fbbf24', '#111827'] }
+          },
+          series: [{
+            type: 'heatmap',
+            data,
+            label: { show: true, color: '#111827', formatter: '{c}%'}
+          }]
+        });
+        window.addEventListener('resize', () => chart.resize());
+      } catch (error) {
+        console.error('[GEO] media heatmap error:', error);
+        dom.innerHTML = '<div class="chart-fallback">媒体热力图加载失败，请刷新重试</div>';
+      }
+    }
+
+    function renderMediaEffectChart() {
+      const dom = $('mediaEffectChart');
+      if (!dom) return;
+      try {
+        const chart = echarts.init(dom);
+        chart.setOption({
+          tooltip: {
+            formatter: params => {
+              const [effect, risk, inclusion] = params.value;
+              return `${params.name}<br/>媒体效果：${effect}<br/>风控得分：${risk}<br/>收录率：${inclusion}%`;
+            }
+          },
+          grid: { left: '8%', right: '8%', top: '10%', bottom: '12%' },
+          xAxis: {
+            type: 'value',
+            name: '媒体效果',
+            min: 40,
+            max: 100,
+            splitLine: { lineStyle: { type: 'dashed' } }
+          },
+          yAxis: {
+            type: 'value',
+            name: '风控状态',
+            min: 40,
+            max: 100,
+            splitLine: { lineStyle: { type: 'dashed' } }
+          },
+          series: [{
+            type: 'scatter',
+            symbolSize: val => Math.sqrt(val[2]) * 5,
+            data: mediaEffectScatter,
+            label: { show: true, position: 'top' },
+            itemStyle: {
+              color: param => {
+                const score = param.value[1];
+                if (score >= 85) return '#0f766e';
+                if (score >= 70) return '#d97706';
+                return '#b91c1c';
+              }
+            }
+          }]
+        });
+        window.addEventListener('resize', () => chart.resize());
+      } catch (error) {
+        console.error('[GEO] media effect chart error:', error);
+        dom.innerHTML = '<div class="chart-fallback">效果矩阵加载失败，请刷新重试</div>';
+      }
+    }
+
+    function buildContentDistributionCards() {
+      return `<div class="content-grid">${contentDistributions.map(block => `
+        <div class="content-card">
+          <header><span>${block.brand}</span><span>内容占比</span></header>
+          ${block.types.map(item => `
+            <div class="content-item">
+              <div class="content-meta"><span>${item.label}</span><span>${item.value}%</span></div>
+              <div class="content-bar"><span style="width:${item.value}%"></span></div>
+            </div>`).join('')}
+          </div>
+      `).join('')}</div>`;
+    }
+
+    function buildContentPerformanceTable() {
+      const brands = Object.keys(contentPerformanceMetrics[0].data);
+      const header = `<thead><tr><th>指标</th>${brands.map(brand => `<th>${brand}</th>`).join('')}</tr></thead>`;
+      const body = contentPerformanceMetrics
+        .map(row => `<tr><td>${row.metric}</td>${brands.map(brand => `<td>${row.data[brand]}</td>`).join('')}</tr>`)
+        .join('');
+      return `<table class="data-table">${header}<tbody>${body}</tbody></table>`;
+    }
+
+    function buildContentTopicList() {
+      return `<div class="content-grid">${contentTopicHighlights.map(block => `
+        <div class="content-card">
+          <header><span>${block.brand}</span><span>热议话题</span></header>
+          <ul style="margin:0; padding-left:18px; font-size:12.5px; color:var(--text-secondary); line-height:1.7;">
+            ${block.topics.map(topic => `<li>${topic}</li>`).join('')}
+            </ul>
+          </div>
+      `).join('')}</div>`;
+    }
+
+    function renderBrandTab() {
+      const metricCards = [
+        buildMetricCard('品牌可见度', `${metricsData.visibility}%`, metricTrends.visibility, '行业基准 55%'),
+        buildMetricCard('AI 认知指数', `${metricsData.aiIndex}/10`, metricTrends.aiIndex, '行业基准 6.2'),
+        buildMetricCard('品牌排名指数', `第${metricsData.rank}名`, metricTrends.rank, '共 8 个竞品'),
+        buildMetricCard('正文引用率', `${metricsData.textCitation}%`, metricTrends.textCitation, '行业基准 10%'),
+        buildMetricCard('收录率', `${metricsData.inclusion}%`, metricTrends.inclusion, '行业基准 15%'),
+        buildMetricCard('AI 认知份额指数', `${metricsData.share}`, metricTrends.share, '相对均衡'),
+        buildMetricCard('情感度', `${metricsData.sentiment}%`, metricTrends.sentiment, '行业基准 70%'),
+        buildMetricCard('风险状态', metricsData.risk, metricTrends.risk, '负面情绪：重点监测')
+      ].join('');
+
+      const keywordDesignHTML = Object.entries(keywordDesign)
+        .map(([title, items]) => `
+          <div class="keyword-line">
+            <span class="keyword-label">${title}：</span>
+            <span class="keyword-value">${items.join(' · ')}</span>
+          </div>`)
+        .join('');
+
+      const socialHTML = socialQuestions
+        .map(group => `
+          <div class="question-card">
+            <h4>${group.platform}</h4>
+            <ul>${group.items.map(item => `<li><span>${item.title}</span><span class="badge">${item.badge}</span></li>`).join('')}</ul>
+          </div>`)
+        .join('');
+
+      const aiHighHTML = aiHighFrequency.map(item => `<li><span>${item.text}</span><span class="badge" style="background:rgba(17,24,39,0.08); color:var(--accent-dark);">${item.badge}</span></li>`).join('');
+      const aiDeepHTML = aiDeepQuestions.map(item => `<li><span>${item.text}</span><span class="badge" style="background:rgba(17,24,39,0.08); color:var(--accent-dark);">${item.badge}</span></li>`).join('');
+
+      $('tab-brand').innerHTML = `
+          <div class="glass-card">
+          <h3>📊 健康度总览</h3>
+          <div class="health-grid">
+            <div class="health-left">
+              <p>${analysisResult.summary}</p>
+              <div class="health-metrics">${metricCards}</div>
+          </div>
+            <div class="health-right">
+              <div id="brandRadarChart" class="chart-container"></div>
+              <p class="radar-legend">🔵 花西子当前表现 · 🟢 行业优秀基准 · 🟡 行业平均基准</p>
+          </div>
+          </div>
+          </div>
+            <div class="glass-card">
+          <h3>📊 分模型表现</h3>
+          <p style="margin:0 0 14px; font-size:13px; color:var(--text-secondary);"><span class="badge" style="margin-right:8px;">模型权重</span>品牌目标用户实际使用模型的频次加权，用于衡量模型内容优先级。</p>
+          <div id="modelPerformance" class="question-row"></div>
+          </div>
+          <div class="glass-card">
+          <h3>🔎 高频问题分析</h3>
+          <div class="methodology-line"><span class="analysis-badge">分析方法论</span><span>基于用户决策路径的全网数据采集与 NLP 分析，预测 AI 高频与深度问题。周度更新，季度优化。</span></div>
+          <div class="keyword-cloud-grid">
+            <div class="keyword-design-card">
+              <h4>关键词设计策略</h4>
+              ${keywordDesignHTML}
+          </div>
+            <div class="question-card">
+              <h4>问题词云</h4>
+              <div id="questionWordCloud" class="chart-container" style="height:260px;"></div>
+          </div>
+          </div>
+          <h4 class="subheading">社交媒体参考问题</h4>
+          <div class="question-row social-row">${socialHTML}</div>
+          <div class="question-row">
+            <div class="question-card">
+              <h4>🤖 AI 预测高频问题</h4>
+              <ul>${aiHighHTML}</ul>
+            </div>
+            <div class="question-card">
+              <h4>🤖 AI 预测深度问题</h4>
+              <ul>${aiDeepHTML}</ul>
+          </div>
+          </div>
+        </div>
+        <div class="glass-card">
+          <h3>🎯 战略洞察</h3>
+          ${buildStrategicTable()}
+        </div>`;
+
+      renderBrandRadar();
+      renderQuestionWordCloud();
+      renderModelPerformanceCards();
+    }
+
+    function renderBrandRadar() {
+      const dom = $('brandRadarChart');
+      if (!dom) return;
+      try {
+        const chart = echarts.init(dom);
+        chart.setOption({
+          tooltip: { trigger: 'item' },
+          legend: { show: false },
+          radar: {
+            indicator: [
+              { name: '品牌可见度', max: 80 },
+              { name: '正文引用率', max: 22 },
+              { name: 'AI 认知指数', max: 8 },
+              { name: '情感度', max: 85 },
+              { name: '收录率', max: 25 }
+            ],
+            center: ['50%', '52%'],
+            radius: '70%',
+            splitNumber: 5,
+            splitLine: { lineStyle: { color: ['rgba(17,24,39,0.14)'] } },
+            splitArea: {
+              show: true,
+              areaStyle: { color: ['rgba(17,24,39,0.03)', 'rgba(212,175,55,0.05)'] }
+            },
+            axisLine: { lineStyle: { color: 'rgba(17,24,39,0.18)' } },
+            nameGap: 6,
+            name: {
+              color: '#111827',
+              fontSize: 12,
+              backgroundColor: 'rgba(255,255,255,0.9)',
+              padding: [3, 8],
+              borderRadius: 10
+            }
+          },
+          series: [{
+            type: 'radar',
+            lineStyle: { width: 2 },
+            symbol: 'circle',
+            symbolSize: 4,
+            data: [
+              {
+                name: '花西子当前表现',
+                value: [metricsData.visibility, metricsData.textCitation, metricsData.aiIndex, metricsData.sentiment, metricsData.inclusion],
+                areaStyle: { color: 'rgba(17,24,39,0.20)' },
+                lineStyle: { color: '#111827' }
+              },
+              {
+                name: '行业优秀基准',
+                value: [70, 18, 8, 85, 25],
+                areaStyle: { color: 'rgba(37,99,235,0.18)' },
+                lineStyle: { color: '#2563eb' }
+              },
+              {
+                name: '行业平均基准',
+                value: [55, 10, 6.2, 70, 15],
+                areaStyle: { color: 'rgba(148,163,184,0.18)' },
+                lineStyle: { color: '#94a3b8' }
+              }
+            ]
+          }]
+        });
+        window.addEventListener('resize', () => chart.resize());
+      } catch (error) {
+        console.error('[GEO] brand radar error:', error);
+        dom.innerHTML = '<div class="chart-fallback">雷达图加载失败，请刷新重试</div>';
+      }
+    }
+
+    function buildCompetitorOverviewCards() {
+      return `<div class="overview-grid">${competitorOverview.map(item => `
+        <div class="overview-card${item.highlight ? ' primary' : ''}">
+          <div class="overview-header">
+            <div class="brand-tag">${item.highlight ? `<span class="badge">${item.highlight}</span>` : ''}<span>${item.name}</span></div>
+            <div class="brand-logo">${item.logo ? `<img src="${item.logo}" alt="${item.name}" />` : `<span>${item.name.slice(0,2)}</span>`}</div>
+          </div>
+          <p class="brand-meta" style="margin:0 0 4px;"><strong>筛选逻辑：</strong>${item.filters}</p>
+          <p class="brand-meta" style="margin:0;"><strong>洞察：</strong>${item.insight}</p>
+          </div>
+      `).join('')}</div>`;
+    }
+
+    function buildModelOperationTable() {
+      const rows = modelOperationHeatmap
+        .map(row => `
+          <tr>
+            <th>${row.model}</th>
+            <td>${row.florasis.score} <span class="score-badge ${row.florasis.score >= 7 ? 'good' : row.florasis.score >= 6 ? 'warn' : 'risk'}">${row.florasis.level}</span></td>
+            <td>${row.perfect.score} <span class="score-badge ${row.perfect.score >= 7 ? 'good' : row.perfect.score >= 6 ? 'warn' : 'risk'}">${row.perfect.level}</span></td>
+            <td>${row.colorkey.score} <span class="score-badge ${row.colorkey.score >= 7 ? 'good' : row.colorkey.score >= 6 ? 'warn' : 'risk'}">${row.colorkey.level}</span></td>
+            <td>${row.intoYou.score} <span class="score-badge ${row.intoYou.score >= 7 ? 'good' : row.intoYou.score >= 6 ? 'warn' : 'risk'}">${row.intoYou.level}</span></td>
+            <td>${row.average.toFixed(1)}</td>
+          </tr>`)
+        .join('');
+      return `<table class="data-table heatmap-table"><thead><tr><th>模型</th><th>花西子</th><th>完美日记</th><th>Colorkey</th><th>into you</th><th>均值</th></tr></thead><tbody>${rows}</tbody></table>`;
+    }
+
+    function buildRiskMatrixTable() {
+      const rows = competitorRiskMatrix
+        .map(row => `
+          <tr>
+            <th>${row.dimension}</th>
+            <td>${row.florasis}</td>
+            <td>${row.perfect}</td>
+            <td>${row.colorkey}</td>
+            <td>${row.intoYou}</td>
+          </tr>`)
+        .join('');
+      return `<table class="data-table heatmap-table"><thead><tr><th>风险维度</th><th>花西子</th><th>完美日记</th><th>Colorkey</th><th>into you</th></tr></thead><tbody>${rows}</tbody></table>`;
+    }
+
+    function buildCompetitorInsightBoard() {
+      return `
+        <div class="insight-board">
+          <div class="insight-block">
+            <h4>阵营分层</h4>
+            <ul class="insight-list">${competitorInsights.clusters.map(item => `<li>${item}</li>`).join('')}</ul>
+            <h4>机会识别</h4>
+            <ul class="insight-list">${competitorInsights.opportunities.map(item => `<li>${item}</li>`).join('')}</ul>
+          </div>
+          <div class="insight-block">
+            <h4>竞争性媒体策略</h4>
+            <ul class="insight-list">${competitorInsights.tactics.map(item => `<li>${item}</li>`).join('')}</ul>
+            <h4>竞争防御要点</h4>
+            <ul class="insight-list">${competitorInsights.defenses.map(item => `<li>${item}</li>`).join('')}</ul>
+          </div>
+        </div>`;
+    }
+
+    function buildMediaTopTable() {
+      const rows = mediaTopCoverage
+        .map(item => `
+          <tr>
+            <td>${item.rank}</td>
+            <td>${item.media}</td>
+            <td>${item.florasis}</td>
+            <td>${item.perfect}</td>
+            <td>${item.colorkey}</td>
+            <td>${item.intoYou}</td>
+            <td>${item.note}</td>
+          </tr>`)
+        .join('');
+      return `<table class="media-table"><thead><tr><th>#</th><th>媒体</th><th>花西子</th><th>完美日记</th><th>Colorkey</th><th>into you</th><th>差距分析</th></tr></thead><tbody>${rows}</tbody></table>`;
+    }
+
+    function buildMediaRecommendationColumns() {
+      return `
+        <div class="media-dual">
+          <div class="insight-block" style="gap:10px;">
+            <h4>风险防控策略</h4>
+            <ul class="insight-list">${mediaRecommendations.risk.map(item => `<li>${item}</li>`).join('')}</ul>
+            </div>
+          <div class="insight-block" style="gap:10px;">
+            <h4>效果提升策略</h4>
+            <ul class="insight-list">${mediaRecommendations.growth.map(item => `<li>${item}</li>`).join('')}</ul>
+            </div>
+        </div>`;
+    }
+
+    function buildStrategyMetricCards() {
+      return `<div class="content-metric-grid">${strategyMetrics.map(item => `
+        <div class="content-metric-card">
+          <strong>${item.label}</strong>
+          <span>${item.value}</span>
+            </div>
+      `).join('')}</div>`;
+    }
+
+    function buildStrategyTimeline() {
+      return `<div class="timeline-wrapper">${strategyTimeline.map(item => `
+        <div class="timeline-row">
+          <div class="timeline-meta"><span>${item.phase}</span><span>${item.task}</span></div>
+          <div class="timeline-bar"><span style="width:${item.progress}%"></span></div>
+          </div>
+      `).join('')}</div>`;
+    }
+
+    function buildPlatformStrategyCards() {
+      return `<div class="platform-grid">${platformStrategies.map(card => `
+        <div class="platform-card">
+          <h4>${card.name}</h4>
+          <span style="font-size:12px; color:var(--text-secondary);">${card.weight}</span>
+          <ul>${card.goals.map(goal => `<li>${goal}</li>`).join('')}</ul>
+                  </div>
+      `).join('')}</div>`;
+    }
+
+    function buildGuidelineCards() {
+      return `<div class="guideline-grid">${contentGuidelines.map(card => `
+        <div class="guideline-card">
+          <h4>${card.title}</h4>
+          <ul>${card.items.map(item => `<li>${item}</li>`).join('')}</ul>
+        </div>
+      `).join('')}</div>`;
+    }
+
+    function renderMediaDistributionChart() {
+      const dom = $('mediaDistributionChart');
+      if (!dom) return;
+      try {
+        const chart = echarts.init(dom);
+        const series = mediaTypeDistribution.categories.map((category, idx) => ({
+          name: category,
+          type: 'bar',
+          stack: 'total',
+          emphasis: { focus: 'series' },
+          itemStyle: { borderRadius: idx === mediaTypeDistribution.categories.length - 1 ? [0, 6, 6, 0] : 0 },
+          data: mediaTypeDistribution.values.map(row => row[idx])
+        }));
+        chart.setOption({
+          tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+          legend: {},
+          grid: { left: '6%', right: '6%', top: '12%', bottom: '10%' },
+          xAxis: { type: 'value', max: 100, axisLabel: { formatter: '{value}%' } },
+          yAxis: { type: 'category', data: mediaTypeDistribution.brands },
+          series
+        });
+        window.addEventListener('resize', () => chart.resize());
+      } catch (error) {
+        console.error('[GEO] media distribution error:', error);
+        dom.innerHTML = '<div class="chart-fallback">媒体分布图加载失败，请刷新重试</div>';
+      }
+    }
+
+    function renderCompetitorTab() {
+      const container = $('tab-competitor');
+      if (!container) return;
+        container.innerHTML = `
+        <div class="tab-section">
+          <div class="glass-card">
+            <h3>🏁 竞品概览</h3>
+            ${buildCompetitorOverviewCards()}
+            </div>
+          <div class="glass-card">
+            <h3>📊 核心指标对比</h3>
+            <div class="core-grid">
+              <div class="core-summary">
+                <p><span class="summary-highlight">花西子当前概况：</span>品牌声量持续走高，情感口碑保持领先，AI 认知深度仍有拓展空间。</p>
+                <p>${competitorCoreSummary}</p>
+                ${buildCompetitorSummaryTable()}
+            </div>
+              <div>
+                <div id="competitorRadarChart" class="chart-container"></div>
+                <p class="radar-legend">🔵 花西子 · 🟢 完美日记 · 🟡 Colorkey · 🟣 into you</p>
+              </div>
+              </div>
+            </div>
+          <div class="glass-card">
+            <h3>🔍 分模型运营深度热力图</h3>
+            <p style="margin:0 0 12px; font-size:12.5px; color:var(--text-secondary);"><span class="badge" style="margin-right:8px;">评分逻辑</span>评分越高代表模型内容运营越深入，可判断品牌在不同模型上的掌控强度。</p>
+            ${buildModelOperationTable()}
+          </div>
+          <div class="glass-card">
+            <h3>📈 趋势对比</h3>
+            <p style="margin:0 0 12px; font-size:12.5px; color:var(--text-secondary);">追踪品牌可见度与 AI 认知指数在不同时间、不同模型中的表现变化，支持快速切换视角。</p>
+            <div id="competitorTrendChart" class="chart-container"></div>
+          </div>
+          <div class="glass-card">
+            <h3>⚠️ 风险预警矩阵</h3>
+            ${buildRiskMatrixTable()}
+          </div>
+          <div class="glass-card">
+            <h3>🧭 竞争洞察</h3>
+            ${buildCompetitorInsightBoard()}
+          </div>
+        </div>`;
+      renderCompetitorRadarChart();
+      renderCompetitorTrendChart();
+    }
+
+    function renderMediaTab() {
+      const container = $('tab-media');
+      if (!container) return;
+      container.innerHTML = `
+        <div class="tab-section media-grid">
+          <div class="glass-card">
+            <h3>📊 媒体类型分布对比</h3>
+            <div id="mediaDistributionChart" class="chart-container"></div>
+          </div>
+          <div class="glass-card">
+            <h3>🎯 细分媒体覆盖 TOP5</h3>
+            ${buildMediaTopTable()}
+          </div>
+          <div class="glass-card">
+            <h3>🎯 媒体情感分布热力图</h3>
+            <div id="mediaHeatmapChart" class="chart-container"></div>
+          </div>
+          <div class="glass-card">
+            <h3>📈 媒体效果与风控矩阵</h3>
+            <div id="mediaEffectChart" class="chart-container"></div>
+          </div>
+          <div class="glass-card">
+            <h3>🛡️ 媒体策略优化建议</h3>
+            ${buildMediaRecommendationColumns()}
+          </div>
+          <div class="glass-card">
+            <h3>⚠️ 风控监测重点</h3>
+            ${buildMediaRiskTable()}
+          </div>
+        </div>`;
+      renderMediaDistributionChart();
+      renderMediaHeatmap();
+          renderMediaEffectChart();
+    }
+
+    function renderContentTab() {
+      const container = $('tab-content');
+      if (!container) return;
+        container.innerHTML = `
+        <div class="tab-section">
+          <div class="glass-card">
+            <h3>🎯 策略概览</h3>
+            ${buildStrategyMetricCards()}
+          </div>
+          <div class="glass-card">
+            <h3>📅 策略时间轴</h3>
+            ${buildStrategyTimeline()}
+          </div>
+          <div class="glass-card">
+            <h3>🎪 平台策略计划</h3>
+            ${buildPlatformStrategyCards()}
+          </div>
+          <div class="glass-card">
+            <h3>📝 内容类型分布</h3>
+            ${buildContentDistributionCards()}
+            </div>
+          <div class="glass-card">
+            <h3>📊 内容表现对比</h3>
+            ${buildContentPerformanceTable()}
+          </div>
+          <div class="glass-card">
+            <h3>🔥 热门话题对比</h3>
+            ${buildContentTopicList()}
+          </div>
+          <div class="glass-card">
+            <h3>🔧 内容生产标准</h3>
+            ${buildGuidelineCards()}
+          </div>
+        </div>`;
+    }
+
+    function safeExecute(fn, onError) {
+      try {
+        fn();
+      } catch (error) {
+        console.error('[GEO] render error:', error);
+        if (typeof onError === 'function') onError(error);
+      }
+    }
+
+    const tabFallbacks = {
+      brand: (error) => {
+        const el = $('tab-brand');
+        if (el) el.innerHTML = `<div class="glass-card"><h3>📊 品牌诊断加载失败</h3><p style="margin:0; color:var(--text-secondary);">${error?.message || '请刷新页面重试。'}</p></div>`;
+      },
+      competitor: (error) => {
+        const el = $('tab-competitor');
+        if (el) el.innerHTML = `<div class="glass-card"><h3>🆚 竞品对比加载失败</h3><p style="margin:0; color:var(--text-secondary);">${error?.message || '请刷新页面或稍后再试。'}</p></div>`;
+      },
+      media: (error) => {
+        const el = $('tab-media');
+        if (el) el.innerHTML = `<div class="glass-card"><h3>🎯 媒体分布加载失败</h3><p style="margin:0; color:var(--text-secondary);">${error?.message || '请刷新页面或稍后再试。'}</p></div>`;
+      },
+      content: (error) => {
+        const el = $('tab-content');
+        if (el) el.innerHTML = `<div class="glass-card"><h3>🧭 内容策略加载失败</h3><p style="margin:0; color:var(--text-secondary);">${error?.message || '请刷新页面或稍后再试。'}</p></div>`;
+      }
+    };
+
+    const tabRenderers = {
+      brand: renderBrandTab,
+      competitor: renderCompetitorTab,
+      media: renderMediaTab,
+      content: renderContentTab
+    };
+
+    const tabRendered = {
+      brand: false,
+      competitor: false,
+      media: false,
+      content: false
+    };
+
+    function renderTabs() {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const target = btn.dataset.tab;
+          ['brand', 'competitor', 'media', 'content'].forEach(key => {
+            const el = document.getElementById(`tab-${key}`);
+            if (el) el.style.display = key === target ? 'block' : 'none';
+          });
+          if (!tabRendered[target] && tabRenderers[target]) {
+            safeExecute(() => {
+              tabRenderers[target]();
+              tabRendered[target] = true;
+              window.dispatchEvent(new Event('resize'));
+            }, tabFallbacks[target]);
+          } else {
+            window.dispatchEvent(new Event('resize'));
+          }
+        });
+      });
+    }
+
+    function initPage() {
+      safeExecute(() => renderFormSection('step1Form', 'user'));
+      safeExecute(() => renderFormSection('step2Form', 'ai'));
+      safeExecute(renderStep2DeepDirection);
+      safeExecute(renderGlobalModelFilters);
+      safeExecute(() => {
+        renderBrandTab();
+        tabRendered.brand = true;
+      }, tabFallbacks.brand);
+      safeExecute(() => {
+        renderCompetitorTab();
+        tabRendered.competitor = true;
+      }, tabFallbacks.competitor);
+      safeExecute(() => {
+        renderMediaTab();
+        tabRendered.media = true;
+      }, tabFallbacks.media);
+      safeExecute(() => {
+        renderContentTab();
+        tabRendered.content = true;
+      }, tabFallbacks.content);
+      renderTabs();
+    }
+
+    document.addEventListener('DOMContentLoaded', initPage);
+  </script>
+</body>
+</html>
