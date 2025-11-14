@@ -2136,8 +2136,8 @@
             </div>
           <div class="glass-card">
             <h3>🔍 模型运营</h3>
-            <p style="margin:0 0 12px; font-size:12.5px; color:var(--text-secondary);"><span class="badge" style="margin-right:8px;">评分逻辑</span>0-10 分，评分越高代表模型内容运营越深入，可判断品牌在不同模型上的掌控强度。</p>
-            ${buildModelOperationTable()}
+            <p style="margin:0 0 12px; font-size:12.5px; color:var(--text-secondary);">气泡越大代表模型内容运营越深入，可判断品牌在不同模型上的掌控强度。</p>
+            <div id="modelOperationChart" class="chart-container" style="height:360px;"></div>
           </div>
           <div class="glass-card">
             <h3>📈 趋势对比</h3>
@@ -2325,7 +2325,7 @@
       if (!dom) return;
       try {
         const chart = echarts.init(dom);
-        const modelLabels = modelOperationHeatmap.map(item => item.model);
+        const models = modelOperationHeatmap.map(item => item.model);
         const brandKeys = [
           { key: 'florasis', label: '花西子' },
           { key: 'perfect', label: '完美日记' },
@@ -2334,10 +2334,15 @@
         ];
 
         const levelMeta = level => {
-          if (String(level).includes('优秀')) return { text: level, border: '#16a34a' };
-          if (String(level).includes('良好')) return { text: level, border: '#eab308' };
-          if (String(level).includes('改善')) return { text: level, border: '#dc2626' };
-          return { text: level, border: '#6b7280' };
+          const raw = String(level || '').replace(/^[^\u4e00-\u9fa5a-zA-Z0-9]+/, '').trim();
+          if (raw.includes('优秀')) return { text: '优秀', key: 'excellent', sizeBase: 60 };
+          if (raw.includes('待改善')) return { text: '待改善', key: 'improve', sizeBase: 26 };
+          return { text: '良好', key: 'good', sizeBase: 44 };
+        };
+
+        const calcSize = (score, sizeBase) => {
+          const clamped = Math.min(Math.max(score, 0), 10);
+          return sizeBase + clamped * 4;
         };
 
         const bubbleData = [];
@@ -2346,16 +2351,17 @@
             const entry = row[key];
             if (!entry) return;
             const score = Number(entry.score) || 0;
-            const meta = levelMeta(entry.level || '');
+            const meta = levelMeta(entry.level);
             const logo = brandLogoMap[label] || '';
             bubbleData.push({
               value: [row.model, label, score],
               brand: label,
               model: row.model,
-              level: meta.text || entry.level || '',
-              borderColor: meta.border,
-              symbol: logo ? `image://${logo}` : 'circle',
-              symbolSize: 36 + Math.max(score - 5, 0) * 6
+              levelText: meta.text,
+              levelKey: meta.key,
+              symbolSizeValue: calcSize(score, meta.sizeBase),
+              symbolSize: calcSize(score, meta.sizeBase),
+              symbol: logo ? `image://${logo}` : 'circle'
             });
           });
         });
@@ -2367,13 +2373,13 @@
             textStyle: { color: '#f9fafb', fontSize: 12 },
             formatter: params => {
               const data = params.data || {};
-              return `${data.brand || ''} · ${data.model || ''}<br/>运营评价：${data.level || '—'}`;
+              return `${data.brand || ''} · ${data.model || ''}<br/>运营评价：${data.levelText || '—'}`;
             }
           },
           grid: { left: '8%', right: '8%', top: '12%', bottom: '12%' },
           xAxis: {
             type: 'category',
-            data: modelLabels,
+            data: models,
             axisTick: { show: false },
             axisLine: { lineStyle: { color: 'rgba(17,24,39,0.18)' } },
             axisLabel: { color: '#4b5563' }
@@ -2389,27 +2395,26 @@
             type: 'scatter',
             data: bubbleData,
             encode: { x: 0, y: 1, value: 2 },
-            symbol: params => params.data?.symbol || 'circle',
-            symbolSize: params => params.data?.symbolSize || 32,
             symbolKeepAspect: true,
+            symbolSize: params => params.data?.symbolSize || 42,
+            itemStyle: {
+              shadowBlur: 10,
+              shadowColor: 'rgba(17,24,39,0.18)'
+            },
             label: {
               show: true,
               position: 'right',
-              color: '#111827',
-              fontSize: 11,
-              formatter: params => params.data?.level || ''
-            },
-            itemStyle: {
-              borderWidth: 3,
-              borderColor: params => params.data?.borderColor || 'rgba(17,24,39,0.25)',
-              shadowBlur: 8,
-              shadowColor: 'rgba(17,24,39,0.18)'
-            },
-            emphasis: {
-              itemStyle: {
-                borderWidth: 4,
-                shadowBlur: 10,
-                shadowColor: 'rgba(17,24,39,0.3)'
+              fontSize: 12,
+              fontWeight: 600,
+              formatter: params => {
+                const key = params.data?.levelKey || 'good';
+                const text = params.data?.levelText || '';
+                return `{${key}|${text}}`;
+              },
+              rich: {
+                excellent: { color: '#16a34a' },
+                good: { color: '#eab308' },
+                improve: { color: '#dc2626' }
               }
             }
           }]
