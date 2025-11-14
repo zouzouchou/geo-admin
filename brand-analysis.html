@@ -1353,6 +1353,9 @@
     const modelFilterOptions = ['全部模型', 'DeepSeek', '豆包', '元宝', 'Kimi', '通义千问'];
     let activeModelFilter = '全部模型';
 
+    const logoPatternCache = {};
+    const logoSymbolCache = {};
+
     function $(id) { return document.getElementById(id); }
 
     function escapeHTML(str = '') {
@@ -2335,17 +2338,65 @@
 
         const levelMeta = level => {
           const raw = String(level || '').replace(/^[^\u4e00-\u9fa5a-zA-Z0-9]+/, '').trim();
-          if (raw.includes('优秀')) return { text: '优秀', key: 'excellent', sizeBase: 60 };
-          if (raw.includes('待改善')) return { text: '待改善', key: 'improve', sizeBase: 26 };
-          return { text: '良好', key: 'good', sizeBase: 44 };
+          if (raw.includes('优秀')) return { text: '优秀', key: 'excellent', sizeBase: 46 };
+          if (raw.includes('待改善')) return { text: '待改善', key: 'improve', sizeBase: 28 };
+          return { text: '良好', key: 'good', sizeBase: 36 };
         };
 
         const calcSize = (score, sizeBase) => {
           const clamped = Math.min(Math.max(score, 0), 10);
-          return sizeBase + clamped * 4;
+          return Math.round(sizeBase + clamped * 1.8);
         };
 
         const bubbleData = [];
+
+        const applyLogoSymbol = dataPoint => {
+          const { brand, logoUrl } = dataPoint;
+          if (!logoUrl) {
+            dataPoint.symbol = 'circle';
+            dataPoint.itemStyle = { color: '#e5e7eb', borderWidth: 0 };
+            return;
+          }
+          if (logoSymbolCache[logoUrl]) {
+            dataPoint.symbol = `image://${logoSymbolCache[logoUrl]}`;
+            return;
+          }
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.src = logoUrl;
+          img.onload = () => {
+            try {
+              const canvas = document.createElement('canvas');
+              const size = 128;
+              canvas.width = size;
+              canvas.height = size;
+              const ctx = canvas.getContext('2d');
+              ctx.clearRect(0, 0, size, size);
+              ctx.beginPath();
+              ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+              ctx.closePath();
+              ctx.clip();
+              ctx.drawImage(img, 0, 0, size, size);
+              const dataUrl = canvas.toDataURL('image/png');
+              if (dataUrl) {
+                logoSymbolCache[logoUrl] = dataUrl;
+                dataPoint.symbol = `image://${dataUrl}`;
+                chart.setOption({
+                  series: [{ id: 'model-operation', data: bubbleData }]
+                });
+              }
+            } catch (err) {
+              console.error('[GEO] logo render error:', err);
+            }
+          };
+          img.onerror = () => {
+            dataPoint.symbol = 'circle';
+            dataPoint.itemStyle = { color: '#e5e7eb', borderWidth: 0 };
+          };
+          dataPoint.symbol = 'circle';
+          dataPoint.itemStyle = { color: '#e5e7eb', borderWidth: 0 };
+        };
+
         modelOperationHeatmap.forEach(row => {
           brandKeys.forEach(({ key, label }) => {
             const entry = row[key];
@@ -2353,16 +2404,17 @@
             const score = Number(entry.score) || 0;
             const meta = levelMeta(entry.level);
             const logo = brandLogoMap[label] || '';
-            bubbleData.push({
+            const dataPoint = {
               value: [row.model, label, score],
               brand: label,
               model: row.model,
               levelText: meta.text,
               levelKey: meta.key,
-              symbolSizeValue: calcSize(score, meta.sizeBase),
               symbolSize: calcSize(score, meta.sizeBase),
-              symbol: logo ? `image://${logo}` : 'circle'
-            });
+              logoUrl: logo
+            };
+            applyLogoSymbol(dataPoint);
+            bubbleData.push(dataPoint);
           });
         });
 
@@ -2392,15 +2444,18 @@
             axisLabel: { color: '#4b5563' }
           },
           series: [{
+            id: 'model-operation',
             type: 'scatter',
             data: bubbleData,
             encode: { x: 0, y: 1, value: 2 },
             symbolKeepAspect: true,
-            symbolSize: params => params.data?.symbolSize || 42,
+            symbolSize: params => params.data?.symbolSize || 32,
             itemStyle: {
+              borderWidth: 0,
               shadowBlur: 10,
-              shadowColor: 'rgba(17,24,39,0.18)'
+              shadowColor: 'rgba(17,24,39,0.16)'
             },
+            emphasis: { scale: 1.05 },
             label: {
               show: true,
               position: 'right',
@@ -2429,3 +2484,4 @@
   </script>
 </body>
 </html>
+
