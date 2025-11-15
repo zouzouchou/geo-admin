@@ -730,6 +730,300 @@
     .analysis-flow-item strong { font-size: 13.2px; letter-spacing: 0.4px; }
     .analysis-flow-item span { color: var(--text-secondary); }
 
+    /* 媒体策略流程图样式 */
+    .media-strategy-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+      align-items: stretch;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 1200px) {
+      .media-strategy-flow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .media-strategy-flow {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .media-strategy-flow-item {
+      position: relative;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,249,251,0.94));
+      display: grid;
+      gap: 6px;
+    }
+
+    .media-strategy-flow-item::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      width: 20px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(17, 24, 39, 0.45), rgba(212, 175, 55, 0.65));
+      transform: translateY(-50%);
+      display: none;
+    }
+
+    /* 默认4列布局：前3个显示连接线 */
+    .media-strategy-flow-item:nth-child(1)::after,
+    .media-strategy-flow-item:nth-child(2)::after,
+    .media-strategy-flow-item:nth-child(3)::after {
+      display: block;
+    }
+
+    /* 2列布局：每行的第一个显示连接线 */
+    @media (max-width: 1200px) {
+      .media-strategy-flow-item::after {
+        display: none;
+      }
+      .media-strategy-flow-item:nth-child(1)::after,
+      .media-strategy-flow-item:nth-child(2)::after {
+        display: block;
+      }
+    }
+
+    /* 1列布局：隐藏所有连接线 */
+    @media (max-width: 640px) {
+      .media-strategy-flow-item::after {
+        display: none !important;
+      }
+    }
+
+    .media-strategy-flow-item strong {
+      font-size: 13.2px;
+      letter-spacing: 0.4px;
+      color: var(--accent-dark);
+    }
+
+    .media-strategy-flow-item .flow-title {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .media-strategy-flow-item .flow-metric {
+      font-size: 11.5px;
+      color: var(--accent-dark);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* 差异化内容策略气泡定位图样式 */
+    .content-strategy-bubble-chart {
+      width: 100%;
+      margin-top: 16px;
+      padding: 16px;
+      background: #fafafa;
+      border-radius: 12px;
+      border: 1px solid rgba(17, 24, 39, 0.08);
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .bubble-chart-container {
+      position: relative;
+      width: 100%;
+      min-height: 280px;
+      height: 280px;
+      margin: 16px 0;
+      background: transparent;
+    }
+
+    .bubble-chart-axis {
+      position: absolute;
+      border: 1px solid rgba(17, 24, 39, 0.2);
+    }
+
+    .bubble-chart-x-axis {
+      position: absolute;
+      bottom: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: rgba(17, 24, 39, 0.2);
+      z-index: 1;
+    }
+
+    .bubble-chart-y-axis {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(17, 24, 39, 0.2);
+      z-index: 1;
+    }
+
+    .bubble-chart-label {
+      position: absolute;
+      font-size: 11px;
+      color: var(--text-secondary);
+      font-weight: 600;
+      z-index: 5;
+      white-space: nowrap;
+    }
+
+    .bubble-chart-label.top {
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .bubble-chart-label.bottom {
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .bubble-chart-label.left {
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      transform-origin: center;
+    }
+
+    .bubble-chart-label.right {
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      transform-origin: center;
+    }
+
+    .bubble-chart-label.top-left {
+      top: 20px;
+      left: 20px;
+      font-size: 12px;
+      color: var(--accent-dark);
+    }
+
+    .bubble-chart-label.top-right {
+      top: 20px;
+      right: 20px;
+      font-size: 12px;
+      color: var(--accent-dark);
+    }
+
+    .bubble-chart-label.bottom-left {
+      bottom: 20px;
+      left: 20px;
+      font-size: 12px;
+      color: var(--accent-dark);
+    }
+
+    .bubble-chart-label.bottom-right {
+      bottom: 20px;
+      right: 20px;
+      font-size: 12px;
+      color: var(--accent-dark);
+    }
+
+    .bubble-item {
+      position: absolute;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .bubble {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 600;
+      text-align: center;
+      padding: 5px;
+      box-sizing: border-box;
+      border: 2px solid;
+      position: relative;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+
+    .bubble.current {
+      background: rgba(37, 99, 235, 0.15);
+      border-color: #2563eb;
+      color: #2563eb;
+    }
+
+    .bubble.target {
+      background: rgba(17, 24, 39, 0.08);
+      border-color: rgba(17, 24, 39, 0.3);
+      color: var(--text-secondary);
+      border-style: dashed;
+    }
+
+    .bubble-brand {
+      font-size: 11px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .bubble-path {
+      position: absolute;
+      border-top: 2px dashed rgba(17, 24, 39, 0.2);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .bubble-legend {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(17, 24, 39, 0.08);
+      font-size: 10px;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .bubble-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bubble-legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid;
+    }
+
+    .bubble-legend-dot.current {
+      background: rgba(37, 99, 235, 0.15);
+      border-color: #2563eb;
+    }
+
+    .bubble-legend-dot.target {
+      background: rgba(17, 24, 39, 0.08);
+      border-color: rgba(17, 24, 39, 0.3);
+      border-style: dashed;
+    }
+
+    .bubble-legend-path {
+      width: 20px;
+      height: 2px;
+      border-top: 2px dashed rgba(17, 24, 39, 0.2);
+    }
+
     .core-grid {
       display: grid;
       grid-template-columns: minmax(280px, 1fr) minmax(320px, 380px);
@@ -815,6 +1109,247 @@
       border: 1px dashed rgba(17, 24, 39, 0.08);
       border-radius: 14px;
     }
+
+    .trend-board { display: grid; gap: 16px; }
+    .trend-toolbar { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); align-items: start; }
+    .trend-control-group { display: grid; gap: 8px; }
+    .trend-control-label { font-size: 12px; color: var(--accent-dark); font-weight: 600; letter-spacing: 0.3px; }
+    .trend-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .trend-chip {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      background: rgba(17, 24, 39, 0.02);
+      color: var(--text-secondary);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .trend-chip:hover { transform: translateY(-1px); box-shadow: 0 6px 14px -12px rgba(17, 24, 39, 0.45); }
+    .trend-chip.active {
+      background: rgba(17, 24, 39, 0.92);
+      color: #fff;
+      border-color: rgba(17, 24, 39, 0.92);
+      box-shadow: 0 12px 20px -16px rgba(17, 24, 39, 0.65);
+    }
+    .trend-chip.highlight {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--accent-dark);
+      border-color: rgba(212, 175, 55, 0.38);
+      box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.32);
+    }
+
+    .comp-insight-grid { 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      gap: 20px; 
+      align-items: start; 
+    }
+    .comp-insight-column { display: grid; gap: 16px; }
+    .comp-insight-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      position: relative;
+      align-items: stretch;
+      margin-bottom: 20px;
+    }
+    .comp-insight-row::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(17, 24, 39, 0.45), rgba(212, 175, 55, 0.65));
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+    .comp-section-card { 
+      border: 1px solid rgba(17, 24, 39, 0.08); 
+      border-radius: 16px; 
+      padding: 18px; 
+      background: #ffffff; 
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .comp-section-card.right-card {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .comp-section-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+    .comp-section-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .comp-section-content.right-content {
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 100%;
+    }
+    .comp-section-content.right-content .comp-strategy-list {
+      margin-top: 0;
+      align-self: flex-start;
+      width: 100%;
+    }
+    .comp-section-content.right-content .media-strategy-flow {
+      width: 100%;
+      max-width: 100%;
+    }
+    .comp-section-header span.icon { font-size: 18px; line-height: 1; }
+    .comp-section-header h4 { margin: 0; font-size: 14px; color: var(--accent-dark); }
+    .comp-section-header p { margin: 4px 0 0; font-size: 12px; color: var(--text-secondary); }
+    .comp-media-table { display: grid; gap: 8px; font-size: 12px; color: var(--text-secondary); }
+    .comp-media-row { display: grid; grid-template-columns: 120px repeat(4, 1fr) 90px; gap: 12px; align-items: center; }
+    .comp-media-row.head { font-size: 12px; color: var(--accent-dark); font-weight: 600; }
+    .comp-media-label { font-weight: 600; color: var(--accent-dark); }
+    .comp-media-bar { position: relative; height: 10px; border-radius: 10px; background: rgba(17, 24, 39, 0.08); overflow: hidden; }
+    .comp-media-bar span { position: absolute; inset: 0; border-radius: 10px; background: linear-gradient(90deg, rgba(17, 24, 39, 0.88), rgba(212, 175, 55, 0.45)); }
+    .comp-media-delta { font-size: 11.5px; color: var(--accent-dark); text-align: right; }
+
+    /* 媒体结构健康度对比热力图样式 */
+    .media-heatmap-container { 
+      display: grid; 
+      gap: 0; 
+      font-size: 12px; 
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .media-heatmap-row { 
+      display: grid; 
+      grid-template-columns: 140px repeat(5, 1fr); 
+      gap: 8px; 
+      align-items: center;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+      transition: background-color 0.2s;
+    }
+    .media-heatmap-row:last-child { border-bottom: none; }
+    .media-heatmap-row:hover { background-color: rgba(17, 24, 39, 0.02); }
+    .media-heatmap-header { 
+      background: rgba(17, 24, 39, 0.04);
+      font-weight: 600;
+      border-bottom: 2px solid rgba(17, 24, 39, 0.12);
+    }
+    .media-heatmap-child {
+      background: rgba(17, 24, 39, 0.02);
+      padding-left: 32px;
+    }
+    .media-heatmap-cell { 
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+    }
+    .media-heatmap-type {
+      font-weight: 500;
+      color: var(--accent-dark);
+    }
+    .media-expand-icon {
+      display: inline-block;
+      width: 16px;
+      text-align: center;
+      font-size: 10px;
+      user-select: none;
+    }
+    .media-heatmap-legend {
+      padding: 10px 12px;
+      background: rgba(17, 24, 39, 0.02);
+      border-top: 1px solid rgba(17, 24, 39, 0.08);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    /* 内容策略有效性对比热力图样式 */
+    .content-heatmap-container { 
+      display: grid; 
+      gap: 0; 
+      font-size: 12px; 
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .content-heatmap-row { 
+      display: grid; 
+      grid-template-columns: 120px repeat(5, 1fr); 
+      gap: 8px; 
+      align-items: center;
+      padding: 12px;
+      border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+      transition: background-color 0.2s;
+    }
+    .content-heatmap-row:last-child { border-bottom: none; }
+    .content-heatmap-row:hover { background-color: rgba(17, 24, 39, 0.02); }
+    .content-heatmap-header { 
+      background: rgba(17, 24, 39, 0.04);
+      font-weight: 600;
+      border-bottom: 2px solid rgba(17, 24, 39, 0.12);
+    }
+    .content-heatmap-cell { 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+    .content-heatmap-metric {
+      text-align: left;
+      align-items: flex-start;
+      font-weight: 500;
+      color: var(--accent-dark);
+    }
+    .content-heatmap-legend {
+      padding: 10px 12px;
+      background: rgba(17, 24, 39, 0.02);
+      border-top: 1px solid rgba(17, 24, 39, 0.08);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .comp-content-metric { display: grid; gap: 10px; }
+    .comp-content-row { display: grid; gap: 8px; }
+    .comp-content-row strong { font-size: 13px; color: var(--accent-dark); }
+    .comp-content-bars { display: grid; gap: 6px; }
+    .comp-content-item { display: grid; grid-template-columns: 86px 1fr 60px; gap: 8px; align-items: center; font-size: 12px; }
+    .comp-content-item span.brand { font-weight: 600; color: var(--accent-dark); }
+    .comp-content-track { position: relative; height: 8px; border-radius: 999px; background: rgba(17, 24, 39, 0.08); overflow: hidden; }
+    .comp-content-track span { position: absolute; inset: 0; border-radius: 999px; background: linear-gradient(90deg, rgba(17, 24, 39, 0.86), rgba(212, 175, 55, 0.4)); }
+    .comp-content-note { font-size: 11.5px; color: var(--text-secondary); }
+
+    .comp-dynamics-list { display: grid; gap: 8px; padding: 0; margin: 0; font-size: 12.5px; color: var(--text-secondary); }
+    .comp-dynamics-list li { list-style: none; padding: 0; }
+
+    .comp-threat-grid { display: grid; gap: 10px; }
+    .comp-threat-item { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 12px; background: rgba(17, 24, 39, 0.04); font-size: 12.5px; }
+    .comp-threat-item.low { border-left: 3px solid #16a34a; }
+    .comp-threat-item.warn { border-left: 3px solid #f59e0b; }
+    .comp-threat-item.risk { border-left: 3px solid #dc2626; }
+    .comp-threat-item span.label { font-weight: 600; color: var(--accent-dark); }
+    .comp-threat-item span.level { font-weight: 600; }
+
+    .comp-strategy-list { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 12.5px; color: var(--text-secondary); }
+    .comp-rapid-steps { display: grid; gap: 10px; }
+    .comp-rapid-steps h5 { margin: 0 0 4px; font-size: 12.5px; color: var(--accent-dark); }
+    .comp-rapid-steps ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 12.5px; color: var(--text-secondary); }
+    .comp-insight-highlight { border-radius: 14px; background: rgba(212, 175, 55, 0.12); padding: 14px; font-size: 12.5px; color: var(--accent-dark); line-height: 1.7; box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.24); }
+
+    @media (max-width: 1080px) {
+      .core-grid { grid-template-columns: 1fr; }
+      .insight-board { grid-template-columns: 1fr; }
+      .comp-insight-grid { grid-template-columns: 1fr; }
+      .trend-toolbar { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -864,9 +1399,424 @@
     <div id="tab-content" style="display:none;"></div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2/dist/echarts-wordcloud.min.js"></script>
   <script>
+    // ECharts 加载状态管理
+    let echartsLoadPromise = null;
+    let echartsWordCloudLoadPromise = null;
+    
+    // 动态加载 ECharts
+    function loadECharts() {
+      if (echartsLoadPromise) {
+        return echartsLoadPromise;
+      }
+      
+      echartsLoadPromise = new Promise((resolve, reject) => {
+        // 如果已经加载，直接返回
+        if (typeof echarts !== 'undefined' && typeof echarts.init === 'function') {
+          console.log('[GEO] ECharts already loaded');
+          resolve(echarts);
+          return;
+        }
+        
+        // 检查是否已经有脚本标签（包括动态创建的）
+        const existingScript = document.querySelector('script[src*="echarts"]');
+        if (existingScript) {
+          console.log('[GEO] ECharts script tag already exists, waiting for load...');
+          console.log('[GEO] Script src:', existingScript.src);
+          console.log('[GEO] Script readyState:', existingScript.readyState);
+          
+          // 先检查 echarts 对象是否已经可用
+          if (typeof echarts !== 'undefined' && typeof echarts.init === 'function') {
+            console.log('[GEO] ECharts already available from existing script');
+            resolve(echarts);
+            return;
+          }
+          
+          // 检查脚本加载状态
+          const isScriptLoaded = existingScript.readyState === 'complete' || 
+                                  existingScript.readyState === 'loaded' ||
+                                  (existingScript.readyState === 'interactive' && typeof echarts !== 'undefined');
+          
+          if (isScriptLoaded) {
+            console.log('[GEO] Script appears to be loaded, waiting for echarts object...');
+            // 脚本已加载，轮询检查 echarts 对象
+            let checkCount = 0;
+            const maxChecks = 200; // 最多检查 200 次（10 秒）
+            const checkInterval = setInterval(() => {
+              checkCount++;
+              if (typeof echarts !== 'undefined' && typeof echarts.init === 'function') {
+                clearInterval(checkInterval);
+                console.log(`[GEO] ECharts loaded from existing script (checked ${checkCount} times, ${checkCount * 50}ms)`);
+                resolve(echarts);
+              } else if (checkCount >= maxChecks) {
+                clearInterval(checkInterval);
+                console.error('[GEO] ECharts object not found after script loaded');
+                // 如果对象不存在，可能是因为脚本加载失败或版本不兼容
+                reject(new Error('ECharts 对象未找到（脚本已加载但对象不存在，可能需要刷新页面）'));
+              }
+            }, 50);
+            return;
+          }
+          
+          // 脚本正在加载，监听 onload 事件
+          const hasOnloadHandler = existingScript.onload !== null || existingScript.addEventListener;
+          
+          if (hasOnloadHandler && !existingScript._geoOnloadHandler) {
+            // 标记已添加处理器，避免重复
+            existingScript._geoOnloadHandler = true;
+            
+            const onloadHandler = function() {
+              console.log('[GEO] Existing ECharts script loaded via onload');
+              // 等待对象初始化
+              let checkCount = 0;
+              const maxChecks = 100; // 最多检查 100 次（5 秒）
+              const checkInterval = setInterval(() => {
+                checkCount++;
+                if (typeof echarts !== 'undefined' && typeof echarts.init === 'function') {
+                  clearInterval(checkInterval);
+                  console.log(`[GEO] ECharts loaded via onload (checked ${checkCount} times)`);
+                  resolve(echarts);
+                } else if (checkCount >= maxChecks) {
+                  clearInterval(checkInterval);
+                  reject(new Error('ECharts 对象未找到（脚本加载完成但对象未初始化）'));
+                }
+              }, 50);
+            };
+            
+            const onerrorHandler = function() {
+              console.error('[GEO] Existing ECharts script load error');
+              existingScript._geoOnloadHandler = false;
+              reject(new Error('ECharts 脚本加载失败'));
+            };
+            
+            if (existingScript.addEventListener) {
+              existingScript.addEventListener('load', onloadHandler);
+              existingScript.addEventListener('error', onerrorHandler);
+            } else {
+              existingScript.onload = onloadHandler;
+              existingScript.onerror = onerrorHandler;
+            }
+          } else {
+            // 已经有处理器或无法添加，轮询检查
+            console.log('[GEO] Script has existing handler or cannot add handler, polling...');
+            let checkCount = 0;
+            const maxChecks = 200; // 最多检查 200 次（10 秒）
+            const checkInterval = setInterval(() => {
+              checkCount++;
+              if (typeof echarts !== 'undefined' && typeof echarts.init === 'function') {
+                clearInterval(checkInterval);
+                console.log(`[GEO] ECharts loaded via polling (checked ${checkCount} times)`);
+                resolve(echarts);
+              } else if (checkCount >= maxChecks) {
+                clearInterval(checkInterval);
+                reject(new Error('ECharts 加载超时（等待已存在的脚本，已等待 10 秒）'));
+              }
+            }, 50);
+          }
+          return;
+        }
+        
+        // 创建新的脚本标签（带备用 CDN）
+        console.log('[GEO] Creating new ECharts script tag...');
+        const cdnUrls = [
+          'https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js',
+          'https://unpkg.com/echarts@5.4.3/dist/echarts.min.js',
+          'https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js',
+          'https://cdn.bootcdn.net/ajax/libs/echarts/5.4.3/echarts.min.js',
+          'https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js',
+          'https://unpkg.com/echarts@5/dist/echarts.min.js'
+        ];
+        
+        let currentCdnIndex = 0;
+        
+        function tryLoadFromCDN(index) {
+          if (index >= cdnUrls.length) {
+            reject(new Error('所有 ECharts CDN 加载失败，请检查网络连接'));
+            return;
+          }
+          
+          const script = document.createElement('script');
+          script.src = cdnUrls[index];
+          script.async = false;
+          script.crossOrigin = 'anonymous';
+          
+          script.onload = function() {
+            console.log(`[GEO] ECharts script loaded successfully from CDN ${index + 1}`);
+            // 等待一下确保对象已初始化
+            let retryCount = 0;
+            const maxRetries = 40; // 最多重试 40 次（2 秒）
+            const checkInterval = setInterval(() => {
+              retryCount++;
+              if (typeof echarts !== 'undefined' && typeof echarts.init === 'function') {
+                clearInterval(checkInterval);
+                console.log('[GEO] ECharts object initialized');
+                resolve(echarts);
+              } else if (retryCount >= maxRetries) {
+                clearInterval(checkInterval);
+                // 如果对象未初始化，尝试下一个 CDN
+                console.warn(`[GEO] ECharts object not initialized from CDN ${index + 1}, trying next...`);
+                if (script.parentNode) {
+                  document.head.removeChild(script);
+                }
+                setTimeout(() => {
+                  tryLoadFromCDN(index + 1);
+                }, 300);
+              }
+            }, 50);
+          };
+          
+          script.onerror = function() {
+            console.error(`[GEO] ECharts script load error from CDN ${index + 1}, trying next...`);
+            if (script.parentNode) {
+              document.head.removeChild(script);
+            }
+            setTimeout(() => {
+              tryLoadFromCDN(index + 1);
+            }, 300);
+          };
+          
+          document.head.appendChild(script);
+        }
+        
+        tryLoadFromCDN(0);
+      });
+      
+      return echartsLoadPromise;
+    }
+    
+    // 检查 WordCloud 插件是否可用
+    function isWordCloudAvailable() {
+      try {
+        if (typeof echarts === 'undefined') {
+          return false;
+        }
+        // WordCloud 插件通常通过注册到 echarts 来使用
+        // 检查是否可以通过 setOption 使用 wordCloud 类型
+        // 或者检查是否有相关的注册函数
+        // 简单的方法：尝试创建一个临时的图表实例，看是否能设置 wordCloud 类型的 series
+        return true; // 暂时返回 true，让实际渲染时检查
+      } catch (error) {
+        return false;
+      }
+    }
+
+    // 动态加载 ECharts WordCloud
+    function loadEChartsWordCloud() {
+      if (echartsWordCloudLoadPromise) {
+        return echartsWordCloudLoadPromise;
+      }
+      
+      echartsWordCloudLoadPromise = loadECharts().then(() => {
+        return new Promise((resolve, reject) => {
+          // 检查是否已经有脚本标签
+          const existingScript = document.querySelector('script[src*="echarts-wordcloud"]');
+          if (existingScript) {
+            console.log('[GEO] WordCloud script tag already exists');
+            
+            // 检查脚本是否已加载完成
+            if (existingScript.readyState === 'complete' || existingScript.readyState === 'loaded' || !existingScript.readyState) {
+              console.log('[GEO] WordCloud script appears to be loaded, waiting for verification...');
+              // 脚本已加载，等待一下让插件注册，然后轮询检查
+              let checkCount = 0;
+              const maxChecks = 50; // 最多检查 50 次（2.5 秒）
+              const checkInterval = setInterval(() => {
+                checkCount++;
+                // 检查脚本是否真正加载完成
+                if (existingScript.readyState === 'complete' || existingScript.readyState === 'loaded') {
+                  clearInterval(checkInterval);
+                  // 等待一下让插件注册
+                  setTimeout(() => {
+                    console.log('[GEO] WordCloud plugin should be available now');
+                    resolve();
+                  }, 300);
+                } else if (checkCount >= maxChecks) {
+                  clearInterval(checkInterval);
+                  console.warn('[GEO] WordCloud script verification timeout, but resolving anyway');
+                  // 即使超时也 resolve，让渲染时检查
+                  setTimeout(() => {
+                    resolve();
+                  }, 300);
+                }
+              }, 50);
+              return;
+            }
+            
+            // 脚本正在加载，监听 onload 事件
+            if (!existingScript._geoWordCloudOnloadHandler) {
+              existingScript._geoWordCloudOnloadHandler = true;
+              const onloadHandler = function() {
+                console.log('[GEO] Existing WordCloud script loaded');
+                setTimeout(() => {
+                  resolve();
+                }, 200);
+              };
+              const onerrorHandler = function() {
+                console.error('[GEO] Existing WordCloud script load error');
+                existingScript._geoWordCloudOnloadHandler = false;
+                reject(new Error('WordCloud 脚本加载失败'));
+              };
+              
+              if (existingScript.addEventListener) {
+                existingScript.addEventListener('load', onloadHandler);
+                existingScript.addEventListener('error', onerrorHandler);
+              } else {
+                existingScript.onload = onloadHandler;
+                existingScript.onerror = onerrorHandler;
+              }
+              return;
+            } else {
+              // 已经有处理器，轮询检查
+              let checkCount = 0;
+              const maxChecks = 100; // 最多检查 100 次（5 秒）
+              const checkInterval = setInterval(() => {
+                checkCount++;
+                if (existingScript.readyState === 'complete' || existingScript.readyState === 'loaded') {
+                  clearInterval(checkInterval);
+                  setTimeout(() => {
+                    resolve();
+                  }, 200);
+                } else if (checkCount >= maxChecks) {
+                  clearInterval(checkInterval);
+                  reject(new Error('WordCloud 脚本加载超时'));
+                }
+              }, 50);
+              return;
+            }
+          }
+          
+          // 创建新的脚本标签（带备用 CDN）
+          console.log('[GEO] Creating new WordCloud script tag...');
+          const cdnUrls = [
+            'https://cdn.jsdelivr.net/npm/echarts-wordcloud@2/dist/echarts-wordcloud.min.js',
+            'https://unpkg.com/echarts-wordcloud@2/dist/echarts-wordcloud.min.js',
+            'https://fastly.jsdelivr.net/npm/echarts-wordcloud@2/dist/echarts-wordcloud.min.js'
+          ];
+          
+          function tryLoadWordCloudFromCDN(index) {
+            if (index >= cdnUrls.length) {
+              reject(new Error('所有 ECharts WordCloud CDN 加载失败，请检查网络连接'));
+              return;
+            }
+            
+            console.log(`[GEO] Trying to load WordCloud from CDN ${index + 1}: ${cdnUrls[index]}`);
+            const script = document.createElement('script');
+            script.src = cdnUrls[index];
+            script.async = false;
+            script.crossOrigin = 'anonymous';
+            
+            script.onload = function() {
+              console.log(`[GEO] ECharts WordCloud script loaded successfully from CDN ${index + 1}`);
+              // 等待一下让插件注册
+              setTimeout(() => {
+                console.log('[GEO] WordCloud plugin registered');
+                resolve();
+              }, 300);
+            };
+            
+            script.onerror = function() {
+              console.error(`[GEO] ECharts WordCloud script load error from CDN ${index + 1}, trying next...`);
+              if (script.parentNode) {
+                document.head.removeChild(script);
+              }
+              // 继续尝试下一个 CDN
+              setTimeout(() => {
+                tryLoadWordCloudFromCDN(index + 1);
+              }, 500);
+            };
+            
+            document.head.appendChild(script);
+          }
+          
+          tryLoadWordCloudFromCDN(0);
+        });
+      });
+      
+      return echartsWordCloudLoadPromise;
+    }
+    
+    // ECharts 加载检查工具函数（改进版）
+    function waitForECharts(maxWaitTime = 15000) {
+      return new Promise((resolve, reject) => {
+        // 如果已经加载，直接返回
+        if (typeof echarts !== 'undefined' && typeof echarts.init === 'function') {
+          console.log('[GEO] ECharts already available');
+          resolve(echarts);
+          return;
+        }
+        
+        console.log('[GEO] Waiting for ECharts to load...');
+        const startTime = Date.now();
+        
+        // 先尝试使用 loadECharts
+        loadECharts()
+          .then(() => {
+            const elapsed = Date.now() - startTime;
+            console.log(`[GEO] ECharts loaded successfully (${elapsed}ms)`);
+            if (typeof echarts !== 'undefined' && typeof echarts.init === 'function') {
+              resolve(echarts);
+            } else {
+              reject(new Error('ECharts 对象未正确初始化'));
+            }
+          })
+          .catch(error => {
+            const elapsed = Date.now() - startTime;
+            console.error(`[GEO] ECharts load error (${elapsed}ms):`, error);
+            
+            // 如果加载失败，尝试轮询检查（可能脚本在其他地方加载）
+            console.log('[GEO] Trying to poll for ECharts object...');
+            const checkInterval = setInterval(() => {
+              if (typeof echarts !== 'undefined' && typeof echarts.init === 'function') {
+                clearInterval(checkInterval);
+                console.log('[GEO] ECharts found via polling');
+                resolve(echarts);
+              } else if (Date.now() - startTime > maxWaitTime) {
+                clearInterval(checkInterval);
+                reject(new Error(`ECharts 加载超时（${maxWaitTime}ms），请检查网络连接或刷新页面`));
+              }
+            }, 100);
+          });
+      });
+    }
+
+    // 安全的 ECharts 初始化函数
+    function safeEChartsInit(dom, options = {}) {
+      if (!dom) {
+        console.warn('[GEO] DOM element is null');
+        return null;
+      }
+      
+      if (typeof echarts === 'undefined') {
+        console.error('[GEO] ECharts is not loaded');
+        if (dom) {
+          dom.innerHTML = '<div class="chart-fallback">ECharts 未加载，请刷新重试</div>';
+        }
+        return null;
+      }
+      
+      try {
+        const chart = echarts.init(dom, null, {
+          renderer: 'canvas',
+          ...options
+        });
+        
+        if (!chart) {
+          console.error('[GEO] Failed to initialize ECharts instance');
+          if (dom) {
+            dom.innerHTML = '<div class="chart-fallback">图表初始化失败，请刷新重试</div>';
+          }
+          return null;
+        }
+        
+        return chart;
+      } catch (error) {
+        console.error('[GEO] ECharts init error:', error);
+        if (dom) {
+          dom.innerHTML = `<div class="chart-fallback">图表初始化错误：${error.message}</div>`;
+        }
+        return null;
+      }
+    }
+
     const brandInfo = {
       brandName: '花西子',
       productService: '东方彩妆 · 以花养妆',
@@ -898,6 +1848,15 @@
       { title: '制定策略', description: '生成专属内容蓝图，支撑排名与转化持续增长。' }
     ];
 
+    const brandLogoMap = {
+      '花西子': 'https://img.alicdn.com/imgextra//5f/69/TB1kOdCpk9l0K4jSZFK1rlFjpXa.JPG_760x760q30.jpg_.webp',
+      '完美日记': 'https://img.alicdn.com/imgextra/i1/3375170974/O1CN014DgK8M1J48r6gQGEY_!!3375170974.png_760x760q30.jpg_.webp',
+      'Colorkey': 'https://img.alicdn.com/imgextra/i3/4144020062/O1CN01BxnUyA1CKRUjj3A5I_!!4144020062.png_760x760q30.jpg_.webp',
+      'into you': 'https://img.alicdn.com/imgextra/i1/2208156289515/O1CN01kxQ0Dz2K9veOvGW3t_!!2208156289515.jpg_760x760q30.jpg_.webp'
+    };
+
+    const logoSymbolCache = {};
+
     const competitorOverview = [
       {
         name: '花西子 Florasis',
@@ -925,13 +1884,6 @@
         insight: '可见度与模型沉淀偏弱，存在追赶与超越空间。'
       }
     ];
-
-    const brandLogoMap = {
-      '花西子': 'https://img.alicdn.com/imgextra//5f/69/TB1kOdCpk9l0K4jSZFK1rlFjpXa.JPG_760x760q30.jpg_.webp',
-      '完美日记': 'https://img.alicdn.com/imgextra/i1/3375170974/O1CN014DgK8M1J48r6gQGEY_!!3375170974.png_760x760q30.jpg_.webp',
-      'Colorkey': 'https://img.alicdn.com/imgextra/i3/4144020062/O1CN01BxnUyA1CKRUjj3A5I_!!4144020062.png_760x760q30.jpg_.webp',
-      'into you': 'https://img.alicdn.com/imgextra/i1/2208156289515/O1CN01kxQ0Dz2K9veOvGW3t_!!2208156289515.jpg_760x760q30.jpg_.webp'
-    };
 
     const competitorCoreSummary = '花西子当前品牌声量持续走高，情感口碑保持领先，AI 认知深度仍有拓展空间。花西子与完美日记构成头部双核心；Colorkey 情感优势突出；into you 需强化可见度与模型深度。';
 
@@ -1016,6 +1968,34 @@
       ]
     };
 
+    // 媒体风控监测数据
+    const mediaRiskRows = [
+      {
+        platform: '小红书',
+        status: '🟡 中风险',
+        focus: '脱妆、持妆争议',
+        action: '推送权威测试与用户见证'
+      },
+      {
+        platform: '微博',
+        status: '🟡 中风险',
+        focus: '价值沟通不足',
+        action: '强化产品工艺与成分优势'
+      },
+      {
+        platform: '抖音',
+        status: '🟢 低风险',
+        focus: '场景化内容',
+        action: '引入场景化解决方案'
+      },
+      {
+        platform: '知乎',
+        status: '🟢 低风险',
+        focus: '专业问答覆盖',
+        action: '扩充专业问答，提升收录率'
+      }
+    ];
+
     const modelOperationHeatmap = [
       { model: 'DeepSeek', florasis: { score: 8.6, level: '优秀' }, perfect: { score: 6.1, level: '良好' }, colorkey: { score: 5.2, level: '待改善' }, intoYou: { score: 7.4, level: '良好' } },
       { model: '豆包', florasis: { score: 5.8, level: '待改善' }, perfect: { score: 8.3, level: '优秀' }, colorkey: { score: 7.6, level: '优秀' }, intoYou: { score: 6.3, level: '良好' } },
@@ -1031,26 +2011,333 @@
       { dimension: '增长乏力', florasis: '低风险🟢', perfect: '中风险🟡', colorkey: '中风险🟡', intoYou: '中风险🟡' }
     ];
 
-    const competitorInsights = {
-      clusters: [
-        '🔵 领导阵营：完美日记 + 花西子，占据头部双核心',
-        '🟡 追赶阵营：Colorkey + into you，持续投入但深度不足'
-      ],
-      opportunities: [
-        '元宝模型竞争温和，投入 15% 资源可实现反超',
-        '技术赛道仍有深耕空间，可构建专业壁垒',
-        '情感优势可转化为口碑传播与推荐动能'
-      ],
-      tactics: [
-        '加强模型首选内容投放，实现多模型协同曝光',
-        '深挖技术差异化叙事，提升专业可信度',
-        '构建跨平台联动故事线，保持关注热度'
-      ],
-      defenses: [
-        '建立快速响应机制，降低舆情扩散风险',
-        '监测竞品投放节奏，灵活调整内容比重',
-        '维持正向内容占比，稳固用户情感认同'
+    // 媒体热力图数据
+    const mediaHeatmapMatrix = {
+      platforms: ['小红书', '抖音', '微博', 'B站', '快手', '知乎', '什么值得买'],
+      metrics: ['情感度', '收录率', '互动率', '传播力'],
+      data: [
+        [82, 75, 70, 65, 62, 92, 85],
+        [88, 86, 80, 72, 70, 95, 90],
+        [75, 80, 72, 68, 65, 85, 78],
+        [78, 82, 75, 70, 68, 88, 82]
       ]
+    };
+
+    // 媒体效果散点图数据
+    const mediaEffectScatter = [
+      ['小红书', 85, 88, 82],
+      ['抖音', 80, 86, 75],
+      ['微博', 72, 80, 70],
+      ['B站', 68, 72, 65],
+      ['快手', 65, 70, 62],
+      ['知乎', 88, 95, 92],
+      ['什么值得买', 82, 90, 85]
+    ];
+
+    // 内容分布数据
+    const contentDistributions = [
+      {
+        brand: '花西子',
+        types: [
+          { label: '国风文化', value: 35 },
+          { label: '产品测评', value: 28 },
+          { label: '使用教程', value: 22 },
+          { label: '用户UGC', value: 15 }
+        ]
+      },
+      {
+        brand: '完美日记',
+        types: [
+          { label: '新品推广', value: 32 },
+          { label: 'KOL合作', value: 28 },
+          { label: '用户UGC', value: 25 },
+          { label: '活动营销', value: 15 }
+        ]
+      },
+      {
+        brand: 'Colorkey',
+        types: [
+          { label: '色彩专业', value: 38 },
+          { label: '产品展示', value: 30 },
+          { label: '用户UGC', value: 20 },
+          { label: '品牌故事', value: 12 }
+        ]
+      },
+      {
+        brand: 'into you',
+        types: [
+          { label: '年轻化内容', value: 40 },
+          { label: '用户UGC', value: 30 },
+          { label: '直播场景', value: 20 },
+          { label: '品牌联名', value: 10 }
+        ]
+      }
+    ];
+
+    // 内容表现指标数据
+    const contentPerformanceMetrics = [
+      { metric: '内容深度', data: { '花西子': '8.5', '完美日记': '6.2', 'Colorkey': '7.8', 'into you': '6.5' } },
+      { metric: '用户互动率', data: { '花西子': '12%', '完美日记': '15%', 'Colorkey': '18%', 'into you': '22%' } },
+      { metric: '爆文率', data: { '花西子': '12%', '完美日记': '15%', 'Colorkey': '18%', 'into you': '22%' } },
+      { metric: '更新频率', data: { '花西子': '25日/更新', '完美日记': '38日/更新', 'Colorkey': '30日/更新', 'into you': '45日/更新' } },
+      { metric: '情感度', data: { '花西子': '78%', '完美日记': '75%', 'Colorkey': '82%', 'into you': '76%' } }
+    ];
+
+    // 内容话题亮点数据
+    const contentTopicHighlights = [
+      {
+        brand: '花西子',
+        topics: ['国风彩妆', '雕花工艺', '东方美学', '养肤彩妆', '文化传承']
+      },
+      {
+        brand: '完美日记',
+        topics: ['新品首发', 'KOL种草', '性价比', '学生党', '快速上妆']
+      },
+      {
+        brand: 'Colorkey',
+        topics: ['色彩专业', '多色卡', '专业测评', '色彩搭配', '专业彩妆']
+      },
+      {
+        brand: 'into you',
+        topics: ['年轻化', 'Z世代', '潮流趋势', '直播种草', '社群共创']
+      }
+    ];
+
+    const competitorTrendSeries = {
+      months: ['2024-10', '2024-11', '2024-12', '2025-01', '2025-02', '2025-03'],
+      // 按模型和品牌组织的数据结构
+      models: {
+        'DeepSeek': {
+          brands: {
+            '花西子': {
+              visibility: [54, 56, 58, 60, 62, 63],
+              aiIndex: [6.8, 6.9, 7.0, 7.1, 7.2, 7.3]
+            },
+            '完美日记': {
+              visibility: [70, 71, 72, 73, 75, 76],
+              aiIndex: [7.4, 7.5, 7.6, 7.7, 7.8, 7.9]
+            },
+            'Colorkey': {
+              visibility: [38, 39, 41, 43, 44, 45],
+              aiIndex: [6.1, 6.2, 6.3, 6.4, 6.5, 6.6]
+            },
+            'into you': {
+              visibility: [34, 35, 36, 37, 38, 39],
+              aiIndex: [5.9, 6.0, 6.1, 6.1, 6.2, 6.3]
+            }
+          }
+        },
+        '豆包': {
+          brands: {
+            '花西子': {
+              visibility: [52, 54, 56, 58, 60, 61],
+              aiIndex: [6.5, 6.6, 6.7, 6.8, 6.9, 7.0]
+            },
+            '完美日记': {
+              visibility: [68, 69, 70, 71, 73, 74],
+              aiIndex: [7.2, 7.3, 7.4, 7.5, 7.6, 7.7]
+            },
+            'Colorkey': {
+              visibility: [36, 37, 39, 41, 42, 43],
+              aiIndex: [5.9, 6.0, 6.1, 6.2, 6.3, 6.4]
+            },
+            'into you': {
+              visibility: [32, 33, 34, 35, 36, 37],
+              aiIndex: [5.7, 5.8, 5.9, 5.9, 6.0, 6.1]
+            }
+          }
+        },
+        '元宝': {
+          brands: {
+            '花西子': {
+              visibility: [55, 57, 59, 61, 63, 64],
+              aiIndex: [6.9, 7.0, 7.1, 7.2, 7.3, 7.4]
+            },
+            '完美日记': {
+              visibility: [71, 72, 73, 74, 76, 77],
+              aiIndex: [7.5, 7.6, 7.7, 7.8, 7.9, 8.0]
+            },
+            'Colorkey': {
+              visibility: [39, 40, 42, 44, 45, 46],
+              aiIndex: [6.2, 6.3, 6.4, 6.5, 6.6, 6.7]
+            },
+            'into you': {
+              visibility: [35, 36, 37, 38, 39, 40],
+              aiIndex: [6.0, 6.1, 6.2, 6.2, 6.3, 6.4]
+            }
+          }
+        },
+        'Kimi': {
+          brands: {
+            '花西子': {
+              visibility: [53, 55, 57, 59, 61, 62],
+              aiIndex: [6.7, 6.8, 6.9, 7.0, 7.1, 7.2]
+            },
+            '完美日记': {
+              visibility: [69, 70, 71, 72, 74, 75],
+              aiIndex: [7.3, 7.4, 7.5, 7.6, 7.7, 7.8]
+            },
+            'Colorkey': {
+              visibility: [37, 38, 40, 42, 43, 44],
+              aiIndex: [6.0, 6.1, 6.2, 6.3, 6.4, 6.5]
+            },
+            'into you': {
+              visibility: [33, 34, 35, 36, 37, 38],
+              aiIndex: [5.8, 5.9, 6.0, 6.0, 6.1, 6.2]
+            }
+          }
+        },
+        '通义千问': {
+          brands: {
+            '花西子': {
+              visibility: [51, 53, 55, 57, 59, 60],
+              aiIndex: [6.4, 6.5, 6.6, 6.7, 6.8, 6.9]
+            },
+            '完美日记': {
+              visibility: [67, 68, 69, 70, 72, 73],
+              aiIndex: [7.1, 7.2, 7.3, 7.4, 7.5, 7.6]
+            },
+            'Colorkey': {
+              visibility: [35, 36, 38, 40, 41, 42],
+              aiIndex: [5.8, 5.9, 6.0, 6.1, 6.2, 6.3]
+            },
+            'into you': {
+              visibility: [31, 32, 33, 34, 35, 36],
+              aiIndex: [5.6, 5.7, 5.8, 5.8, 5.9, 6.0]
+            }
+          }
+        }
+      }
+    };
+
+    const competitorInsightBoardData = {
+      brands: ['花西子', '完美日记', 'Colorkey', 'into you'],
+      brandShort: { '花西子': '花', '完美日记': '完', 'Colorkey': 'C', 'into you': 'i' },
+      mediaStructure: [
+        { 
+          type: '新闻门户', 
+          values: { '花西子': 85, '完美日记': 60, 'Colorkey': 40, 'into you': 25, '行业基准': 65 },
+          delta: '花 +150%',
+          children: null
+        },
+        { 
+          type: '知识社区', 
+          values: { '花西子': 92, '完美日记': 55, 'Colorkey': 45, 'into you': 30, '行业基准': 70 },
+          delta: '花 +300%',
+          children: null
+        },
+        { 
+          type: '社交媒体', 
+          values: { '花西子': 78, '完美日记': 95, 'Colorkey': 88, 'into you': 98, '行业基准': 85 },
+          delta: '花 -25%',
+          children: [
+            { type: '小红书', values: { '花西子': 82, '完美日记': 96, 'Colorkey': 85, 'into you': 99, '行业基准': 88 } },
+            { type: '抖音', values: { '花西子': 75, '完美日记': 94, 'Colorkey': 82, 'into you': 97, '行业基准': 86 } },
+            { type: '微博', values: { '花西子': 70, '完美日记': 88, 'Colorkey': 78, 'into you': 92, '行业基准': 80 } },
+            { type: 'B站', values: { '花西子': 65, '完美日记': 76, 'Colorkey': 74, 'into you': 80, '行业基准': 72 } },
+            { type: '快手', values: { '花西子': 62, '完美日记': 80, 'Colorkey': 68, 'into you': 82, '行业基准': 70 } }
+          ]
+        },
+        { 
+          type: '官方网站', 
+          values: { '花西子': 65, '完美日记': 48, 'Colorkey': 42, 'into you': 28, '行业基准': 50 },
+          delta: '花 +400%',
+          children: null
+        },
+        { 
+          type: '电商平台', 
+          values: { '花西子': 82, '完美日记': 80, 'Colorkey': 85, 'into you': 78, '行业基准': 75 },
+          delta: '持平',
+          children: null
+        }
+      ],
+      contentEffectiveness: [
+        {
+          metric: '内容深度',
+          unit: '分',
+          items: [
+            { brand: '花西子', score: 9.2 },
+            { brand: '完美日记', score: 7.5 },
+            { brand: 'Colorkey', score: 8.0 },
+            { brand: 'into you', score: 6.0 },
+            { brand: '行业基准', score: 8.0 }
+          ]
+        },
+        {
+          metric: '用户互动率',
+          unit: '%',
+          items: [
+            { brand: '花西子', score: 3.2 },
+            { brand: '完美日记', score: 4.1 },
+            { brand: 'Colorkey', score: 4.5 },
+            { brand: 'into you', score: 4.8 },
+            { brand: '行业基准', score: 4.0 }
+          ]
+        },
+        {
+          metric: '爆文率',
+          unit: '%',
+          items: [
+            { brand: '花西子', score: 12 },
+            { brand: '完美日记', score: 15 },
+            { brand: 'Colorkey', score: 18 },
+            { brand: 'into you', score: 22 },
+            { brand: '行业基准', score: 15 }
+          ]
+        },
+        {
+          metric: '更新频率',
+          unit: '日更新',
+          items: [
+            { brand: '花西子', score: 25 },
+            { brand: '完美日记', score: 38 },
+            { brand: 'Colorkey', score: 30 },
+            { brand: 'into you', score: 45 },
+            { brand: '行业基准', score: 30 }
+          ]
+        },
+        {
+          metric: '情感度',
+          unit: '%',
+          items: [
+            { brand: '花西子', score: 78 },
+            { brand: '完美日记', score: 75 },
+            { brand: 'Colorkey', score: 82 },
+            { brand: 'into you', score: 76 },
+            { brand: '行业基准', score: 78 }
+          ]
+        },
+        {
+          metric: '爆文率（旧）',
+          items: [
+            { brand: '花西子', score: 68 },
+            { brand: 'Colorkey', score: 82 }
+          ],
+          note: 'Colorkey 更高 +14%'
+        }
+      ],
+      dynamics: [
+        { brand: '完美日记', action: '加大 KOL 投放，集中彩妆新品试用' },
+        { brand: 'Colorkey', action: '强化色彩专业内容，推出多色卡选购指南' },
+        { brand: 'into you', action: '提升更新频率，布局直播种草与社群共创' }
+      ],
+      threatLevels: [
+        { label: '国风模仿', description: '竞品强化东方调性，寻求快速贴近', tone: 'warn', level: '中' },
+        { label: '价格竞争', description: '完美日记持续低价促销挤压利润', tone: 'risk', level: '高' },
+        { label: '流量挤压', description: '新兴品牌抢占热点流量窗口', tone: 'warn', level: '中' },
+        { label: '技术追赶', description: '配方壁垒短期仍稳固', tone: 'low', level: '低' }
+      ],
+      strategy: {
+        media: ['保持专业媒体绝对优势', '针对性提升社交媒体声量', '强化官网内容深度护城河'],
+        content: ['深化国风文化独占性叙事', '技术成分解析专业化', '避免陷入流量价格战'],
+        rapidResponse: [
+          { title: '针对竞品 KOL 攻势', items: ['启动"国风专家"背书计划', '同步专家测评内容矩阵'] },
+          { title: '针对竞品流量打法', items: ['强化成分技术沟通', '实时监控投放槽位并快速补位'] },
+          { title: '针对竞品年轻化', items: ['推出轻量化文化内容', '联合 Z 世代设计师打造联名'] }
+        ],
+        defense: ['严防竞品模仿国风定位', '保护技术成分独家性', '守住专业媒体话语权'],
+        insight: '花西子优势在于专业深度与文化内涵，应避免陷入竞品的流量消耗战，通过专家背书与文化差异化持续构建品牌护城河。'
+      }
     };
 
     const formFields = [
@@ -1194,108 +2481,12 @@
       { name: 'into you', visibility: 38, aiIndex: 6.2, sentiment: 75, textCitation: 8, inclusion: 12, share: 0.8, rank: '第6名' }
     ];
 
-    const competitorTrendSeries = {
-      months: ['2024-10', '2024-11', '2024-12', '2025-01', '2025-02', '2025-03'],
-      visibility: {
-        '花西子': [54, 56, 58, 60, 62, 63],
-        '完美日记': [70, 71, 72, 73, 75, 76],
-        'Colorkey': [38, 39, 41, 43, 44, 45],
-        'into you': [34, 35, 36, 37, 38, 39]
-      },
-      aiIndex: {
-        '花西子': [6.8, 6.9, 7.0, 7.1, 7.2, 7.3],
-        '完美日记': [7.4, 7.5, 7.6, 7.7, 7.8, 7.9],
-        'Colorkey': [6.1, 6.2, 6.3, 6.4, 6.5, 6.6],
-        'into you': [5.9, 6.0, 6.1, 6.1, 6.2, 6.3]
-      }
+    const brandColorMap = {
+      '花西子': '#2563eb',
+      '完美日记': '#16a34a',
+      'Colorkey': '#f97316',
+      'into you': '#8b5cf6'
     };
-
-    const mediaHeatmapMatrix = {
-      platforms: ['小红书', '抖音', '知乎', '微博', '搜狐美妆', 'B站'],
-      metrics: ['收录率', '情感度', '正面声量', '负面声量', '风险等级'],
-      data: [
-        [25, 82, 85, 8, 65],
-        [20, 75, 78, 12, 70],
-        [18, 85, 88, 5, 85],
-        [15, 70, 73, 18, 55],
-        [12, 88, 90, 4, 90],
-        [14, 80, 84, 7, 75]
-      ]
-    };
-
-    const mediaEffectScatter = [
-      { name: '小红书', value: [85, 90, 12] },
-      { name: '抖音', value: [75, 65, 25] },
-      { name: '知乎', value: [70, 85, 18] },
-      { name: '微博', value: [60, 55, 15] },
-      { name: '搜狐美妆', value: [68, 92, 20] },
-      { name: 'B站', value: [72, 78, 14] }
-    ];
-
-    const mediaRiskRows = [
-      { platform: '小红书', status: '低风险', focus: '脱妆议题', action: '建立"国风不脱妆"守护计划' },
-      { platform: '抖音', status: '中风险', focus: '内容同质化', action: '升级教程脚本，加入差异化场景' },
-      { platform: '知乎', status: '低风险', focus: '专业答疑薄弱', action: '补充结构化技术问答' },
-      { platform: '微博', status: '中风险', focus: '价格讨论', action: '强化价值沟通 + 官方澄清' },
-      { platform: '搜狐美妆', status: '低风险', focus: '深度报道稀缺', action: '联合发布行业洞察' }
-    ];
-
-    const contentDistributions = [
-      {
-        brand: '花西子',
-        types: [
-          { label: '国风文化', value: 40 },
-          { label: '产品评测', value: 20 },
-          { label: '成分解析', value: 16 },
-          { label: '用户故事', value: 12 },
-          { label: '活动促销', value: 8 },
-          { label: '其他', value: 4 }
-        ]
-      },
-      {
-        brand: '完美日记',
-        types: [
-          { label: '产品评测', value: 32 },
-          { label: 'KOL 合作', value: 28 },
-          { label: '用户故事', value: 20 },
-          { label: '活动促销', value: 16 },
-          { label: '其他', value: 4 }
-        ]
-      },
-      {
-        brand: 'Colorkey',
-        types: [
-          { label: '色彩教程', value: 40 },
-          { label: '产品评测', value: 28 },
-          { label: '用户UGC', value: 20 },
-          { label: '活动促销', value: 8 },
-          { label: '其他', value: 4 }
-        ]
-      },
-      {
-        brand: 'into you',
-        types: [
-          { label: '色彩教程', value: 48 },
-          { label: '用户UGC', value: 20 },
-          { label: '产品评测', value: 20 },
-          { label: 'KOL 合作', value: 12 }
-        ]
-      }
-    ];
-
-    const contentPerformanceMetrics = [
-      { metric: '日更新量', data: { '花西子': 25, '完美日记': 38, 'Colorkey': 30, 'into you': 45 } },
-      { metric: '平均互动率', data: { '花西子': '3.2%', '完美日记': '2.8%', 'Colorkey': '4.1%', 'into you': '3.5%' } },
-      { metric: '爆文率', data: { '花西子': '12%', '完美日记': '15%', 'Colorkey': '18%', 'into you': '22%' } },
-      { metric: '内容深度', data: { '花西子': '高', '完美日记': '中', 'Colorkey': '中高', 'into you': '中' } }
-    ];
-
-    const contentTopicHighlights = [
-      { brand: '花西子', topics: ['国风彩妆', '东方美学', '成分安全', '非遗合作'] },
-      { brand: '完美日记', topics: ['动物眼影', '性价比', '学生党', '联名款'] },
-      { brand: 'Colorkey', topics: ['空气唇釉', '色彩专家', '质地创新', '明星同款'] },
-      { brand: 'into you', topics: ['唇泥开创者', '显白神器', '新国潮', '情绪表达'] }
-    ];
 
     const modelPerformanceData = [
       {
@@ -1354,7 +2545,6 @@
     let activeModelFilter = '全部模型';
 
     const logoPatternCache = {};
-    const logoSymbolCache = {};
 
     function $(id) { return document.getElementById(id); }
 
@@ -1435,30 +2625,190 @@
 
     function renderQuestionWordCloud() {
       const dom = $('questionWordCloud');
-      if (!dom) return;
-      try {
-        const instance = echarts.init(dom);
+      if (!dom) {
+        console.warn('[GEO] questionWordCloud element not found');
+        return;
+      }
+      if (!questionWordCloudData || !Array.isArray(questionWordCloudData) || questionWordCloudData.length === 0) {
+        console.warn('[GEO] questionWordCloudData is empty or invalid');
+        dom.innerHTML = '<div class="chart-fallback">词云数据为空</div>';
+        return;
+      }
+      
+      // 确保容器有高度和宽度
+      dom.style.height = '260px';
+      dom.style.width = '100%';
+      dom.style.minHeight = '260px';
+      dom.style.display = 'block';
+      
+      console.log('[GEO] Starting word cloud render, data count:', questionWordCloudData.length);
+      
+      // 先尝试使用简单的文本展示作为备用方案
+      const wordCloudData = questionWordCloudData.map(item => ({
+        name: String(item.name || item.value || item),
+        value: Number(item.value || 50)
+      }));
+      
+      console.log('[GEO] Processed word cloud data:', wordCloudData.slice(0, 5));
+      
+      // 等待 ECharts 和 WordCloud 插件加载
+      Promise.all([
+        waitForECharts(20000),
+        loadEChartsWordCloud().catch(err => {
+          console.warn('[GEO] WordCloud plugin load failed, will retry:', err);
+          echartsWordCloudLoadPromise = null;
+          return loadEChartsWordCloud();
+        })
+      ]).then(([echartsInstance]) => {
+        console.log('[GEO] ECharts and WordCloud ready');
+        
+        // 再次确保容器尺寸
+        if (dom.offsetHeight < 100 || dom.offsetWidth < 100) {
+          dom.style.height = '260px';
+          dom.style.width = '100%';
+          console.log('[GEO] Container size adjusted:', dom.offsetWidth, 'x', dom.offsetHeight);
+        }
+        
+        // 清空容器内容
+        dom.innerHTML = '';
+        
+        const instance = safeEChartsInit(dom);
+        if (!instance) {
+          throw new Error('Failed to initialize ECharts instance');
+        }
+        
         const palette = ['#111827', '#d97706', '#2563eb', '#0f766e', '#ec4899', '#f97316', '#d4af37'];
-        instance.setOption({
-          tooltip: { show: false },
+        
+        // 检查 wordCloud 类型是否可用
+        console.log('[GEO] Checking wordCloud availability...');
+        
+        // 使用更简单的配置
+        const option = {
+          tooltip: { 
+            show: true,
+            formatter: '{b}: {c}'
+          },
           series: [{
             type: 'wordCloud',
-            gridSize: 8,
-            sizeRange: [14, 46],
-            rotationRange: [0, 0],
             shape: 'circle',
+            left: 'center',
+            top: 'center',
+            width: '100%',
+            height: '100%',
+            right: null,
+            bottom: null,
+            gridSize: 8,
+            sizeRange: [14, 50],
+            rotationRange: [0, 0],
+            rotationStep: 0,
             textStyle: {
-              fontFamily: 'PingFang SC, sans-serif',
-              color: () => palette[Math.floor(Math.random() * palette.length)],
+              fontFamily: 'PingFang SC, Microsoft YaHei, Arial, sans-serif',
+              fontWeight: 'bold',
+              color: function(params) {
+                return palette[params.dataIndex % palette.length];
+              }
             },
-            data: questionWordCloudData,
-          }],
-        });
-        window.addEventListener('resize', () => instance.resize());
-      } catch (error) {
-        console.error('[GEO] word cloud error:', error);
-        dom.innerHTML = '<div class="chart-fallback">词云加载失败，请刷新重试</div>';
-      }
+            emphasis: {
+              focus: 'self',
+              textStyle: {
+                shadowBlur: 10,
+                shadowColor: '#333'
+              }
+            },
+            data: wordCloudData
+          }]
+        };
+        
+        try {
+          instance.setOption(option, true);
+          console.log('[GEO] Word cloud option set, data points:', wordCloudData.length);
+          
+          // 立即尝试渲染
+          instance.resize();
+          
+          // 延迟检查渲染结果
+          setTimeout(() => {
+            try {
+              instance.resize();
+              const canvas = dom.querySelector('canvas');
+              if (canvas && canvas.width > 0 && canvas.height > 0) {
+                console.log('[GEO] Word cloud rendered successfully, canvas size:', canvas.width, 'x', canvas.height);
+              } else {
+                console.warn('[GEO] Canvas not rendered, trying alternative approach');
+                // 尝试使用不同的配置
+                setTimeout(() => {
+                  try {
+                    // 强制设置容器尺寸
+                    const computedStyle = window.getComputedStyle(dom);
+                    const width = dom.offsetWidth || parseInt(computedStyle.width) || 400;
+                    const height = dom.offsetHeight || parseInt(computedStyle.height) || 260;
+                    dom.style.width = width + 'px';
+                    dom.style.height = height + 'px';
+                    instance.resize();
+                    instance.setOption(option, true);
+                    
+                    const canvas2 = dom.querySelector('canvas');
+                    if (canvas2 && canvas2.width > 0 && canvas2.height > 0) {
+                      console.log('[GEO] Word cloud rendered after retry');
+                    } else {
+                      console.error('[GEO] Word cloud still not rendered, showing fallback');
+                      throw new Error('Canvas not rendered');
+                    }
+                  } catch (retryErr) {
+                    console.error('[GEO] Retry failed:', retryErr);
+                    throw retryErr;
+                  }
+                }, 300);
+              }
+            } catch (err) {
+              console.error('[GEO] Resize error:', err);
+              throw err;
+            }
+          }, 300);
+        } catch (setOptionErr) {
+          console.error('[GEO] setOption error:', setOptionErr);
+          throw setOptionErr;
+        }
+        
+        // 使用一次性事件监听器避免重复绑定
+        const resizeHandler = () => {
+          try {
+            if (instance && !instance.isDisposed()) {
+              instance.resize();
+            }
+          } catch (err) {
+            console.error('[GEO] word cloud resize error:', err);
+          }
+        };
+        
+        // 移除旧的事件监听器（如果存在）
+        window.removeEventListener('resize', resizeHandler);
+        window.addEventListener('resize', resizeHandler);
+        
+      }).catch(error => {
+        console.error('[GEO] Word cloud error:', error);
+        // 显示备用文本展示
+        const maxItems = Math.min(wordCloudData.length, 20);
+        const sortedData = [...wordCloudData].sort((a, b) => b.value - a.value).slice(0, maxItems);
+        const fontSize = (item) => {
+          const max = Math.max(...wordCloudData.map(d => d.value));
+          return Math.max(12, Math.min(24, 12 + (item.value / max) * 12));
+        };
+        
+        dom.innerHTML = `
+          <div style="padding: 20px; text-align: center; color: var(--text-secondary);">
+            <p style="margin: 0 0 15px; font-size: 12px;">词云图加载失败，显示文本版本：</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center;">
+              ${sortedData.map(item => `
+                <span style="font-size: ${fontSize(item)}px; font-weight: bold; color: ${palette[Math.floor(Math.random() * palette.length)]};">
+                  ${item.name}
+                </span>
+              `).join('')}
+            </div>
+            <button onclick="renderQuestionWordCloud()" style="margin-top: 15px; padding: 8px 16px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 12px;">重试词云图</button>
+          </div>
+        `;
+      });
     }
 
     function buildStrategicTable() {
@@ -1501,7 +2851,7 @@
             <span>${strategicSummary.priority}</span>
             <span class="analysis-badge">时间框架</span>
             <span>${strategicSummary.timeline}</span>
-          </div>
+            </div>
           <div class="strategy-flow">${flow}</div>
         </div>`;
     }
@@ -1550,9 +2900,23 @@
 
     function renderCompetitorRadarChart() {
       const dom = $('competitorRadarChart');
-      if (!dom) return;
-      try {
-        const chart = echarts.init(dom);
+      if (!dom) {
+        console.warn('[GEO] competitorRadarChart element not found');
+        return;
+      }
+      if (!competitorSummaryBoard || !Array.isArray(competitorSummaryBoard) || competitorSummaryBoard.length === 0) {
+        console.warn('[GEO] competitorSummaryBoard is empty or invalid');
+        dom.innerHTML = '<div class="chart-fallback">竞品数据为空</div>';
+        return;
+      }
+      
+      // 等待 ECharts 加载完成
+      waitForECharts(5000).then(() => {
+        try {
+          const chart = safeEChartsInit(dom);
+          if (!chart) {
+            return;
+          }
         chart.setOption({
           tooltip: { trigger: 'item' },
           legend: { show: false },
@@ -1614,58 +2978,451 @@
             }))
           }]
         });
-        window.addEventListener('resize', () => chart.resize());
+        window.addEventListener('resize', () => {
+          try {
+            if (chart && !chart.isDisposed()) {
+              chart.resize();
+            }
+          } catch (err) {
+            console.error('[GEO] competitor radar resize error:', err);
+          }
+        });
       } catch (error) {
         console.error('[GEO] competitor radar error:', error);
-        dom.innerHTML = '<div class="chart-fallback">竞品雷达图加载失败，请刷新重试</div>';
+        dom.innerHTML = `<div class="chart-fallback">竞品雷达图加载失败：${error.message || '未知错误'}，请刷新重试</div>`;
       }
+      }).catch(error => {
+        console.error('[GEO] ECharts wait error:', error);
+        const errorMsg = error.message || 'ECharts 加载超时';
+        dom.innerHTML = `
+          <div class="chart-fallback" style="padding: 20px; text-align: center;">
+            <p style="margin: 0 0 10px; color: #dc2626; font-weight: 600;">${errorMsg}</p>
+            <p style="margin: 0 0 15px; font-size: 12px; color: #666;">请尝试刷新页面或检查网络连接</p>
+            <button onclick="window.forceLoadECharts().then(() => location.reload())" style="padding: 8px 16px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 12px;">重新加载图表库</button>
+          </div>
+        `;
+      });
     }
+
+    // 趋势对比筛选状态
+    let trendFilterState = {
+      brands: ['花西子'], // 默认选中本品牌
+      models: ['DeepSeek'], // 默认选中第一个模型
+      metrics: ['visibility', 'aiIndex'], // 默认选中两个指数
+      months: null // null表示显示所有月份
+    };
+
+    function renderTrendFilters() {
+      const filterDom = $('trendFilterToolbar');
+      if (!filterDom) return;
+
+      const allBrands = ['花西子', '完美日记', 'Colorkey', 'into you'];
+      const allModels = ['DeepSeek', '豆包', '元宝', 'Kimi', '通义千问'];
+      const allMetrics = [
+        { key: 'visibility', label: '品牌可见度' },
+        { key: 'aiIndex', label: 'AI认知指数' }
+      ];
+
+      filterDom.innerHTML = `
+        <div class="trend-toolbar">
+          <div class="trend-control-group">
+            <div class="trend-control-label">品牌</div>
+            <div class="trend-chip-row">
+              ${allBrands.map(brand => `
+                <span class="trend-chip ${trendFilterState.brands.includes(brand) ? 'active' : ''}" 
+                      data-filter="brand" data-value="${brand}" onclick="toggleTrendFilter('brand', '${brand}')">
+                  ${brand}
+                </span>
+              `).join('')}
+            </div>
+          </div>
+          <div class="trend-control-group">
+            <div class="trend-control-label">模型</div>
+            <div class="trend-chip-row">
+              ${allModels.map(model => `
+                <span class="trend-chip ${trendFilterState.models.includes(model) ? 'active' : ''}" 
+                      data-filter="model" data-value="${model}" onclick="toggleTrendFilter('model', '${model}')">
+                  ${model}
+                </span>
+              `).join('')}
+            </div>
+          </div>
+          <div class="trend-control-group">
+            <div class="trend-control-label">指数</div>
+            <div class="trend-chip-row">
+              ${allMetrics.map(metric => `
+                <span class="trend-chip ${trendFilterState.metrics.includes(metric.key) ? 'active' : ''}" 
+                      data-filter="metric" data-value="${metric.key}" onclick="toggleTrendFilter('metric', '${metric.key}')">
+                  ${metric.label}
+                </span>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // 全局函数：切换趋势筛选
+    window.toggleTrendFilter = function(type, value) {
+      if (type === 'brand') {
+        const index = trendFilterState.brands.indexOf(value);
+        if (index > -1) {
+          trendFilterState.brands.splice(index, 1);
+        } else {
+          trendFilterState.brands.push(value);
+        }
+      } else if (type === 'model') {
+        const index = trendFilterState.models.indexOf(value);
+        if (index > -1) {
+          trendFilterState.models.splice(index, 1);
+        } else {
+          trendFilterState.models.push(value);
+        }
+      } else if (type === 'metric') {
+        const index = trendFilterState.metrics.indexOf(value);
+        if (index > -1) {
+          trendFilterState.metrics.splice(index, 1);
+        } else {
+          trendFilterState.metrics.push(value);
+        }
+      }
+      
+      // 更新筛选器UI
+      renderTrendFilters();
+      // 重新渲染图表
+      renderCompetitorTrendChart();
+    };
 
     function renderCompetitorTrendChart() {
       const dom = $('competitorTrendChart');
-      if (!dom) return;
-      try {
-        const chart = echarts.init(dom);
-        const brands = Object.keys(competitorTrendSeries.visibility);
-        const palette = ['#111827', '#d97706', '#2563eb', '#ec4899'];
-        const series = [];
-        brands.forEach((brand, index) => {
-          series.push({
-            name: `${brand} · 可见度`,
-            type: 'line',
-            smooth: true,
-            data: competitorTrendSeries.visibility[brand],
-            lineStyle: { width: 2, color: palette[index] },
-            symbol: 'circle',
-            symbolSize: 4
-          });
-          series.push({
-            name: `${brand} · AI 指数`,
-            type: 'line',
-            smooth: true,
-            yAxisIndex: 1,
-            data: competitorTrendSeries.aiIndex[brand],
-            lineStyle: { width: 2, color: palette[index], type: 'dashed' },
-            symbol: 'circle',
-            symbolSize: 4
-          });
-        });
-        chart.setOption({
-          tooltip: { trigger: 'axis' },
-          legend: { type: 'scroll' },
-          grid: { left: '6%', right: '6%', top: '18%', bottom: '14%' },
-          xAxis: { type: 'category', data: competitorTrendSeries.months },
-          yAxis: [
-            { type: 'value', name: '可见度', min: 30, max: 80, axisLabel: { formatter: '{value}%' } },
-            { type: 'value', name: 'AI 指数', min: 5.5, max: 8.5 }
-          ],
-          series
-        });
-        window.addEventListener('resize', () => chart.resize());
-      } catch (error) {
-        console.error('[GEO] competitor trend error:', error);
-        dom.innerHTML = '<div class="chart-fallback">趋势对比加载失败，请刷新重试</div>';
+      if (!dom) {
+        console.warn('[GEO] competitorTrendChart element not found');
+        return;
       }
+      if (!competitorTrendSeries || !competitorTrendSeries.models) {
+        console.warn('[GEO] competitorTrendSeries is empty or invalid');
+        dom.innerHTML = '<div class="chart-fallback">趋势对比数据为空</div>';
+        return;
+      }
+
+      // 根据筛选条件获取数据
+      const selectedBrands = trendFilterState.brands.length > 0 ? trendFilterState.brands : ['花西子'];
+      const selectedModels = trendFilterState.models.length > 0 ? trendFilterState.models : ['DeepSeek'];
+      const selectedMetrics = trendFilterState.metrics.length > 0 ? trendFilterState.metrics : ['visibility'];
+      
+      // 等待 ECharts 加载完成
+      waitForECharts(5000).then(() => {
+        try {
+          const chart = safeEChartsInit(dom);
+          if (!chart) {
+            return;
+          }
+
+          const palette = ['#111827', '#d97706', '#2563eb', '#ec4899', '#0f766e', '#ec4899', '#f97316'];
+          const series = [];
+          let colorIndex = 0;
+
+          // 遍历选中的模型和品牌
+          selectedModels.forEach(model => {
+            if (!competitorTrendSeries.models[model]) return;
+            
+            selectedBrands.forEach(brand => {
+              if (!competitorTrendSeries.models[model].brands[brand]) return;
+              
+              const brandData = competitorTrendSeries.models[model].brands[brand];
+              
+              // 根据选中的指标添加系列
+              if (selectedMetrics.includes('visibility')) {
+                series.push({
+                  name: `${brand} · ${model} · 品牌可见度`,
+                  type: 'line',
+                  smooth: true,
+                  data: brandData.visibility || [],
+                  lineStyle: { width: 2, color: palette[colorIndex % palette.length] },
+                  symbol: 'circle',
+                  symbolSize: 4
+                });
+              }
+              
+              if (selectedMetrics.includes('aiIndex')) {
+                series.push({
+                  name: `${brand} · ${model} · AI认知指数`,
+                  type: 'line',
+                  smooth: true,
+                  yAxisIndex: selectedMetrics.includes('visibility') ? 1 : 0,
+                  data: brandData.aiIndex || [],
+                  lineStyle: { 
+                    width: 2, 
+                    color: palette[colorIndex % palette.length], 
+                    type: selectedMetrics.includes('visibility') ? 'dashed' : 'solid' 
+                  },
+                  symbol: 'circle',
+                  symbolSize: 4
+                });
+              }
+              
+              colorIndex++;
+            });
+          });
+
+          if (series.length === 0) {
+            dom.innerHTML = '<div class="chart-fallback">请至少选择一个品牌、模型和指数</div>';
+            return;
+          }
+
+          // 确定Y轴配置
+          const yAxisConfig = [];
+          if (selectedMetrics.includes('visibility')) {
+            yAxisConfig.push({
+              type: 'value',
+              name: '品牌可见度',
+              min: 30,
+              max: 80,
+              axisLabel: { formatter: '{value}%' }
+            });
+          }
+          if (selectedMetrics.includes('aiIndex')) {
+            yAxisConfig.push({
+              type: 'value',
+              name: 'AI认知指数',
+              min: 5.5,
+              max: 8.5,
+              position: selectedMetrics.includes('visibility') ? 'right' : 'left'
+            });
+          }
+
+          chart.setOption({
+            tooltip: { trigger: 'axis' },
+            legend: { type: 'scroll', top: '5%' },
+            grid: { left: '6%', right: '6%', top: '20%', bottom: '14%' },
+            xAxis: { 
+              type: 'category', 
+              data: competitorTrendSeries.months || [],
+              axisLabel: { rotate: 45 }
+            },
+            yAxis: yAxisConfig,
+            series
+          });
+
+          window.addEventListener('resize', () => {
+            try {
+              if (chart && !chart.isDisposed()) {
+                chart.resize();
+              }
+            } catch (err) {
+              console.error('[GEO] trend chart resize error:', err);
+            }
+          });
+        } catch (error) {
+          console.error('[GEO] competitor trend error:', error);
+          dom.innerHTML = `<div class="chart-fallback">趋势对比加载失败：${error.message || '未知错误'}，请刷新重试</div>`;
+        }
+      }).catch(error => {
+        console.error('[GEO] ECharts wait error:', error);
+        const errorMsg = error.message || 'ECharts 加载超时';
+        dom.innerHTML = `
+          <div class="chart-fallback" style="padding: 20px; text-align: center;">
+            <p style="margin: 0 0 10px; color: #dc2626; font-weight: 600;">${errorMsg}</p>
+            <p style="margin: 0 0 15px; font-size: 12px; color: #666;">请尝试刷新页面或检查网络连接</p>
+            <button onclick="window.forceLoadECharts().then(() => location.reload())" style="padding: 8px 16px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 12px;">重新加载图表库</button>
+          </div>
+        `;
+      });
+    }
+
+    function renderModelOperationChart() {
+      const dom = $('modelOperationChart');
+      if (!dom) {
+        console.warn('[GEO] modelOperationChart element not found');
+        return;
+      }
+      if (!modelOperationHeatmap || !Array.isArray(modelOperationHeatmap) || modelOperationHeatmap.length === 0) {
+        console.warn('[GEO] modelOperationHeatmap is empty or invalid');
+        dom.innerHTML = '<div class="chart-fallback">模型运营数据为空</div>';
+        return;
+      }
+      
+      // 等待 ECharts 加载完成
+      waitForECharts(5000).then(() => {
+        try {
+          const chart = safeEChartsInit(dom);
+          if (!chart) {
+            return;
+          }
+          
+          const models = modelOperationHeatmap.map(item => item.model);
+          const brandKeys = [
+            { key: 'florasis', label: '花西子' },
+            { key: 'perfect', label: '完美日记' },
+            { key: 'colorkey', label: 'Colorkey' },
+            { key: 'intoYou', label: 'into you' }
+          ];
+
+          const levelMeta = level => {
+            const raw = String(level || '').replace(/^[^\u4e00-\u9fa5a-zA-Z0-9]+/, '').trim();
+            if (raw.includes('优秀')) return { text: '优秀', key: 'excellent', sizeBase: 46 };
+            if (raw.includes('待改善')) return { text: '待改善', key: 'improve', sizeBase: 28 };
+            return { text: '良好', key: 'good', sizeBase: 36 };
+          };
+
+          const calcSize = (score, sizeBase) => {
+            const clamped = Math.min(Math.max(score, 0), 10);
+            return Math.round(sizeBase + clamped * 1.8);
+          };
+
+          const bubbleData = [];
+
+          const applyLogoSymbol = dataPoint => {
+            const { brand, logoUrl } = dataPoint;
+            if (!logoUrl) {
+              dataPoint.symbol = 'circle';
+              dataPoint.itemStyle = { color: '#e5e7eb', borderWidth: 0 };
+              return;
+            }
+            if (logoSymbolCache[logoUrl]) {
+              dataPoint.symbol = `image://${logoSymbolCache[logoUrl]}`;
+              return;
+            }
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.src = logoUrl;
+            img.onload = () => {
+              try {
+                const canvas = document.createElement('canvas');
+                const size = 128;
+                canvas.width = size;
+                canvas.height = size;
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, size, size);
+                ctx.beginPath();
+                ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.clip();
+                ctx.drawImage(img, 0, 0, size, size);
+                const dataUrl = canvas.toDataURL('image/png');
+                if (dataUrl) {
+                  logoSymbolCache[logoUrl] = dataUrl;
+                  dataPoint.symbol = `image://${dataUrl}`;
+                  if (chart && !chart.isDisposed()) {
+                    chart.setOption({
+                      series: [{ id: 'model-operation', data: bubbleData }]
+                    });
+                  }
+                }
+              } catch (err) {
+                console.error('[GEO] logo render error:', err);
+              }
+            };
+            img.onerror = () => {
+              dataPoint.symbol = 'circle';
+              dataPoint.itemStyle = { color: '#e5e7eb', borderWidth: 0 };
+            };
+            dataPoint.symbol = 'circle';
+            dataPoint.itemStyle = { color: '#e5e7eb', borderWidth: 0 };
+          };
+
+          modelOperationHeatmap.forEach(row => {
+            brandKeys.forEach(({ key, label }) => {
+              const entry = row[key];
+              if (!entry) return;
+              const score = Number(entry.score) || 0;
+              const meta = levelMeta(entry.level);
+              const logo = brandLogoMap[label] || '';
+              const dataPoint = {
+                value: [row.model, label, score],
+                brand: label,
+                model: row.model,
+                levelText: meta.text,
+                levelKey: meta.key,
+                symbolSize: calcSize(score, meta.sizeBase),
+                logoUrl: logo
+              };
+              applyLogoSymbol(dataPoint);
+              bubbleData.push(dataPoint);
+            });
+          });
+
+          chart.setOption({
+            tooltip: {
+              backgroundColor: 'rgba(17, 24, 39, 0.9)',
+              borderWidth: 0,
+              textStyle: { color: '#f9fafb', fontSize: 12 },
+              formatter: params => {
+                const data = params.data || {};
+                return `${data.brand || ''} · ${data.model || ''}<br/>运营评价：${data.levelText || '—'}`;
+              }
+            },
+            grid: { left: '8%', right: '8%', top: '12%', bottom: '12%' },
+            xAxis: {
+              type: 'category',
+              data: models,
+              axisTick: { show: false },
+              axisLine: { lineStyle: { color: 'rgba(17,24,39,0.18)' } },
+              axisLabel: { color: '#4b5563' }
+            },
+            yAxis: {
+              type: 'category',
+              data: brandKeys.map(item => item.label),
+              axisTick: { show: false },
+              axisLine: { lineStyle: { color: 'rgba(17,24,39,0.18)' } },
+              axisLabel: { color: '#4b5563' }
+            },
+            series: [{
+              id: 'model-operation',
+              type: 'scatter',
+              data: bubbleData,
+              encode: { x: 0, y: 1, value: 2 },
+              symbolKeepAspect: true,
+              symbolSize: params => params.data?.symbolSize || 32,
+              itemStyle: {
+                borderWidth: 0,
+                shadowBlur: 10,
+                shadowColor: 'rgba(17,24,39,0.16)'
+              },
+              emphasis: { scale: 1.05 },
+              label: {
+                show: true,
+                position: 'right',
+                fontSize: 12,
+                fontWeight: 600,
+                formatter: params => {
+                  const key = params.data?.levelKey || 'good';
+                  const text = params.data?.levelText || '';
+                  return `{${key}|${text}}`;
+                },
+                rich: {
+                  excellent: { color: '#16a34a' },
+                  good: { color: '#eab308' },
+                  improve: { color: '#dc2626' }
+                }
+              }
+            }]
+          });
+
+          window.addEventListener('resize', () => {
+            try {
+              if (chart && !chart.isDisposed()) {
+                chart.resize();
+              }
+            } catch (err) {
+              console.error('[GEO] model operation chart resize error:', err);
+            }
+          });
+        } catch (error) {
+          console.error('[GEO] model operation chart error:', error);
+          dom.innerHTML = `<div class="chart-fallback">模型运营图加载失败：${error.message || '未知错误'}，请刷新重试</div>`;
+        }
+      }).catch(error => {
+        console.error('[GEO] ECharts wait error:', error);
+        const errorMsg = error.message || 'ECharts 加载超时';
+        dom.innerHTML = `
+          <div class="chart-fallback" style="padding: 20px; text-align: center;">
+            <p style="margin: 0 0 10px; color: #dc2626; font-weight: 600;">${errorMsg}</p>
+            <p style="margin: 0 0 15px; font-size: 12px; color: #666;">请尝试刷新页面或检查网络连接</p>
+            <button onclick="window.forceLoadECharts().then(() => location.reload())" style="padding: 8px 16px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 12px;">重新加载图表库</button>
+          </div>
+        `;
+      });
     }
 
     function buildMediaRiskTable() {
@@ -1685,11 +3442,21 @@
         </table>`;
     }
 
-    function renderMediaHeatmap() {
+    async function renderMediaHeatmap() {
       const dom = $('mediaHeatmapChart');
       if (!dom) return;
       try {
-        const chart = echarts.init(dom);
+        // 等待 ECharts 加载完成
+        await waitForECharts();
+        
+        // 验证数据是否存在
+        if (!mediaHeatmapMatrix || !mediaHeatmapMatrix.data || !mediaHeatmapMatrix.platforms || !mediaHeatmapMatrix.metrics) {
+          throw new Error('媒体热力图数据未定义');
+        }
+        
+        const chart = safeEChartsInit(dom);
+        if (!chart) return;
+        
         const data = [];
         mediaHeatmapMatrix.data.forEach((row, rowIndex) => {
           row.forEach((value, colIndex) => {
@@ -1728,15 +3495,27 @@
         window.addEventListener('resize', () => chart.resize());
       } catch (error) {
         console.error('[GEO] media heatmap error:', error);
-        dom.innerHTML = '<div class="chart-fallback">媒体热力图加载失败，请刷新重试</div>';
+        if (dom) {
+          dom.innerHTML = '<div class="chart-fallback">媒体热力图加载失败，请刷新重试</div>';
+        }
       }
     }
 
-    function renderMediaEffectChart() {
+    async function renderMediaEffectChart() {
       const dom = $('mediaEffectChart');
       if (!dom) return;
       try {
-        const chart = echarts.init(dom);
+        // 等待 ECharts 加载完成
+        await waitForECharts();
+        
+        // 验证数据是否存在
+        if (!mediaEffectScatter || !Array.isArray(mediaEffectScatter) || mediaEffectScatter.length === 0) {
+          throw new Error('媒体效果散点图数据未定义');
+        }
+        
+        const chart = safeEChartsInit(dom);
+        if (!chart) return;
+        
         chart.setOption({
           tooltip: {
             formatter: params => {
@@ -1777,7 +3556,9 @@
         window.addEventListener('resize', () => chart.resize());
       } catch (error) {
         console.error('[GEO] media effect chart error:', error);
-        dom.innerHTML = '<div class="chart-fallback">效果矩阵加载失败，请刷新重试</div>';
+        if (dom) {
+          dom.innerHTML = '<div class="chart-fallback">效果矩阵加载失败，请刷新重试</div>';
+        }
       }
     }
 
@@ -1895,16 +3676,56 @@
           ${buildStrategicTable()}
         </div>`;
 
+      // 延迟渲染图表，确保 DOM 已更新
+      setTimeout(() => {
+        try {
       renderBrandRadar();
+        } catch (error) {
+          console.error('[GEO] renderBrandRadar error:', error);
+        }
+      }, 50);
+      
+      setTimeout(() => {
+        try {
       renderQuestionWordCloud();
+        } catch (error) {
+          console.error('[GEO] renderQuestionWordCloud error:', error);
+        }
+      }, 50);
+      
+      setTimeout(() => {
+        try {
       renderModelPerformanceCards();
+        } catch (error) {
+          console.error('[GEO] renderModelPerformanceCards error:', error);
+        }
+      }, 50);
+      
+      // 触发 resize 事件，确保图表正确渲染
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+      }, 200);
     }
 
     function renderBrandRadar() {
       const dom = $('brandRadarChart');
-      if (!dom) return;
-      try {
-        const chart = echarts.init(dom);
+      if (!dom) {
+        console.warn('[GEO] brandRadarChart element not found');
+        return;
+      }
+      if (!metricsData) {
+        console.warn('[GEO] metricsData is empty or invalid');
+        dom.innerHTML = '<div class="chart-fallback">品牌数据为空</div>';
+        return;
+      }
+      
+      // 等待 ECharts 加载完成
+      waitForECharts(5000).then(() => {
+        try {
+          const chart = safeEChartsInit(dom);
+          if (!chart) {
+            return;
+          }
         chart.setOption({
           tooltip: { trigger: 'item' },
           legend: { show: false },
@@ -1964,11 +3785,30 @@
             ]
           }]
         });
-        window.addEventListener('resize', () => chart.resize());
+        window.addEventListener('resize', () => {
+          try {
+            if (chart && !chart.isDisposed()) {
+              chart.resize();
+            }
+          } catch (err) {
+            console.error('[GEO] brand radar resize error:', err);
+          }
+        });
       } catch (error) {
         console.error('[GEO] brand radar error:', error);
-        dom.innerHTML = '<div class="chart-fallback">雷达图加载失败，请刷新重试</div>';
+        dom.innerHTML = `<div class="chart-fallback">雷达图加载失败：${error.message || '未知错误'}，请刷新重试</div>`;
       }
+      }).catch(error => {
+        console.error('[GEO] ECharts wait error:', error);
+        const errorMsg = error.message || 'ECharts 加载超时';
+        dom.innerHTML = `
+          <div class="chart-fallback" style="padding: 20px; text-align: center;">
+            <p style="margin: 0 0 10px; color: #dc2626; font-weight: 600;">${errorMsg}</p>
+            <p style="margin: 0 0 15px; font-size: 12px; color: #666;">请尝试刷新页面或检查网络连接</p>
+            <button onclick="window.forceLoadECharts().then(() => location.reload())" style="padding: 8px 16px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 12px;">重新加载图表库</button>
+          </div>
+        `;
+      });
     }
 
     function buildCompetitorOverviewCards() {
@@ -2003,19 +3843,456 @@
     }
 
     function buildCompetitorInsightBoard() {
-      return `
-        <div class="insight-board">
-          <div class="insight-block">
-            <h4>阵营分层</h4>
-            <ul class="insight-list">${competitorInsights.clusters.map(item => `<li>${item}</li>`).join('')}</ul>
-            <h4>机会识别</h4>
-            <ul class="insight-list">${competitorInsights.opportunities.map(item => `<li>${item}</li>`).join('')}</ul>
+      const brands = competitorInsightBoardData.brands || ['花西子', '完美日记', 'Colorkey', 'into you'];
+      const short = competitorInsightBoardData.brandShort || {};
+
+      // 媒体结构健康度对比热力图
+      function buildMediaStructureHeatmap() {
+        const allBrands = ['花西子', '完美日记', 'Colorkey', 'into you', '行业基准'];
+        const brandShort = { '花西子': '花', '完美日记': '完', 'Colorkey': 'C', 'into you': 'i', '行业基准': '基准' };
+        
+        // 获取百分比对应的颜色和块数
+        function getHeatmapStyle(value) {
+          let blocks = '';
+          let color = '';
+          
+          if (value >= 81) {
+            blocks = '███';
+            color = '#15803d'; // 绿色
+          } else if (value >= 61) {
+            blocks = '██';
+            color = '#f59e0b'; // 黄色
+          } else if (value >= 41) {
+            blocks = '█';
+            color = '#f97316'; // 橙色
+          } else {
+            blocks = '░';
+            color = '#94a3b8'; // 灰色
+          }
+          
+          return { blocks, color };
+        }
+        
+        // 渲染一行数据
+        function renderRow(item, isChild = false, parentId = '') {
+          const hasChildren = item.children && item.children.length > 0;
+          const rowId = `media-row-${(parentId + '-' + item.type).replace(/[^\w\u4e00-\u9fa5]/g, '-')}`;
+          const isExpanded = window[`expanded_${rowId}`] || false;
+          
+          let rowHtml = `
+            <div class="media-heatmap-row ${isChild ? 'media-heatmap-child' : ''}" data-row-id="${rowId}">
+              <div class="media-heatmap-cell media-heatmap-type">
+                ${hasChildren ? `<span class="media-expand-icon" onclick="toggleMediaRow('${rowId}')" style="cursor: pointer; margin-right: 4px; color: var(--accent-dark);">${isExpanded ? '▼' : '▶'}</span>` : '<span class="media-expand-icon" style="visibility: hidden; margin-right: 4px;">▶</span>'}
+                <span>${item.type}</span>
+              </div>
+          `;
+          
+          allBrands.forEach(brand => {
+            const value = item.values[brand] || 0;
+            const style = getHeatmapStyle(value);
+            rowHtml += `
+              <div class="media-heatmap-cell" style="text-align: center;">
+                <span style="color: ${style.color}; font-weight: 600; font-size: 13px; letter-spacing: 1px;">${style.blocks}</span>
+                <span style="margin-left: 6px; font-size: 11px; color: var(--text-secondary);">${value}%</span>
+              </div>
+            `;
+          });
+          
+          rowHtml += `</div>`;
+          
+          // 如果有子项且已展开，渲染子项
+          if (hasChildren && isExpanded) {
+            item.children.forEach(child => {
+              rowHtml += renderRow(child, true, rowId);
+            });
+          }
+          
+          return rowHtml;
+        }
+        
+        // 表头
+        const header = `
+          <div class="media-heatmap-row media-heatmap-header">
+            <div class="media-heatmap-cell media-heatmap-type" style="font-weight: 600; color: var(--accent-dark);">媒体类型</div>
+            ${allBrands.map(brand => {
+              return `<div class="media-heatmap-cell" style="text-align: center; font-weight: 600; color: var(--accent-dark);">${brand}</div>`;
+            }).join('')}
           </div>
-          <div class="insight-block">
-            <h4>竞争性媒体策略</h4>
-            <ul class="insight-list">${competitorInsights.tactics.map(item => `<li>${item}</li>`).join('')}</ul>
-            <h4>竞争防御要点</h4>
-            <ul class="insight-list">${competitorInsights.defenses.map(item => `<li>${item}</li>`).join('')}</ul>
+        `;
+        
+        // 数据行
+        const rows = competitorInsightBoardData.mediaStructure
+          .map(item => renderRow(item))
+          .join('');
+        
+        // 图例
+        const legend = `
+          <div class="media-heatmap-legend">
+            <span style="font-size: 11px; color: var(--text-secondary); margin-right: 8px;">图例：</span>
+            <span style="color: #15803d; font-weight: 600; margin-right: 12px;">███ 81-100%</span>
+            <span style="color: #f59e0b; font-weight: 600; margin-right: 12px;">██ 61-80%</span>
+            <span style="color: #f97316; font-weight: 600; margin-right: 12px;">█ 41-60%</span>
+            <span style="color: #94a3b8; font-weight: 600;">░ 21-40%</span>
+          </div>
+        `;
+        
+        return `<div class="media-heatmap-container">${header}${rows}${legend}</div>`;
+      }
+      
+      const mediaSection = buildMediaStructureHeatmap();
+      
+      // 切换行展开/收起（在全局作用域定义）
+      if (!window.toggleMediaRow) {
+        window.toggleMediaRow = function(rowId) {
+          window[`expanded_${rowId}`] = !window[`expanded_${rowId}`];
+          // 重新渲染整个竞争洞察面板
+          const competitorTab = document.getElementById('tab-competitor');
+          if (competitorTab) {
+            const oldContent = competitorTab.innerHTML;
+            competitorTab.innerHTML = buildCompetitorInsightBoard();
+            // 如果渲染失败，恢复原内容
+            if (!competitorTab.querySelector('.comp-insight-grid')) {
+              competitorTab.innerHTML = oldContent;
+            }
+          }
+        };
+      }
+
+      // 内容策略有效性对比热力图
+      function buildContentEffectivenessHeatmap() {
+        const allBrands = ['花西子', '完美日记', 'Colorkey', 'into you', '行业基准'];
+        
+        // 根据分数获取颜色块（针对不同指标类型）
+        function getContentHeatmapStyle(score, metric) {
+          let blocks = '';
+          let color = '';
+          let level = '';
+          
+          // 根据指标类型判断标准
+          if (metric === '内容深度') {
+            // 内容深度：8-10分优秀，6-7.9分良好，4-5.9分一般，4分以下较差
+            if (score >= 8) {
+              blocks = '█████';
+              color = '#15803d'; // 绿色
+              level = '优秀(8-10分)';
+            } else if (score >= 6) {
+              blocks = '████';
+              color = '#f59e0b'; // 黄色
+              level = '良好(6-7.9分)';
+            } else if (score >= 4) {
+              blocks = '███';
+              color = '#f97316'; // 橙色
+              level = '一般(4-5.9分)';
+            } else {
+              blocks = '██';
+              color = '#94a3b8'; // 灰色
+              level = '较差(4分以下)';
+            }
+          } else if (metric === '用户互动率' || metric === '爆文率' || metric === '情感度') {
+            // 百分比类型：根据行业前20%、前50%等判断
+            // 这里简化处理，根据相对值判断
+            const maxScore = Math.max(...competitorInsightBoardData.contentEffectiveness
+              .find(r => r.metric === metric)?.items.map(i => i.score) || [0]);
+            
+            if (score >= maxScore * 0.8) {
+              blocks = '█████';
+              color = '#15803d';
+              level = '优秀(行业前20%)';
+            } else if (score >= maxScore * 0.5) {
+              blocks = '████';
+              color = '#f59e0b';
+              level = '良好(行业前50%)';
+            } else if (score >= maxScore * 0.3) {
+              blocks = '███';
+              color = '#f97316';
+              level = '一般';
+            } else {
+              blocks = '██';
+              color = '#94a3b8';
+              level = '较差';
+            }
+          } else if (metric === '更新频率') {
+            // 更新频率：根据相对值判断
+            const maxScore = Math.max(...competitorInsightBoardData.contentEffectiveness
+              .find(r => r.metric === metric)?.items.map(i => i.score) || [0]);
+            
+            if (score >= maxScore * 0.8) {
+              blocks = '█████';
+              color = '#15803d';
+            } else if (score >= maxScore * 0.5) {
+              blocks = '████';
+              color = '#f59e0b';
+            } else if (score >= maxScore * 0.3) {
+              blocks = '███';
+              color = '#f97316';
+            } else {
+              blocks = '██';
+              color = '#94a3b8';
+            }
+          }
+          
+          return { blocks, color, level };
+        }
+        
+        // 表头
+        const header = `
+          <div class="content-heatmap-row content-heatmap-header">
+            <div class="content-heatmap-cell content-heatmap-metric" style="font-weight: 600; color: var(--accent-dark);">指标</div>
+            ${allBrands.map(brand => `<div class="content-heatmap-cell" style="text-align: center; font-weight: 600; color: var(--accent-dark);">${brand}</div>`).join('')}
+          </div>
+        `;
+        
+        // 数据行
+        const rows = competitorInsightBoardData.contentEffectiveness
+          .filter(row => row.unit) // 只显示有单位的新数据
+          .map(row => {
+            const unit = row.unit || '';
+            const metricName = row.metric;
+            const subText = unit === '日更新' ? `(${unit})` : '';
+            
+            let rowHtml = `
+              <div class="content-heatmap-row">
+                <div class="content-heatmap-cell content-heatmap-metric">
+                  <div>${metricName}</div>
+                  ${subText ? `<div style="font-size: 10px; color: var(--text-secondary); margin-top: 2px;">${subText}</div>` : ''}
+                </div>
+            `;
+            
+            allBrands.forEach(brand => {
+              const item = row.items.find(i => i.brand === brand);
+              if (item) {
+                const score = item.score;
+                const style = getContentHeatmapStyle(score, metricName);
+                const displayValue = unit === '日更新' ? score : score + unit;
+                
+                rowHtml += `
+                  <div class="content-heatmap-cell" style="text-align: center;">
+                    <div style="color: ${style.color}; font-weight: 600; font-size: 13px; letter-spacing: 1px; margin-bottom: 4px;">${style.blocks}</div>
+                    <div style="font-size: 11px; color: var(--text-secondary);">${displayValue}</div>
+                  </div>
+                `;
+              } else {
+                rowHtml += `<div class="content-heatmap-cell" style="text-align: center;">-</div>`;
+              }
+            });
+            
+            rowHtml += `</div>`;
+            return rowHtml;
+          })
+          .join('');
+        
+        // 图例
+        const legend = `
+          <div class="content-heatmap-legend">
+            <span style="font-size: 11px; color: var(--text-secondary); margin-right: 8px;">图例:</span>
+            <span style="color: #15803d; font-weight: 600; margin-right: 12px;">█████ 优秀(8-10分/行业前20%)</span>
+            <span style="color: #f59e0b; font-weight: 600; margin-right: 12px;">████ 良好(6-7.9分/行业前50%)</span>
+            <span style="color: #f97316; font-weight: 600; margin-right: 12px;">███ 一般(4-5.9分)</span>
+            <span style="color: #94a3b8; font-weight: 600;">██ 较差(4分以下)</span>
+          </div>
+        `;
+        
+        return `<div class="content-heatmap-container">${header}${rows}${legend}</div>`;
+      }
+      
+      const contentSection = buildContentEffectivenessHeatmap();
+
+      // 竞争态势模块
+      const competitiveSituationSection = `
+        <ul class="comp-strategy-list">
+          <li>花西子在权威媒体领域绝对领先，但社交媒体存在明显短板</li>
+          <li>完美日记社交媒体统治力强，但专业媒体建设不足</li>
+          <li>价格竞争是行业最大威胁，各品牌均面临压力</li>
+          <li>官方网站整体开发不足，存在蓝海机会</li>
+        </ul>`;
+
+      const strategy = competitorInsightBoardData.strategy;
+
+      const mediaStrategyFlow = `
+        <div class="media-strategy-flow">
+          <div class="media-strategy-flow-item">
+            <strong>巩固优势</strong>
+            <div class="flow-title">新闻门户</div>
+            <div class="flow-metric">85%→90%</div>
+          </div>
+          <div class="media-strategy-flow-item">
+            <strong>补齐短板</strong>
+            <div class="flow-title">社交媒体</div>
+            <div class="flow-metric">78%→88%</div>
+          </div>
+          <div class="media-strategy-flow-item">
+            <strong>开拓蓝海</strong>
+            <div class="flow-title">官网建设</div>
+            <div class="flow-metric">65%→85%</div>
+          </div>
+          <div class="media-strategy-flow-item">
+            <strong>建立壁垒</strong>
+            <div class="flow-title">技术标准</div>
+            <div class="flow-metric">建立中</div>
+          </div>
+        </div>
+      `;
+      const mediaStrategy = `<ul class="comp-strategy-list">${strategy.media.map(item => `<li>${item}</li>`).join('')}</ul>${mediaStrategyFlow}`;
+      
+      // 差异化内容策略气泡定位图
+      const contentStrategyBubbleChart = `
+        <div class="content-strategy-bubble-chart">
+          <div class="bubble-chart-container">
+            <!-- 坐标轴 -->
+            <div class="bubble-chart-x-axis"></div>
+            <div class="bubble-chart-y-axis"></div>
+            
+            <!-- 坐标轴标签 -->
+            <div class="bubble-chart-label top">高价值 ↑</div>
+            <div class="bubble-chart-label bottom">深度内容 ↓</div>
+            <div class="bubble-chart-label left">专业性 ←</div>
+            <div class="bubble-chart-label right">泛化性 →</div>
+            
+            <div class="bubble-chart-label top-right">高互动 ↑</div>
+            <div class="bubble-chart-label bottom-right">泛化内容 ↓</div>
+            
+            <!-- 气泡位置 -->
+            <!-- 花西子：国风文化深度解析（左上，高价值、专业性） -->
+            <div class="bubble-item" style="top: 20%; left: 10%;">
+              <div class="bubble current">国风文化<br/>深度解析</div>
+              <div class="bubble-brand">花西子</div>
+            </div>
+            
+            <!-- 花西子目标：用户故事（右上，高互动） -->
+            <div class="bubble-item" style="top: 20%; right: 10%; flex-direction: row-reverse;">
+              <div class="bubble target">用户故事</div>
+            </div>
+            
+            <!-- 花西子移动路径 -->
+            <div class="bubble-path" style="top: calc(20% + 30px); left: calc(10% + 68px); width: calc(80% - 136px); height: 2px; border-top: 2px dashed rgba(37, 99, 235, 0.4);"></div>
+            
+            <!-- 完美日记：技术标准（左中，专业性、深度内容） -->
+            <div class="bubble-item" style="top: 50%; left: 10%; transform: translateY(-50%);">
+              <div class="bubble current">技术标准</div>
+              <div class="bubble-brand">完美日记</div>
+            </div>
+            
+            <!-- into you：日常内容（右下，泛化性、泛化内容） -->
+            <div class="bubble-item" style="bottom: 20%; right: 10%; flex-direction: row-reverse;">
+              <div class="bubble current">日常内容</div>
+              <div class="bubble-brand">into you</div>
+            </div>
+          </div>
+          
+          <!-- 图例 -->
+          <div class="bubble-legend">
+            <div class="bubble-legend-item">
+              <div class="bubble-legend-dot current"></div>
+              <span>当前位置</span>
+            </div>
+            <div class="bubble-legend-item">
+              <div class="bubble-legend-dot target"></div>
+              <span>目标位置</span>
+            </div>
+            <div class="bubble-legend-item">
+              <div class="bubble-legend-path"></div>
+              <span>移动路径</span>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      const contentStrategy = `<ul class="comp-strategy-list">${strategy.content.map(item => `<li>${item}</li>`).join('')}</ul>${contentStrategyBubbleChart}`;
+      const defenseStrategy = `
+        <ul class="comp-strategy-list">
+          <li>加固权威媒体护城河，新闻门户覆盖率从85%提升至90%</li>
+          <li>守住技术成分独家性，技术内容AI引用率从12%提升至18%</li>
+          <li>提升社交媒体声量，互动率从3.2%提升至4.5%</li>
+          <li>开拓官网蓝海机会，官网内容深度覆盖从65%提升至85%</li>
+          <li>建立行业技术标准，专业媒体收录率从92%提升至95%</li>
+        </ul>`;
+
+      const rapidSteps = `
+        <div class="comp-rapid-steps">
+          ${strategy.rapidResponse
+            .map(step => `
+              <div>
+                <h5>${step.title}</h5>
+                <ul>
+                  ${step.items.map(entry => `<li>${entry}</li>`).join('')}
+                </ul>
+              </div>`)
+            .join('')}
+        </div>`;
+
+      return `
+        <div class="comp-insight-grid">
+          <div class="comp-insight-row">
+            <div class="comp-section-card">
+              <div class="comp-section-header">
+                <span class="icon">🔍</span>
+                <div>
+                  <h4>媒体结构健康度对比</h4>
+                </div>
+              </div>
+              <div class="comp-section-content">
+                ${mediaSection}
+              </div>
+            </div>
+            <div class="comp-section-card right-card">
+              <div class="comp-section-header">
+                <span class="icon">🎯</span>
+                <div>
+                  <h4>竞争性媒体策略</h4>
+                </div>
+              </div>
+              <div class="comp-section-content right-content">
+                ${mediaStrategy}
+              </div>
+            </div>
+          </div>
+          <div class="comp-insight-row">
+            <div class="comp-section-card">
+              <div class="comp-section-header">
+                <span class="icon">📊</span>
+                <div>
+                  <h4>内容策略有效性对比</h4>
+                </div>
+              </div>
+              <div class="comp-section-content">
+                ${contentSection}
+              </div>
+            </div>
+            <div class="comp-section-card right-card">
+              <div class="comp-section-header">
+                <span class="icon">🪄</span>
+                <div>
+                  <h4>差异化内容策略</h4>
+                </div>
+              </div>
+              <div class="comp-section-content right-content">
+                ${contentStrategy}
+              </div>
+            </div>
+          </div>
+          <div class="comp-insight-row">
+            <div class="comp-section-card">
+              <div class="comp-section-header">
+                <span class="icon">🎪</span>
+                <div>
+                  <h4>竞争态势</h4>
+                </div>
+              </div>
+              <div class="comp-section-content">
+                ${competitiveSituationSection}
+              </div>
+            </div>
+            <div class="comp-section-card right-card">
+              <div class="comp-section-header">
+                <span class="icon">📍</span>
+                <div>
+                  <h4>竞争防御要点</h4>
+                </div>
+              </div>
+              <div class="comp-section-content right-content">
+                ${defenseStrategy}
+              </div>
+            </div>
           </div>
         </div>`;
     }
@@ -2087,11 +4364,21 @@
       `).join('')}</div>`;
     }
 
-    function renderMediaDistributionChart() {
+    async function renderMediaDistributionChart() {
       const dom = $('mediaDistributionChart');
       if (!dom) return;
       try {
-        const chart = echarts.init(dom);
+        // 等待 ECharts 加载完成
+        await waitForECharts();
+        
+        // 验证数据是否存在
+        if (!mediaTypeDistribution || !mediaTypeDistribution.categories || !mediaTypeDistribution.values || !mediaTypeDistribution.brands) {
+          throw new Error('媒体类型分布数据未定义');
+        }
+        
+        const chart = safeEChartsInit(dom);
+        if (!chart) return;
+        
         const series = mediaTypeDistribution.categories.map((category, idx) => ({
           name: category,
           type: 'bar',
@@ -2111,32 +4398,49 @@
         window.addEventListener('resize', () => chart.resize());
       } catch (error) {
         console.error('[GEO] media distribution error:', error);
-        dom.innerHTML = '<div class="chart-fallback">媒体分布图加载失败，请刷新重试</div>';
+        if (dom) {
+          dom.innerHTML = '<div class="chart-fallback">媒体分布图加载失败，请刷新重试</div>';
+        }
       }
     }
 
     function renderCompetitorTab() {
       const container = $('tab-competitor');
       if (!container) return;
+      
+      try {
+        console.log('[GEO] Rendering competitor tab...');
+        console.log('[GEO] competitorOverview:', competitorOverview);
+        console.log('[GEO] competitorSummaryBoard:', competitorSummaryBoard);
+        
+        const overviewCards = buildCompetitorOverviewCards();
+        console.log('[GEO] overviewCards generated');
+        
+        const summaryTable = buildCompetitorSummaryTable();
+        console.log('[GEO] summaryTable generated');
+        
+        const insightBoard = buildCompetitorInsightBoard();
+        console.log('[GEO] insightBoard generated');
+        
         container.innerHTML = `
         <div class="tab-section">
           <div class="glass-card">
             <h3>🏁 竞品概览</h3>
-            ${buildCompetitorOverviewCards()}
-            </div>
+            ${overviewCards}
+          </div>
           <div class="glass-card">
             <h3>📊 核心指标</h3>
             <div class="core-grid">
               <div class="core-summary">
                 <p>${competitorCoreSummary}</p>
-                ${buildCompetitorSummaryTable()}
-            </div>
+                ${summaryTable}
+              </div>
               <div>
                 <div id="competitorRadarChart" class="chart-container"></div>
                 <p class="radar-legend">🔵 花西子 · 🟢 完美日记 · 🟡 Colorkey · 🟣 into you</p>
               </div>
-              </div>
             </div>
+          </div>
           <div class="glass-card">
             <h3>🔍 模型运营</h3>
             <p style="margin:0 0 12px; font-size:12.5px; color:var(--text-secondary);">气泡越大代表模型内容运营越深入，可判断品牌在不同模型上的掌控强度。</p>
@@ -2144,92 +4448,226 @@
           </div>
           <div class="glass-card">
             <h3>📈 趋势对比</h3>
-            <p style="margin:0 0 12px; font-size:12.5px; color:var(--text-secondary);">追踪品牌可见度与 AI 认知指数在不同时间、不同模型中的表现变化，支持快速切换视角。</p>
+            <p style="margin:0 0 12px; font-size:12.5px; color:var(--text-secondary);">追踪品牌可见度与 AI 认知指数在不同模型与品牌下的表现，支持灵活切换视角。</p>
+            <div id="trendFilterToolbar"></div>
             <div id="competitorTrendChart" class="chart-container"></div>
           </div>
           <div class="glass-card">
-            <h3>⚠️ 风险预警矩阵</h3>
-            ${buildRiskMatrixTable()}
-          </div>
-          <div class="glass-card">
             <h3>🧭 竞争洞察</h3>
-            ${buildCompetitorInsightBoard()}
+            ${insightBoard}
           </div>
         </div>`;
+      } catch (error) {
+        console.error('[GEO] renderCompetitorTab error:', error);
+        container.innerHTML = `
+        <div class="tab-section">
+          <div class="glass-card">
+            <h3>🆚 竞品对比加载失败</h3>
+            <p style="margin:0; color:var(--text-secondary);">错误：${error.message || '未知错误'}</p>
+            <p style="margin:10px 0 0; font-size:12px; color:var(--text-secondary);">请刷新页面或检查控制台错误信息。</p>
+          </div>
+        </div>`;
+        return;
+      }
+      
+      // 延迟渲染图表，确保 DOM 已更新
+      setTimeout(() => {
+        try {
+          const radarDom = $('competitorRadarChart');
+          if (radarDom) {
+            console.log('[GEO] Rendering competitor radar chart...');
       renderCompetitorRadarChart();
-      renderModelOperationChart();
-      renderCompetitorTrendChart();
+          } else {
+            console.warn('[GEO] competitorRadarChart element not found');
+          }
+        } catch (error) {
+          console.error('[GEO] renderCompetitorRadarChart error:', error);
+        }
+      }, 100);
+      
+      setTimeout(() => {
+        try {
+          const modelOpDom = $('modelOperationChart');
+          if (modelOpDom) {
+            console.log('[GEO] Rendering model operation chart...');
+            renderModelOperationChart();
+          } else {
+            console.warn('[GEO] modelOperationChart element not found');
+          }
+        } catch (error) {
+          console.error('[GEO] renderModelOperationChart error:', error);
+        }
+      }, 150);
+      
+      setTimeout(() => {
+        try {
+          renderTrendFilters();
+          const trendDom = $('competitorTrendChart');
+          if (trendDom) {
+            console.log('[GEO] Rendering competitor trend chart...');
+            renderCompetitorTrendChart();
+          } else {
+            console.warn('[GEO] competitorTrendChart element not found');
+          }
+        } catch (error) {
+          console.error('[GEO] renderCompetitorTrendChart error:', error);
+        }
+      }, 200);
+      
+      // 触发 resize 事件，确保图表正确渲染
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+      }, 500);
     }
 
-    function renderMediaTab() {
+    async function renderMediaTab() {
       const container = $('tab-media');
-      if (!container) return;
-      container.innerHTML = `
-        <div class="tab-section media-grid">
-          <div class="glass-card">
-            <h3>📊 媒体类型分布对比</h3>
-            <div id="mediaDistributionChart" class="chart-container"></div>
-          </div>
-          <div class="glass-card">
-            <h3>🎯 细分媒体覆盖 TOP5</h3>
-            ${buildMediaTopTable()}
-          </div>
-          <div class="glass-card">
-            <h3>🎯 媒体情感分布热力图</h3>
-            <div id="mediaHeatmapChart" class="chart-container"></div>
-          </div>
-          <div class="glass-card">
-            <h3>📈 媒体效果与风控矩阵</h3>
-            <div id="mediaEffectChart" class="chart-container"></div>
-          </div>
-          <div class="glass-card">
-            <h3>🛡️ 媒体策略优化建议</h3>
-            ${buildMediaRecommendationColumns()}
-          </div>
-          <div class="glass-card">
-            <h3>⚠️ 风控监测重点</h3>
-            ${buildMediaRiskTable()}
-          </div>
-        </div>`;
-      renderMediaDistributionChart();
-      renderMediaHeatmap();
-          renderMediaEffectChart();
+      if (!container) {
+        console.error('[GEO] tab-media container not found');
+        return;
+      }
+      
+      try {
+        // 先验证必要的数据是否存在
+        if (!mediaTypeDistribution) {
+          throw new Error('媒体类型分布数据未定义');
+        }
+        if (!mediaTopCoverage || !Array.isArray(mediaTopCoverage)) {
+          throw new Error('媒体覆盖数据未定义');
+        }
+        if (!mediaRecommendations) {
+          throw new Error('媒体推荐数据未定义');
+        }
+        if (!mediaRiskRows || !Array.isArray(mediaRiskRows)) {
+          throw new Error('媒体风控数据未定义');
+        }
+        
+        // 构建 HTML 内容
+        let htmlContent = '';
+        try {
+          htmlContent = `
+            <div class="tab-section media-grid">
+              <div class="glass-card">
+                <h3>📊 媒体类型分布对比</h3>
+                <div id="mediaDistributionChart" class="chart-container"></div>
+              </div>
+              <div class="glass-card">
+                <h3>🎯 细分媒体覆盖 TOP5</h3>
+                ${buildMediaTopTable()}
+              </div>
+              <div class="glass-card">
+                <h3>🎯 媒体情感分布热力图</h3>
+                <div id="mediaHeatmapChart" class="chart-container"></div>
+              </div>
+              <div class="glass-card">
+                <h3>📈 媒体效果与风控矩阵</h3>
+                <div id="mediaEffectChart" class="chart-container"></div>
+              </div>
+              <div class="glass-card">
+                <h3>🛡️ 媒体策略优化建议</h3>
+                ${buildMediaRecommendationColumns()}
+              </div>
+              <div class="glass-card">
+                <h3>⚠️ 风控监测重点</h3>
+                ${buildMediaRiskTable()}
+              </div>
+            </div>`;
+        } catch (buildError) {
+          console.error('[GEO] Error building media tab HTML:', buildError);
+          throw new Error(`构建页面内容失败: ${buildError.message}`);
+        }
+        
+        container.innerHTML = htmlContent;
+        
+        // 异步渲染图表，不阻塞页面，即使失败也不影响其他内容
+        Promise.all([
+          renderMediaDistributionChart().catch(err => {
+            console.error('[GEO] renderMediaDistributionChart error:', err);
+            const dom = $('mediaDistributionChart');
+            if (dom) {
+              dom.innerHTML = '<div class="chart-fallback">媒体分布图加载失败，请刷新重试</div>';
+            }
+          }),
+          renderMediaHeatmap().catch(err => {
+            console.error('[GEO] renderMediaHeatmap error:', err);
+            const dom = $('mediaHeatmapChart');
+            if (dom) {
+              dom.innerHTML = '<div class="chart-fallback">媒体热力图加载失败，请刷新重试</div>';
+            }
+          }),
+          renderMediaEffectChart().catch(err => {
+            console.error('[GEO] renderMediaEffectChart error:', err);
+            const dom = $('mediaEffectChart');
+            if (dom) {
+              dom.innerHTML = '<div class="chart-fallback">效果矩阵加载失败，请刷新重试</div>';
+            }
+          })
+        ]).catch(error => {
+          console.error('[GEO] Media tab charts rendering error:', error);
+        });
+      } catch (error) {
+        console.error('[GEO] renderMediaTab error:', error);
+        if (container) {
+          container.innerHTML = `<div class="glass-card"><h3>🎯 媒体分布加载失败</h3><p style="margin:0; color:var(--text-secondary);">${error?.message || '请刷新页面或稍后再试。'}</p></div>`;
+        }
+        throw error;
+      }
     }
 
     function renderContentTab() {
       const container = $('tab-content');
       if (!container) return;
+      
+      try {
+        // 验证必要的数据是否存在
+        if (!contentDistributions || !Array.isArray(contentDistributions) || contentDistributions.length === 0) {
+          throw new Error('内容分布数据未定义');
+        }
+        if (!contentPerformanceMetrics || !Array.isArray(contentPerformanceMetrics) || contentPerformanceMetrics.length === 0) {
+          throw new Error('内容表现指标数据未定义');
+        }
+        if (!contentTopicHighlights || !Array.isArray(contentTopicHighlights) || contentTopicHighlights.length === 0) {
+          throw new Error('内容话题亮点数据未定义');
+        }
+        
         container.innerHTML = `
-        <div class="tab-section">
-          <div class="glass-card">
-            <h3>🎯 策略概览</h3>
-            ${buildStrategyMetricCards()}
-          </div>
-          <div class="glass-card">
-            <h3>📅 策略时间轴</h3>
-            ${buildStrategyTimeline()}
-          </div>
-          <div class="glass-card">
-            <h3>🎪 平台策略计划</h3>
-            ${buildPlatformStrategyCards()}
-          </div>
-          <div class="glass-card">
-            <h3>📝 内容类型分布</h3>
-            ${buildContentDistributionCards()}
+          <div class="tab-section">
+            <div class="glass-card">
+              <h3>🎯 策略概览</h3>
+              ${buildStrategyMetricCards()}
             </div>
-          <div class="glass-card">
-            <h3>📊 内容表现对比</h3>
-            ${buildContentPerformanceTable()}
-          </div>
-          <div class="glass-card">
-            <h3>🔥 热门话题对比</h3>
-            ${buildContentTopicList()}
-          </div>
-          <div class="glass-card">
-            <h3>🔧 内容生产标准</h3>
-            ${buildGuidelineCards()}
-          </div>
-        </div>`;
+            <div class="glass-card">
+              <h3>📅 策略时间轴</h3>
+              ${buildStrategyTimeline()}
+            </div>
+            <div class="glass-card">
+              <h3>🎪 平台策略计划</h3>
+              ${buildPlatformStrategyCards()}
+            </div>
+            <div class="glass-card">
+              <h3>📝 内容类型分布</h3>
+              ${buildContentDistributionCards()}
+            </div>
+            <div class="glass-card">
+              <h3>📊 内容表现对比</h3>
+              ${buildContentPerformanceTable()}
+            </div>
+            <div class="glass-card">
+              <h3>🔥 热门话题对比</h3>
+              ${buildContentTopicList()}
+            </div>
+            <div class="glass-card">
+              <h3>🔧 内容生产标准</h3>
+              ${buildGuidelineCards()}
+            </div>
+          </div>`;
+      } catch (error) {
+        console.error('[GEO] renderContentTab error:', error);
+        if (container) {
+          container.innerHTML = `<div class="glass-card"><h3>🧭 内容策略加载失败</h3><p style="margin:0; color:var(--text-secondary);">${error?.message || '请刷新页面或稍后再试。'}</p></div>`;
+        }
+        throw error;
+      }
     }
 
     function safeExecute(fn, onError) {
@@ -2285,11 +4723,29 @@
             if (el) el.style.display = key === target ? 'block' : 'none';
           });
           if (!tabRendered[target] && tabRenderers[target]) {
-            safeExecute(() => {
-              tabRenderers[target]();
-              tabRendered[target] = true;
-              window.dispatchEvent(new Event('resize'));
-            }, tabFallbacks[target]);
+            // 处理异步渲染函数
+            const renderFn = tabRenderers[target];
+            const result = renderFn();
+            if (result && typeof result.then === 'function') {
+              // 异步函数
+              result
+                .then(() => {
+                  tabRendered[target] = true;
+                  window.dispatchEvent(new Event('resize'));
+                })
+                .catch(error => {
+                  console.error(`[GEO] Tab ${target} render error:`, error);
+                  if (tabFallbacks[target]) {
+                    tabFallbacks[target](error);
+                  }
+                });
+            } else {
+              // 同步函数
+              safeExecute(() => {
+                tabRendered[target] = true;
+                window.dispatchEvent(new Event('resize'));
+              }, tabFallbacks[target]);
+            }
           } else {
             window.dispatchEvent(new Event('resize'));
           }
@@ -2310,10 +4766,19 @@
         renderCompetitorTab();
         tabRendered.competitor = true;
       }, tabFallbacks.competitor);
-      safeExecute(() => {
-        renderMediaTab();
-        tabRendered.media = true;
-      }, tabFallbacks.media);
+      // 处理异步的 renderMediaTab
+      renderMediaTab()
+        .then(() => {
+          tabRendered.media = true;
+        })
+        .catch(error => {
+          console.error('[GEO] Media tab init error:', error);
+          if (tabFallbacks.media) {
+            tabFallbacks.media(error);
+          }
+        });
+      
+      // renderContentTab 是同步的，但需要错误处理
       safeExecute(() => {
         renderContentTab();
         tabRendered.content = true;
@@ -2321,166 +4786,293 @@
       renderTabs();
     }
 
-    document.addEventListener('DOMContentLoaded', initPage);
-
-    function renderModelOperationChart() {
-      const dom = $('modelOperationChart');
-      if (!dom) return;
-      try {
-        const chart = echarts.init(dom);
-        const models = modelOperationHeatmap.map(item => item.model);
-        const brandKeys = [
-          { key: 'florasis', label: '花西子' },
-          { key: 'perfect', label: '完美日记' },
-          { key: 'colorkey', label: 'Colorkey' },
-          { key: 'intoYou', label: 'into you' }
-        ];
-
-        const levelMeta = level => {
-          const raw = String(level || '').replace(/^[^\u4e00-\u9fa5a-zA-Z0-9]+/, '').trim();
-          if (raw.includes('优秀')) return { text: '优秀', key: 'excellent', sizeBase: 46 };
-          if (raw.includes('待改善')) return { text: '待改善', key: 'improve', sizeBase: 28 };
-          return { text: '良好', key: 'good', sizeBase: 36 };
-        };
-
-        const calcSize = (score, sizeBase) => {
-          const clamped = Math.min(Math.max(score, 0), 10);
-          return Math.round(sizeBase + clamped * 1.8);
-        };
-
-        const bubbleData = [];
-
-        const applyLogoSymbol = dataPoint => {
-          const { brand, logoUrl } = dataPoint;
-          if (!logoUrl) {
-            dataPoint.symbol = 'circle';
-            dataPoint.itemStyle = { color: '#e5e7eb', borderWidth: 0 };
-            return;
-          }
-          if (logoSymbolCache[logoUrl]) {
-            dataPoint.symbol = `image://${logoSymbolCache[logoUrl]}`;
-            return;
-          }
-          const img = new Image();
-          img.crossOrigin = 'anonymous';
-          img.src = logoUrl;
-          img.onload = () => {
-            try {
-              const canvas = document.createElement('canvas');
-              const size = 128;
-              canvas.width = size;
-              canvas.height = size;
-              const ctx = canvas.getContext('2d');
-              ctx.clearRect(0, 0, size, size);
-              ctx.beginPath();
-              ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
-              ctx.closePath();
-              ctx.clip();
-              ctx.drawImage(img, 0, 0, size, size);
-              const dataUrl = canvas.toDataURL('image/png');
-              if (dataUrl) {
-                logoSymbolCache[logoUrl] = dataUrl;
-                dataPoint.symbol = `image://${dataUrl}`;
-                chart.setOption({
-                  series: [{ id: 'model-operation', data: bubbleData }]
-                });
-              }
-            } catch (err) {
-              console.error('[GEO] logo render error:', err);
-            }
-          };
-          img.onerror = () => {
-            dataPoint.symbol = 'circle';
-            dataPoint.itemStyle = { color: '#e5e7eb', borderWidth: 0 };
-          };
-          dataPoint.symbol = 'circle';
-          dataPoint.itemStyle = { color: '#e5e7eb', borderWidth: 0 };
-        };
-
-        modelOperationHeatmap.forEach(row => {
-          brandKeys.forEach(({ key, label }) => {
-            const entry = row[key];
-            if (!entry) return;
-            const score = Number(entry.score) || 0;
-            const meta = levelMeta(entry.level);
-            const logo = brandLogoMap[label] || '';
-            const dataPoint = {
-              value: [row.model, label, score],
-              brand: label,
-              model: row.model,
-              levelText: meta.text,
-              levelKey: meta.key,
-              symbolSize: calcSize(score, meta.sizeBase),
-              logoUrl: logo
-            };
-            applyLogoSymbol(dataPoint);
-            bubbleData.push(dataPoint);
-          });
-        });
-
-        chart.setOption({
-          tooltip: {
-            backgroundColor: 'rgba(17, 24, 39, 0.9)',
-            borderWidth: 0,
-            textStyle: { color: '#f9fafb', fontSize: 12 },
-            formatter: params => {
-              const data = params.data || {};
-              return `${data.brand || ''} · ${data.model || ''}<br/>运营评价：${data.levelText || '—'}`;
-            }
-          },
-          grid: { left: '8%', right: '8%', top: '12%', bottom: '12%' },
-          xAxis: {
-            type: 'category',
-            data: models,
-            axisTick: { show: false },
-            axisLine: { lineStyle: { color: 'rgba(17,24,39,0.18)' } },
-            axisLabel: { color: '#4b5563' }
-          },
-          yAxis: {
-            type: 'category',
-            data: brandKeys.map(item => item.label),
-            axisTick: { show: false },
-            axisLine: { lineStyle: { color: 'rgba(17,24,39,0.18)' } },
-            axisLabel: { color: '#4b5563' }
-          },
-          series: [{
-            id: 'model-operation',
-            type: 'scatter',
-            data: bubbleData,
-            encode: { x: 0, y: 1, value: 2 },
-            symbolKeepAspect: true,
-            symbolSize: params => params.data?.symbolSize || 32,
-            itemStyle: {
-              borderWidth: 0,
-              shadowBlur: 10,
-              shadowColor: 'rgba(17,24,39,0.16)'
-            },
-            emphasis: { scale: 1.05 },
-            label: {
-              show: true,
-              position: 'right',
-              fontSize: 12,
-              fontWeight: 600,
-              formatter: params => {
-                const key = params.data?.levelKey || 'good';
-                const text = params.data?.levelText || '';
-                return `{${key}|${text}}`;
-              },
-              rich: {
-                excellent: { color: '#16a34a' },
-                good: { color: '#eab308' },
-                improve: { color: '#dc2626' }
-              }
-            }
-          }]
-        });
-
-        window.addEventListener('resize', () => chart.resize());
-      } catch (error) {
-        console.error('[GEO] model operation chart error:', error);
-        dom.innerHTML = '<div class="chart-fallback">模型运营图加载失败，请刷新重试</div>';
+    // 页面初始化：先加载 ECharts，再初始化页面
+    function initPageWithECharts() {
+      console.log('[GEO] Starting page initialization with ECharts loading...');
+      
+      // 显示加载状态的辅助函数
+      function showLoadingStatus(message) {
+        if (!document.body) return null;
+        let loadingDiv = document.getElementById('echarts-loading');
+        if (!loadingDiv) {
+          loadingDiv = document.createElement('div');
+          loadingDiv.id = 'echarts-loading';
+          loadingDiv.style.cssText = 'position: fixed; top: 20px; right: 20px; background: rgba(17,24,39,0.9); color: white; padding: 10px 15px; border-radius: 8px; z-index: 9999; font-size: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);';
+          document.body.appendChild(loadingDiv);
+        }
+        loadingDiv.innerHTML = message;
+        return loadingDiv;
       }
+      
+      function hideLoadingStatus() {
+        const loadingDiv = document.getElementById('echarts-loading');
+        if (loadingDiv && loadingDiv.parentNode) {
+          loadingDiv.remove();
+        }
+      }
+      
+      // 使用全局的 loadECharts promise（确保只加载一次）
+      const echartsPromise = loadECharts().then(() => {
+        console.log('[GEO] ECharts loaded successfully');
+        const loadingDiv = showLoadingStatus('✅ 图表库加载完成');
+        if (loadingDiv) {
+          setTimeout(() => {
+            hideLoadingStatus();
+          }, 1000);
+        }
+        return echarts;
+      }).catch(error => {
+        console.error('[GEO] ECharts load error in init:', error);
+        hideLoadingStatus();
+        
+        // 显示全局错误提示（在 DOM 就绪后）
+        if (document.body) {
+          // 移除可能已存在的错误提示
+          const existingError = document.getElementById('echarts-load-error');
+          if (existingError && existingError.parentNode) {
+            existingError.remove();
+          }
+          
+          const errorDiv = document.createElement('div');
+          errorDiv.id = 'echarts-load-error';
+          errorDiv.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #fee; border: 2px solid #f00; padding: 15px; border-radius: 8px; z-index: 10000; max-width: 600px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);';
+          errorDiv.innerHTML = `
+            <strong>⚠️ ECharts 加载失败</strong>
+            <p style="margin: 10px 0;">错误信息：${error.message}</p>
+            <p style="margin: 10px 0; font-size: 12px; color: #666;">可能的原因：</p>
+            <ul style="margin: 10px 0; padding-left: 20px; font-size: 12px; color: #666;">
+              <li>网络连接问题</li>
+              <li>CDN 服务不可用</li>
+              <li>防火墙或代理设置</li>
+            </ul>
+            <p style="margin: 10px 0; font-size: 12px; color: #666;">正在尝试备用 CDN，请稍候...</p>
+            <div style="margin-top: 15px;">
+              <button onclick="location.reload()" style="padding: 8px 20px; cursor: pointer; background: #f00; color: white; border: none; border-radius: 4px; margin-right: 10px;">刷新页面</button>
+              <button onclick="this.parentElement.parentElement.remove()" style="padding: 8px 20px; cursor: pointer; background: #ccc; color: #333; border: none; border-radius: 4px;">关闭</button>
+            </div>
+          `;
+          document.body.appendChild(errorDiv);
+        }
+        throw error;
+      });
+      
+      // 等待 DOM 就绪
+      const domReadyPromise = new Promise(resolve => {
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', resolve);
+        } else {
+          resolve();
+        }
+      });
+      
+      // 等待 DOM 就绪后，显示加载状态并继续等待 ECharts
+      domReadyPromise.then(() => {
+        console.log('[GEO] DOM ready, waiting for ECharts...');
+        showLoadingStatus('⏳ 正在加载图表库...');
+        
+        // 设置超时，即使 ECharts 加载失败也继续初始化
+        const timeoutPromise = new Promise(resolve => {
+          setTimeout(() => {
+            console.warn('[GEO] ECharts loading timeout, initializing page anyway...');
+            hideLoadingStatus();
+            resolve(null);
+          }, 20000); // 20 秒超时
+        });
+        
+        return Promise.race([echartsPromise, timeoutPromise]);
+      }).then((echartsInstance) => {
+        if (echartsInstance) {
+          console.log('[GEO] ECharts loaded, loading WordCloud plugin...');
+          // 确保 WordCloud 插件也已加载（词云图需要）
+          // 不阻塞页面初始化，让插件在后台加载
+          loadEChartsWordCloud().then(() => {
+            console.log('[GEO] WordCloud plugin loaded successfully');
+          }).catch(error => {
+            console.warn('[GEO] WordCloud plugin load error (will retry on chart render):', error);
+            // WordCloud 加载失败不影响其他图表，词云图会在渲染时重试
+          });
+          return echartsInstance;
+        } else {
+          console.warn('[GEO] ECharts not loaded, initializing page with error handling...');
+          return null;
+        }
+      }).then(() => {
+        console.log('[GEO] Initializing page...');
+        hideLoadingStatus();
+        initPage();
+      }).catch(error => {
+        console.error('[GEO] Page initialization error:', error);
+        hideLoadingStatus();
+        // 即使出错也初始化页面（会显示错误提示）
+        initPage();
+      });
     }
+    
+    // 立即开始加载 ECharts 和 WordCloud 插件（不等待 DOM）
+    // loadECharts 和 loadEChartsWordCloud 函数确保了只加载一次，可以安全地多次调用
+    console.log('[GEO] Starting ECharts and WordCloud preload...');
+    try {
+      // 预加载 ECharts
+      loadECharts().then(() => {
+        console.log('[GEO] ECharts preloaded successfully');
+        // ECharts 加载成功后，预加载 WordCloud 插件
+        loadEChartsWordCloud().then(() => {
+          console.log('[GEO] WordCloud plugin preloaded successfully');
+        }).catch(err => {
+          console.log('[GEO] WordCloud plugin preload error (will retry on chart render):', err.message);
+        });
+      }).catch(err => {
+        console.log('[GEO] ECharts preload error (will retry in init):', err.message);
+      });
+    } catch (err) {
+      console.log('[GEO] Cannot preload ECharts:', err.message);
+    }
+    
+    // 等待 DOM 就绪后初始化页面
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPageWithECharts);
+    } else {
+      // DOM 已就绪，立即初始化
+      initPageWithECharts();
+    }
+  </script>
+  
+  <!-- 开发模式：图表渲染测试脚本 -->
+  <!-- 在浏览器控制台中运行 window.testCharts() 来测试所有图表 -->
+  <script>
+    // 检查是否为开发模式（可以通过 URL 参数 ?test=true 启用）
+    const urlParams = new URLSearchParams(window.location.search);
+    const isTestMode = urlParams.get('test') === 'true' || localStorage.getItem('geo-test-mode') === 'true';
+    
+    if (isTestMode) {
+      const script = document.createElement('script');
+      script.src = 'test-charts.js';
+      script.onerror = function() {
+        console.warn('[GEO] 测试脚本加载失败，请确保 test-charts.js 文件存在');
+      };
+      document.head.appendChild(script);
+    }
+    
+    // 在控制台中提供快捷命令
+    window.enableTestMode = function() {
+      localStorage.setItem('geo-test-mode', 'true');
+      location.reload();
+    };
+    
+    window.disableTestMode = function() {
+      localStorage.removeItem('geo-test-mode');
+      location.reload();
+    };
+    
+    // ECharts 诊断工具
+    window.checkEChartsStatus = function() {
+      const status = {
+        echartsLoaded: typeof echarts !== 'undefined',
+        echartsInitAvailable: typeof echarts !== 'undefined' && typeof echarts.init === 'function',
+        scriptTags: Array.from(document.querySelectorAll('script[src*="echarts"]')).map(s => ({
+          src: s.src,
+          readyState: s.readyState,
+          loaded: s.readyState === 'complete' || s.readyState === 'loaded'
+        })),
+        loadPromise: echartsLoadPromise ? 'exists' : 'null',
+        wordCloudPromise: echartsWordCloudLoadPromise ? 'exists' : 'null'
+      };
+      
+      console.log('%c[GEO] ECharts 诊断信息', 'color: #d4af37; font-weight: bold; font-size: 14px;');
+      console.table(status);
+      
+      if (!status.echartsLoaded) {
+        console.warn('❌ ECharts 未加载');
+        console.log('尝试手动加载: loadECharts()');
+      } else if (!status.echartsInitAvailable) {
+        console.warn('⚠️ ECharts 已加载但 init 函数不可用');
+      } else {
+        console.log('✅ ECharts 已加载并可用');
+      }
+      
+      return status;
+    };
+    
+    // 手动加载 ECharts 的命令
+    window.forceLoadECharts = function() {
+      console.log('[GEO] 强制加载 ECharts...');
+      echartsLoadPromise = null;
+      echartsWordCloudLoadPromise = null;
+      return loadECharts().then(() => {
+        console.log('✅ ECharts 加载成功');
+        return loadEChartsWordCloud().then(() => {
+          console.log('✅ WordCloud 插件加载成功');
+          return true;
+        });
+      }).catch(error => {
+        console.error('❌ 加载失败:', error);
+        return false;
+      });
+    };
+    
+    // 强制重新加载 WordCloud 插件
+    window.forceLoadWordCloud = function() {
+      console.log('[GEO] 强制重新加载 WordCloud 插件...');
+      echartsWordCloudLoadPromise = null;
+      // 移除现有的 WordCloud 脚本标签
+      const existingScripts = document.querySelectorAll('script[src*="echarts-wordcloud"]');
+      existingScripts.forEach(script => {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      });
+      return loadEChartsWordCloud().then(() => {
+        console.log('✅ WordCloud 插件加载成功');
+        return true;
+      }).catch(error => {
+        console.error('❌ WordCloud 插件加载失败:', error);
+        return false;
+      });
+    };
+    
+    // 检查 WordCloud 插件状态
+    window.checkWordCloudStatus = function() {
+      const status = {
+        echartsLoaded: typeof echarts !== 'undefined',
+        wordCloudScriptTags: Array.from(document.querySelectorAll('script[src*="echarts-wordcloud"]')).map(s => ({
+          src: s.src,
+          readyState: s.readyState,
+          loaded: s.readyState === 'complete' || s.readyState === 'loaded'
+        })),
+        wordCloudPromise: echartsWordCloudLoadPromise ? 'exists' : 'null'
+      };
+      
+      console.log('%c[GEO] WordCloud 插件诊断信息', 'color: #d4af37; font-weight: bold; font-size: 14px;');
+      console.table(status);
+      
+      if (!status.echartsLoaded) {
+        console.warn('❌ ECharts 未加载，WordCloud 插件无法使用');
+      } else if (status.wordCloudScriptTags.length === 0) {
+        console.warn('⚠️ WordCloud 脚本标签未找到');
+        console.log('尝试手动加载: window.forceLoadWordCloud()');
+      } else {
+        const loaded = status.wordCloudScriptTags.some(s => s.loaded);
+        if (loaded) {
+          console.log('✅ WordCloud 脚本已加载');
+        } else {
+          console.warn('⚠️ WordCloud 脚本正在加载中...');
+        }
+      }
+      
+      return status;
+    };
+    
+    console.log('%c[GEO] 图表测试工具', 'color: #d4af37; font-weight: bold; font-size: 14px;');
+    console.log('%cECharts 相关:', 'color: #2563eb; font-weight: bold;');
+    console.log('  检查 ECharts 状态: window.checkEChartsStatus()');
+    console.log('  强制加载 ECharts: window.forceLoadECharts()');
+    console.log('%cWordCloud 插件相关:', 'color: #2563eb; font-weight: bold;');
+    console.log('  检查 WordCloud 状态: window.checkWordCloudStatus()');
+    console.log('  强制加载 WordCloud: window.forceLoadWordCloud()');
+    console.log('%c测试模式:', 'color: #2563eb; font-weight: bold;');
+    console.log('  启用测试模式: window.enableTestMode()');
+    console.log('  禁用测试模式: window.disableTestMode()');
+    console.log('  手动运行测试: window.testCharts() (需要先加载测试脚本)');
   </script>
 </body>
 </html>
