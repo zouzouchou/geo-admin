@@ -130,7 +130,7 @@
       border-radius: 999px;
       background: rgba(17, 24, 39, 0.06);
       color: var(--accent-dark);
-      font-size: 11px;
+      font-size: 12px;
     }
 
     .form-value {
@@ -199,7 +199,7 @@
       display: flex;
       gap: 10px;
       align-items: center;
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--text-secondary);
       margin: 8px 0 16px;
     }
@@ -314,7 +314,7 @@
       display: flex;
       flex-direction: column;
       gap: 2px;
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--text-secondary);
     }
 
@@ -349,7 +349,7 @@
       border-radius: 999px;
       background: rgba(212, 175, 55, 0.16);
       color: #735610;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
     }
 
@@ -432,7 +432,7 @@
     .data-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12.5px;
+      font-size: 12px;
     }
 
     .data-table th,
@@ -452,7 +452,7 @@
     .keyword-design-card h4,
     .question-card h4 { font-size: 13px; color: var(--text-primary); }
 
-    .question-card ul { margin: 0; font-size: 12.5px; color: var(--text-secondary); line-height: 1.7; list-style: none; padding-left: 0; }
+    .question-card ul { margin: 0; font-size: 12px; color: var(--text-secondary); line-height: 1.7; list-style: none; padding-left: 0; }
     .question-card ul { display: grid; gap: 8px; }
     .question-card ul li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 6px; border-bottom: 1px solid rgba(17, 24, 39, 0.06); }
     .question-card ul li:last-child { border-bottom: none; padding-bottom: 0; }
@@ -465,7 +465,7 @@
     .question-card ul li a:hover { color: rgba(17, 24, 39, 0.72); }
     .question-card ul li span:first-child { flex: 1; color: var(--text-secondary); }
 
-    .question-group-title { font-size: 12.5px; color: var(--accent-dark); font-weight: 600; }
+    .question-group-title { font-size: 12px; color: var(--accent-dark); font-weight: 600; }
 
     .badge {
       display: inline-flex;
@@ -474,7 +474,7 @@
       border-radius: 999px;
       background: rgba(212, 175, 55, 0.18);
       color: #735610;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
     }
 
@@ -491,7 +491,7 @@
       align-items: center;
       gap: 16px;
       padding: 0 16px;
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--text-secondary);
       flex-wrap: wrap;
     }
@@ -562,12 +562,12 @@
       padding-left: 18px;
       display: grid;
       gap: 4px;
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--text-secondary);
     }
 
     .strategy-node-foot {
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--accent-dark);
       font-weight: 500;
       margin-top: 4px;
@@ -588,6 +588,182 @@
     }
 
     .tab-section { display: grid; gap: 24px; }
+    
+    /* 预期效果指标响应式布局 */
+    .expected-effect-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      align-items: start;
+    }
+    
+    .expected-effect-card {
+      border: 1px solid rgba(17, 24, 39, 0.08);
+      border-radius: 10px;
+      padding: 12px;
+      background: rgba(17, 24, 39, 0.02);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    @media (max-width: 1200px) {
+      .expected-effect-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .expected-effect-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* 媒体气泡云样式 */
+    .media-bubble-cloud {
+      position: relative;
+      width: 100%;
+      min-height: 600px;
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      overflow: visible;
+      margin-top: -50px;
+    }
+    
+    .media-bubble-item {
+      position: absolute;
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      border-radius: 12px;
+      padding: 8px 12px;
+      background: #fff;
+      display: grid;
+      gap: 3px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 1;
+      min-width: 90px;
+    }
+    
+    .media-bubble-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      z-index: 10;
+    }
+    
+    .media-bubble-item.social {
+      border-color: #2563eb;
+      background: rgba(37, 99, 235, 0.05);
+    }
+    
+    .media-bubble-item.news {
+      border-color: #dc2626;
+      background: rgba(220, 38, 38, 0.05);
+    }
+    
+    .media-bubble-item.vertical {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.05);
+    }
+    
+    .media-bubble-item.ecommerce {
+      border-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.05);
+    }
+    
+    .media-bubble-legend {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 8px 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    
+    /* 内容话题方向词云样式 - 重要话题在中心，其他话题围绕分布 */
+    .topic-word-cloud {
+      position: relative;
+      width: 100%;
+      min-height: 400px;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow: visible;
+      box-sizing: border-box;
+    }
+    
+    .topic-word {
+      position: absolute;
+      white-space: nowrap;
+      transition: transform 0.2s ease;
+      cursor: default;
+      transform: translate(-50%, -50%);
+    }
+    
+    .topic-word:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      z-index: 10;
+    }
+    
+    .topic-word.size-xlarge {
+      font-size: 48px !important;
+      font-weight: 700 !important;
+    }
+    
+    .topic-word.size-large {
+      font-size: 36px !important;
+      font-weight: 700 !important;
+    }
+    
+    .topic-word.size-medium {
+      font-size: 22px !important;
+      font-weight: 600 !important;
+    }
+    
+    .topic-word.size-small {
+      font-size: 16px !important;
+      font-weight: 600 !important;
+    }
+    
+    .topic-word.size-xsmall {
+      font-size: 13px !important;
+      font-weight: 500 !important;
+    }
+    
+    .topic-word.color-1 {
+      color: #111827;
+    }
+    
+    .topic-word.color-2 {
+      color: #d97706;
+    }
+    
+    .topic-word.color-3 {
+      color: #2563eb;
+    }
+    
+    .topic-word.color-4 {
+      color: #0f766e;
+    }
+    
+    .topic-word.color-5 {
+      color: #ec4899;
+    }
+    
+    .topic-word.color-6 {
+      color: #f97316;
+    }
 
     .section-grid { display: grid; gap: 20px; }
 
@@ -672,12 +848,12 @@
     }
 
     .model-logo img { width: 100%; height: 100%; object-fit: cover; }
-    .model-logo span { font-size: 11px; color: var(--accent-dark); font-weight: 600; }
+    .model-logo span { font-size: 12px; color: var(--accent-dark); font-weight: 600; }
 
     .model-info-row {
       display: flex;
       justify-content: space-between;
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--text-secondary);
     }
 
@@ -782,6 +958,14 @@
       display: block;
     }
 
+    /* 5列布局：前4个显示连接线 */
+    .media-strategy-flow[style*="repeat(5"] .media-strategy-flow-item:nth-child(1)::after,
+    .media-strategy-flow[style*="repeat(5"] .media-strategy-flow-item:nth-child(2)::after,
+    .media-strategy-flow[style*="repeat(5"] .media-strategy-flow-item:nth-child(3)::after,
+    .media-strategy-flow[style*="repeat(5"] .media-strategy-flow-item:nth-child(4)::after {
+      display: block !important;
+    }
+
     /* 2列布局：每行的第一个显示连接线 */
     @media (max-width: 1200px) {
       .media-strategy-flow-item::after {
@@ -813,7 +997,7 @@
     }
 
     .media-strategy-flow-item .flow-metric {
-      font-size: 11.5px;
+      font-size: 12px;
       color: var(--accent-dark);
       font-weight: 600;
       margin-top: 2px;
@@ -822,7 +1006,7 @@
     /* 差异化内容策略气泡定位图样式 */
     .content-strategy-bubble-chart {
       width: 100%;
-      margin-top: 16px;
+      margin-top: 0;
       padding: 16px;
       background: #fafafa;
       border-radius: 12px;
@@ -836,7 +1020,7 @@
       width: 100%;
       min-height: 280px;
       height: 280px;
-      margin: 16px 0;
+      margin: 0;
       background: transparent;
     }
 
@@ -867,7 +1051,7 @@
 
     .bubble-chart-label {
       position: absolute;
-      font-size: 11px;
+      font-size: 12px;
       color: var(--text-secondary);
       font-weight: 600;
       z-index: 5;
@@ -938,13 +1122,15 @@
     }
 
     .bubble {
-      width: 60px;
-      height: 60px;
+      min-width: 60px;
+      min-height: 60px;
+      width: auto;
+      height: auto;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 9px;
+      font-size: 12px;
       font-weight: 600;
       text-align: center;
       padding: 5px;
@@ -969,7 +1155,7 @@
     }
 
     .bubble-brand {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--text-secondary);
       font-weight: 500;
       white-space: nowrap;
@@ -986,7 +1172,7 @@
       margin-top: 12px;
       padding-top: 12px;
       border-top: 1px solid rgba(17, 24, 39, 0.08);
-      font-size: 10px;
+      font-size: 12px;
       color: var(--text-secondary);
       display: flex;
       gap: 16px;
@@ -1045,7 +1231,7 @@
       gap: 4px;
       padding: 2px 8px;
       border-radius: 999px;
-      font-size: 11px;
+      font-size: 12px;
       background: rgba(17, 24, 39, 0.06);
       color: var(--accent-dark);
     }
@@ -1064,36 +1250,36 @@
 
     .insight-block h4 { margin: 0; font-size: 14px; color: var(--accent-dark); }
 
-    .insight-list { margin: 0; padding-left: 18px; font-size: 12.5px; color: var(--text-secondary); line-height: 1.7; }
+    .insight-list { margin: 0; padding-left: 18px; font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
 
     .media-grid { display: grid; gap: 20px; }
 
     .media-dual { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
 
-    .media-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+    .media-table { width: 100%; border-collapse: collapse; font-size: 12px; }
     .media-table th, .media-table td { padding: 12px 14px; border-bottom: 1px solid rgba(17, 24, 39, 0.08); text-align: left; }
     .media-table th { background: rgba(17, 24, 39, 0.04); color: var(--accent-dark); }
 
     .content-metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
     .content-metric-card { border: 1px solid var(--card-border); border-radius: 14px; background: #fff; padding: 14px; display: grid; gap: 6px; }
     .content-metric-card strong { font-size: 14px; color: var(--accent-dark); }
-    .content-metric-card span { font-size: 12.5px; color: var(--text-secondary); }
+    .content-metric-card span { font-size: 12px; color: var(--text-secondary); }
 
     .timeline-wrapper { display: grid; gap: 12px; }
     .timeline-row { display: grid; gap: 6px; }
-    .timeline-meta { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--accent-dark); }
+    .timeline-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--accent-dark); }
     .timeline-bar { position: relative; height: 12px; border-radius: 6px; background: rgba(17, 24, 39, 0.08); overflow: hidden; }
     .timeline-bar span { position: absolute; top: 0; left: 0; bottom: 0; border-radius: 6px; background: linear-gradient(90deg, rgba(17, 24, 39, 0.9), rgba(212, 175, 55, 0.55)); }
 
     .platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
     .platform-card { border: 1px solid var(--card-border); border-radius: 16px; background: #fff; padding: 16px; display: grid; gap: 8px; }
     .platform-card h4 { margin: 0; font-size: 14px; color: var(--accent-dark); }
-    .platform-card ul { margin: 0; padding-left: 16px; font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; }
+    .platform-card ul { margin: 0; padding-left: 16px; font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
 
     .guideline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
     .guideline-card { border: 1px solid rgba(17, 24, 39, 0.08); border-radius: 14px; background: #fff; padding: 16px; display: grid; gap: 8px; }
     .guideline-card h4 { margin: 0; font-size: 14px; color: var(--accent-dark); }
-    .guideline-card ul { margin: 0; padding-left: 18px; font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; }
+    .guideline-card ul { margin: 0; padding-left: 18px; font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
 
     @media (max-width: 1080px) {
       .core-grid { grid-template-columns: 1fr; }
@@ -1208,7 +1394,7 @@
     .comp-media-label { font-weight: 600; color: var(--accent-dark); }
     .comp-media-bar { position: relative; height: 10px; border-radius: 10px; background: rgba(17, 24, 39, 0.08); overflow: hidden; }
     .comp-media-bar span { position: absolute; inset: 0; border-radius: 10px; background: linear-gradient(90deg, rgba(17, 24, 39, 0.88), rgba(212, 175, 55, 0.45)); }
-    .comp-media-delta { font-size: 11.5px; color: var(--accent-dark); text-align: right; }
+    .comp-media-delta { font-size: 12px; color: var(--accent-dark); text-align: right; }
 
     /* 媒体结构健康度对比热力图样式 */
     .media-heatmap-container { 
@@ -1253,14 +1439,14 @@
       display: inline-block;
       width: 16px;
       text-align: center;
-      font-size: 10px;
+      font-size: 12px;
       user-select: none;
     }
     .media-heatmap-legend {
       padding: 10px 12px;
       background: rgba(17, 24, 39, 0.02);
       border-top: 1px solid rgba(17, 24, 39, 0.08);
-      font-size: 11px;
+      font-size: 12px;
       display: flex;
       align-items: center;
       flex-wrap: wrap;
@@ -1310,7 +1496,7 @@
       padding: 10px 12px;
       background: rgba(17, 24, 39, 0.02);
       border-top: 1px solid rgba(17, 24, 39, 0.08);
-      font-size: 11px;
+      font-size: 12px;
       display: flex;
       align-items: center;
       flex-wrap: wrap;
@@ -1325,24 +1511,24 @@
     .comp-content-item span.brand { font-weight: 600; color: var(--accent-dark); }
     .comp-content-track { position: relative; height: 8px; border-radius: 999px; background: rgba(17, 24, 39, 0.08); overflow: hidden; }
     .comp-content-track span { position: absolute; inset: 0; border-radius: 999px; background: linear-gradient(90deg, rgba(17, 24, 39, 0.86), rgba(212, 175, 55, 0.4)); }
-    .comp-content-note { font-size: 11.5px; color: var(--text-secondary); }
+    .comp-content-note { font-size: 12px; color: var(--text-secondary); }
 
-    .comp-dynamics-list { display: grid; gap: 8px; padding: 0; margin: 0; font-size: 12.5px; color: var(--text-secondary); }
+    .comp-dynamics-list { display: grid; gap: 8px; padding: 0; margin: 0; font-size: 12px; color: var(--text-secondary); }
     .comp-dynamics-list li { list-style: none; padding: 0; }
 
     .comp-threat-grid { display: grid; gap: 10px; }
-    .comp-threat-item { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 12px; background: rgba(17, 24, 39, 0.04); font-size: 12.5px; }
+    .comp-threat-item { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 12px; background: rgba(17, 24, 39, 0.04); font-size: 12px; }
     .comp-threat-item.low { border-left: 3px solid #16a34a; }
     .comp-threat-item.warn { border-left: 3px solid #f59e0b; }
     .comp-threat-item.risk { border-left: 3px solid #dc2626; }
     .comp-threat-item span.label { font-weight: 600; color: var(--accent-dark); }
     .comp-threat-item span.level { font-weight: 600; }
 
-    .comp-strategy-list { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 12.5px; color: var(--text-secondary); }
+    .comp-strategy-list { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 12px; color: var(--text-secondary); }
     .comp-rapid-steps { display: grid; gap: 10px; }
-    .comp-rapid-steps h5 { margin: 0 0 4px; font-size: 12.5px; color: var(--accent-dark); }
-    .comp-rapid-steps ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 12.5px; color: var(--text-secondary); }
-    .comp-insight-highlight { border-radius: 14px; background: rgba(212, 175, 55, 0.12); padding: 14px; font-size: 12.5px; color: var(--accent-dark); line-height: 1.7; box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.24); }
+    .comp-rapid-steps h5 { margin: 0 0 4px; font-size: 12px; color: var(--accent-dark); }
+    .comp-rapid-steps ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 12px; color: var(--text-secondary); }
+    .comp-insight-highlight { border-radius: 14px; background: rgba(212, 175, 55, 0.12); padding: 14px; font-size: 12px; color: var(--accent-dark); line-height: 1.7; box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.24); }
 
     @media (max-width: 1080px) {
       .core-grid { grid-template-columns: 1fr; }
@@ -2601,6 +2787,31 @@
       { name: '孕妇可用', value: 28 }
     ];
 
+    // 话题词云数据 - 将话题关键词转换为词云数据格式
+    const topicWordCloudData = [
+      // 重要话题（importance高的value更大）
+      { name: '国风美学传承', value: 100 },
+      { name: '东方彩妆科技', value: 95 },
+      { name: '用户妆容分享', value: 95 },
+      { name: '品牌匠心故事', value: 95 },
+      { name: '节日营销专题', value: 95 },
+      // 次要话题
+      { name: '非遗工艺', value: 70 },
+      { name: '成分解析', value: 70 },
+      { name: '妆容教程', value: 70 },
+      { name: '产品测评', value: 70 },
+      { name: '使用心得', value: 50 },
+      { name: '场景化内容', value: 50 },
+      { name: '情感表达', value: 50 },
+      { name: '文化内涵', value: 50 },
+      { name: '美学理念', value: 30 },
+      { name: '创新科技', value: 30 },
+      { name: '用户故事', value: 30 },
+      { name: '品牌价值', value: 30 },
+      { name: '专业测评', value: 30 },
+      { name: '真实体验', value: 30 }
+    ];
+
     const socialQuestions = [
       {
         platform: '小红书',
@@ -2799,7 +3010,7 @@
             <div class="analysis-flow-item">
               <span style="font-size:24px; color:var(--accent-dark);">${(index + 1).toString().padStart(2, '0')}</span>
               <strong style="font-size:13px; color:var(--accent-dark);">${step.title}</strong>
-              <span style="font-size:12.5px; color:var(--text-secondary); line-height:1.6;">${step.description}</span>
+              <span style="font-size: 12px; color:var(--text-secondary); line-height:1.6;">${step.description}</span>
         </div>
           `).join('')}
         </div>`;
@@ -2849,10 +3060,13 @@
       console.log('[GEO] Starting word cloud render, data count:', questionWordCloudData.length);
       
       // 先尝试使用简单的文本展示作为备用方案
-      const wordCloudData = questionWordCloudData.map(item => ({
+      let wordCloudData = questionWordCloudData.map(item => ({
         name: String(item.name || item.value || item),
         value: Number(item.value || 50)
       }));
+      
+      // 按重要性（value值）从高到低排序，重要的词会优先放置在中心
+      wordCloudData = wordCloudData.sort((a, b) => b.value - a.value);
       
       console.log('[GEO] Processed word cloud data:', wordCloudData.slice(0, 5));
       
@@ -2887,7 +3101,16 @@
         // 检查 wordCloud 类型是否可用
         console.log('[GEO] Checking wordCloud availability...');
         
-        // 使用更简单的配置
+        // 计算字体大小范围（根据value值）
+        const maxValue = Math.max(...wordCloudData.map(d => d.value));
+        const minValue = Math.min(...wordCloudData.map(d => d.value));
+        const getFontSize = (value) => {
+          const normalized = (value - minValue) / (maxValue - minValue || 1);
+          return Math.round(14 + normalized * 36); // 14-50px
+        };
+        
+        // 配置词云，让重要词在中心（通过sizeRange和gridSize控制）
+        // 重要词（value大的）会优先放置，因为它们的字体更大
         const option = {
           tooltip: { 
             show: true,
@@ -2902,10 +3125,20 @@
             height: '100%',
             right: null,
             bottom: null,
-            gridSize: 8,
-            sizeRange: [14, 50],
+            // 减小gridSize让词更紧密，重要词（大字体）会优先放在中心
+            gridSize: 1,
+            // 字体大小范围：重要词会更大，会优先放在中心
+            // 扩大字体范围，让重要词更突出
+            sizeRange: [14, 70],
             rotationRange: [0, 0],
             rotationStep: 0,
+            // 布局算法：重要词优先放置
+            drawOutOfBound: false,
+            shrinkToFit: true,
+            layoutAnimation: false, // 关闭动画，确保布局稳定
+            // 确保重要词优先渲染
+            progressive: 0, // 不使用渐进式渲染，一次性渲染所有词
+            // 使用自定义的字体大小函数，让重要词更大
             textStyle: {
               fontFamily: 'PingFang SC, Microsoft YaHei, Arial, sans-serif',
               fontWeight: 'bold',
@@ -2920,6 +3153,8 @@
                 shadowColor: '#333'
               }
             },
+            // 数据已按value从高到低排序，重要词（value大的）会优先渲染并放在中心
+            // wordCloud插件会根据value值自动计算字体大小，大词会优先放在中心
             data: wordCloudData
           }]
         };
@@ -3776,7 +4011,7 @@
           rowHtml += `
             <div class="media-heatmap-cell" style="text-align: center;">
               <span style="color: ${style.color}; font-weight: 600; font-size: 13px; letter-spacing: 1px;">${style.blocks}</span>
-              <span style="margin-left: 6px; font-size: 11px; color: var(--text-secondary);">${value}%</span>
+              <span style="margin-left: 6px; font-size: 12px; color: var(--text-secondary);">${value}%</span>
             </div>
           `;
         });
@@ -3788,7 +4023,7 @@
         rowHtml += `
           <div class="media-heatmap-cell" style="text-align: center; border-left: 2px solid rgba(17, 24, 39, 0.2); padding-left: 12px;">
             <span style="color: ${brandStyle.color}; font-weight: 600; font-size: 13px; letter-spacing: 1px;">${brandStyle.blocks}</span>
-            <span style="margin-left: 6px; font-size: 11px; color: var(--text-secondary);">${brandValue}%${brandTrendHtml}</span>
+            <span style="margin-left: 6px; font-size: 12px; color: var(--text-secondary);">${brandValue}%${brandTrendHtml}</span>
           </div>
         `;
 
@@ -3826,16 +4061,315 @@
       // 图例
       const legend = `
         <div class="media-heatmap-legend">
-          <span style="font-size: 11px; color: var(--text-secondary); margin-right: 8px;">图例：</span>
+          <span style="font-size: 12px; color: var(--text-secondary); margin-right: 8px;">图例：</span>
           <span style="color: #15803d; font-weight: 600; margin-right: 12px;">███ 81-100%</span>
           <span style="color: #f59e0b; font-weight: 600; margin-right: 12px;">██ 61-80%</span>
           <span style="color: #f97316; font-weight: 600; margin-right: 12px;">█ 41-60%</span>
           <span style="color: #94a3b8; font-weight: 600; margin-right: 12px;">░ 21-40%</span>
-          <span style="margin-left: 12px; font-size: 11px; color: var(--text-secondary);">↑表示高于行业基准15%以上，↓表示低于行业基准15%以上</span>
+          <span style="margin-left: 12px; font-size: 12px; color: var(--text-secondary);">↑表示高于行业基准15%以上，↓表示低于行业基准15%以上</span>
         </div>
       `;
 
       return `<div class="media-heatmap-container">${header}${rows}${legend}</div>`;
+    }
+
+    // 初始化媒体气泡云
+    function initMediaBubbleCloud() {
+      const container = document.getElementById('mediaBubbleCloud');
+      if (!container) return;
+      
+      // 媒体气泡数据，按内容数量排序（重要性从高到低）
+      const mediaBubbleData = [
+        { name: '小红书', type: 'social', category: '图文社交', count: 75 },
+        { name: '抖音', type: 'social', category: '视频社交', count: 60 },
+        { name: '微博', type: 'social', category: '图文社交', count: 45 },
+        { name: '天猫', type: 'ecommerce', category: '电商平台', count: 35 },
+        { name: '36氪', type: 'news', category: '财经媒体', count: 30 },
+        { name: '京东', type: 'ecommerce', category: '电商平台', count: 30 },
+        { name: 'OnlyLady', type: 'vertical', category: '美妆时尚', count: 25 },
+        { name: '虎嗅', type: 'news', category: '财经媒体', count: 20 },
+        { name: '知乎', type: 'vertical', category: '问答平台', count: 20 },
+        { name: '闺蜜网', type: 'vertical', category: '美妆时尚', count: 18 },
+        { name: '界面', type: 'news', category: '财经媒体', count: 15 },
+        { name: 'B站', type: 'social', category: '视频社交', count: 12 }
+      ];
+      
+      // 计算气泡大小（根据内容数量）
+      const maxCount = Math.max(...mediaBubbleData.map(m => m.count));
+      const minCount = Math.min(...mediaBubbleData.map(m => m.count));
+      const getBubbleSize = (count) => {
+        // 基础大小 + 根据数量比例增加
+        const baseSize = 90;
+        const scale = 0.4; // 缩放比例
+        const normalized = (count - minCount) / (maxCount - minCount || 1);
+        return Math.round(baseSize + normalized * baseSize * scale);
+      };
+      
+      // 计算位置（从中心向外辐射，避免重叠）
+      const centerX = 50; // 中心X百分比
+      const centerY = 50; // 中心Y百分比
+      const getBubblePosition = (index, total) => {
+        // 重要性高的在中心，低的在外围
+        const importance = (total - index) / total; // 0到1，越高越重要
+        
+        // 调整半径计算：重要性高的靠近中心，但要有最小间距
+        // 最小半径8%（中心区域），最大半径38%（外围），确保气泡分散
+        const minRadius = 8;
+        const maxRadius = 38;
+        const radius = minRadius + (1 - importance) * (maxRadius - minRadius);
+        
+        // 使用黄金角度分布，避免重叠
+        const goldenAngle = Math.PI * (3 - Math.sqrt(5)); // 黄金角度约137.5度
+        const angle = index * goldenAngle;
+        
+        const x = centerX + Math.cos(angle) * radius;
+        const y = centerY + Math.sin(angle) * radius;
+        
+        return {
+          left: x + '%',
+          top: y + '%',
+          transform: 'translate(-50%, -50%)'
+        };
+      };
+      
+      // 生成HTML
+      const html = mediaBubbleData.map((media, index) => {
+        const size = getBubbleSize(media.count);
+        const pos = getBubblePosition(index, mediaBubbleData.length);
+        return `
+          <div class="media-bubble-item ${media.type}" 
+               style="left: ${pos.left}; top: ${pos.top}; transform: ${pos.transform}; min-width: ${size}px; padding: ${Math.round(size * 0.1)}px ${Math.round(size * 0.15)}px;">
+            <div style="font-size: ${Math.round(size * 0.14)}px; font-weight: 600; color: var(--text-primary); line-height: 1.2;">${media.name}</div>
+            <div style="font-size: ${Math.round(size * 0.11)}px; color: var(--text-secondary); line-height: 1.2;">${media.category}</div>
+            <div style="font-size: ${Math.round(size * 0.13)}px; color: var(--accent-dark); font-weight: 500; line-height: 1.2;">${media.count}篇</div>
+          </div>
+        `;
+      }).join('');
+      
+      // 添加标签 - 放在底部，确保不与气泡重合
+      const legendHtml = `
+        <div class="media-bubble-legend" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 16px; align-items: center; justify-content: center; flex-wrap: wrap; z-index: 100; font-size: 12px; color: var(--text-secondary); background: rgba(255, 255, 255, 0.9); padding: 6px 12px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
+          <span>🔵 社交媒体</span>
+          <span>🔴 新闻资讯</span>
+          <span>🟢 垂直行业</span>
+          <span>🟡 电商平台</span>
+        </div>
+      `;
+      
+      container.innerHTML = html + legendHtml;
+    }
+
+    // 初始化内容话题方向词云
+    // 话题词云渲染函数 - 完全照搬问题词云的实现
+    function renderTopicWordCloud() {
+      const dom = document.getElementById('topicWordCloud');
+      if (!dom) {
+        console.warn('[GEO] topicWordCloud element not found');
+        return;
+      }
+      if (!topicWordCloudData || !Array.isArray(topicWordCloudData) || topicWordCloudData.length === 0) {
+        console.warn('[GEO] topicWordCloudData is empty or invalid');
+        dom.innerHTML = '<div class="chart-fallback">词云数据为空</div>';
+        return;
+      }
+      
+      // 确保容器有高度和宽度
+      dom.style.height = '400px';
+      dom.style.width = '100%';
+      dom.style.minHeight = '400px';
+      dom.style.display = 'block';
+      
+      console.log('[GEO] Starting topic word cloud render, data count:', topicWordCloudData.length);
+      
+      // 先尝试使用简单的文本展示作为备用方案
+      let wordCloudData = topicWordCloudData.map(item => ({
+        name: String(item.name || item.value || item),
+        value: Number(item.value || 50)
+      }));
+      
+      // 按重要性（value值）从高到低排序，重要的词会优先放置在中心
+      wordCloudData = wordCloudData.sort((a, b) => b.value - a.value);
+      
+      console.log('[GEO] Processed topic word cloud data:', wordCloudData.slice(0, 5));
+      
+      // 等待 ECharts 和 WordCloud 插件加载
+      Promise.all([
+        waitForECharts(20000),
+        loadEChartsWordCloud().catch(err => {
+          console.warn('[GEO] WordCloud plugin load failed, will retry:', err);
+          echartsWordCloudLoadPromise = null;
+          return loadEChartsWordCloud();
+        })
+      ]).then(([echartsInstance]) => {
+        console.log('[GEO] ECharts and WordCloud ready for topic word cloud');
+        
+        // 再次确保容器尺寸
+        if (dom.offsetHeight < 100 || dom.offsetWidth < 100) {
+          dom.style.height = '400px';
+          dom.style.width = '100%';
+          console.log('[GEO] Topic word cloud container size adjusted:', dom.offsetWidth, 'x', dom.offsetHeight);
+        }
+        
+        // 清空容器内容
+        dom.innerHTML = '';
+        
+        const instance = safeEChartsInit(dom);
+        if (!instance) {
+          throw new Error('Failed to initialize ECharts instance for topic word cloud');
+        }
+        
+        const palette = ['#111827', '#d97706', '#2563eb', '#0f766e', '#ec4899', '#f97316', '#d4af37'];
+        
+        // 检查 wordCloud 类型是否可用
+        console.log('[GEO] Checking wordCloud availability for topic word cloud...');
+        
+        // 计算字体大小范围（根据value值）
+        const maxValue = Math.max(...wordCloudData.map(d => d.value));
+        const minValue = Math.min(...wordCloudData.map(d => d.value));
+        const getFontSize = (value) => {
+          const normalized = (value - minValue) / (maxValue - minValue || 1);
+          return Math.round(14 + normalized * 36); // 14-50px
+        };
+        
+        // 配置词云，让重要词在中心（通过sizeRange和gridSize控制）
+        // 重要词（value大的）会优先放置，因为它们的字体更大
+        const option = {
+          tooltip: { 
+            show: true,
+            formatter: '{b}: {c}'
+          },
+          series: [{
+            type: 'wordCloud',
+            shape: 'circle',
+            left: 'center',
+            top: 'center',
+            width: '100%',
+            height: '100%',
+            right: null,
+            bottom: null,
+            // 减小gridSize让词更紧密，重要词（大字体）会优先放在中心
+            gridSize: 2,
+            // 字体大小范围：重要词会更大，会优先放在中心
+            sizeRange: [14, 60],
+            rotationRange: [0, 0],
+            rotationStep: 0,
+            // 布局算法：重要词优先放置
+            drawOutOfBound: false,
+            shrinkToFit: true,
+            layoutAnimation: false, // 关闭动画，确保布局稳定
+            // 确保重要词优先渲染
+            progressive: 0, // 不使用渐进式渲染，一次性渲染所有词
+            // 使用自定义的字体大小函数，让重要词更大
+            textStyle: {
+              fontFamily: 'PingFang SC, Microsoft YaHei, Arial, sans-serif',
+              fontWeight: 'bold',
+              color: function(params) {
+                return palette[params.dataIndex % palette.length];
+              }
+            },
+            emphasis: {
+              focus: 'self',
+              textStyle: {
+                shadowBlur: 10,
+                shadowColor: '#333'
+              }
+            },
+            // 数据已按value从高到低排序，重要词（value大的）会优先渲染并放在中心
+            // wordCloud插件会根据value值自动计算字体大小，大词会优先放在中心
+            data: wordCloudData
+          }]
+        };
+        
+        try {
+          instance.setOption(option, true);
+          console.log('[GEO] Topic word cloud option set, data points:', wordCloudData.length);
+          
+          // 立即尝试渲染
+          instance.resize();
+          
+          // 延迟检查渲染结果
+          setTimeout(() => {
+            try {
+              instance.resize();
+              const canvas = dom.querySelector('canvas');
+              if (canvas && canvas.width > 0 && canvas.height > 0) {
+                console.log('[GEO] Topic word cloud rendered successfully, canvas size:', canvas.width, 'x', canvas.height);
+              } else {
+                console.warn('[GEO] Topic word cloud canvas not rendered, trying alternative approach');
+                // 尝试使用不同的配置
+                setTimeout(() => {
+                  try {
+                    // 强制设置容器尺寸
+                    const computedStyle = window.getComputedStyle(dom);
+                    const width = dom.offsetWidth || parseInt(computedStyle.width) || 400;
+                    const height = dom.offsetHeight || parseInt(computedStyle.height) || 260;
+                    dom.style.width = width + 'px';
+                    dom.style.height = height + 'px';
+                    instance.resize();
+                    instance.setOption(option, true);
+                    
+                    const canvas2 = dom.querySelector('canvas');
+                    if (canvas2 && canvas2.width > 0 && canvas2.height > 0) {
+                      console.log('[GEO] Topic word cloud rendered after retry');
+                    } else {
+                      console.error('[GEO] Topic word cloud still not rendered, showing fallback');
+                      throw new Error('Canvas not rendered');
+                    }
+                  } catch (retryErr) {
+                    console.error('[GEO] Topic word cloud retry failed:', retryErr);
+                    throw retryErr;
+                  }
+                }, 300);
+              }
+            } catch (err) {
+              console.error('[GEO] Topic word cloud resize error:', err);
+              throw err;
+            }
+          }, 300);
+        } catch (setOptionErr) {
+          console.error('[GEO] Topic word cloud setOption error:', setOptionErr);
+          throw setOptionErr;
+        }
+        
+        // 使用一次性事件监听器避免重复绑定
+        const resizeHandler = () => {
+          try {
+            if (instance && !instance.isDisposed()) {
+              instance.resize();
+            }
+          } catch (err) {
+            console.error('[GEO] Topic word cloud resize error:', err);
+          }
+        };
+        
+        // 移除旧的事件监听器（如果存在）
+        window.removeEventListener('resize', resizeHandler);
+        window.addEventListener('resize', resizeHandler);
+        
+      }).catch(error => {
+        console.error('[GEO] Topic word cloud error:', error);
+        // 显示备用文本展示
+        const maxItems = Math.min(wordCloudData.length, 20);
+        const sortedData = [...wordCloudData].sort((a, b) => b.value - a.value).slice(0, maxItems);
+        const fontSize = (item) => {
+          const max = Math.max(...wordCloudData.map(d => d.value));
+          return Math.max(12, Math.min(24, 12 + (item.value / max) * 12));
+        };
+        
+        dom.innerHTML = `
+          <div style="padding: 20px; text-align: center; color: var(--text-secondary);">
+            <p style="margin: 0 0 15px; font-size: 12px;">词云图加载失败，显示文本版本：</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center;">
+              ${sortedData.map(item => `
+                <span style="font-size: ${fontSize(item)}px; font-weight: bold; color: ${palette[Math.floor(Math.random() * palette.length)]};">
+                  ${item.name}
+                </span>
+              `).join('')}
+            </div>
+            <button onclick="renderTopicWordCloud()" style="margin-top: 15px; padding: 8px 16px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 12px;">重试词云图</button>
+          </div>
+        `;
+      });
     }
 
     function buildMediaInsight() {
@@ -4053,7 +4587,7 @@
       return `<div class="content-grid">${contentTopicHighlights.map(block => `
         <div class="content-card">
           <header><span>${block.brand}</span><span>热议话题</span></header>
-          <ul style="margin:0; padding-left:18px; font-size:12.5px; color:var(--text-secondary); line-height:1.7;">
+          <ul style="margin:0; padding-left:18px; font-size: 12px; color:var(--text-secondary); line-height:1.7;">
             ${block.topics.map(topic => `<li>${topic}</li>`).join('')}
             </ul>
           </div>
@@ -4358,7 +4892,7 @@
             rowHtml += `
               <div class="media-heatmap-cell" style="text-align: center;">
                 <span style="color: ${style.color}; font-weight: 600; font-size: 13px; letter-spacing: 1px;">${style.blocks}</span>
-                <span style="margin-left: 6px; font-size: 11px; color: var(--text-secondary);">${value}%</span>
+                <span style="margin-left: 6px; font-size: 12px; color: var(--text-secondary);">${value}%</span>
               </div>
             `;
           });
@@ -4393,7 +4927,7 @@
         // 图例
         const legend = `
           <div class="media-heatmap-legend">
-            <span style="font-size: 11px; color: var(--text-secondary); margin-right: 8px;">图例：</span>
+            <span style="font-size: 12px; color: var(--text-secondary); margin-right: 8px;">图例：</span>
             <span style="color: #15803d; font-weight: 600; margin-right: 12px;">███ 81-100%</span>
             <span style="color: #f59e0b; font-weight: 600; margin-right: 12px;">██ 61-80%</span>
             <span style="color: #f97316; font-weight: 600; margin-right: 12px;">█ 41-60%</span>
@@ -4519,7 +5053,7 @@
               <div class="content-heatmap-row">
                 <div class="content-heatmap-cell content-heatmap-metric">
                   <div>${metricName}</div>
-                  ${subText ? `<div style="font-size: 10px; color: var(--text-secondary); margin-top: 2px;">${subText}</div>` : ''}
+                  ${subText ? `<div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">${subText}</div>` : ''}
                 </div>
             `;
             
@@ -4533,7 +5067,7 @@
                 rowHtml += `
                   <div class="content-heatmap-cell" style="text-align: center;">
                     <div style="color: ${style.color}; font-weight: 600; font-size: 13px; letter-spacing: 1px; margin-bottom: 4px;">${style.blocks}</div>
-                    <div style="font-size: 11px; color: var(--text-secondary);">${displayValue}</div>
+                    <div style="font-size: 12px; color: var(--text-secondary);">${displayValue}</div>
                   </div>
                 `;
               } else {
@@ -4549,7 +5083,7 @@
         // 图例
         const legend = `
           <div class="content-heatmap-legend">
-            <span style="font-size: 11px; color: var(--text-secondary); margin-right: 8px;">图例:</span>
+            <span style="font-size: 12px; color: var(--text-secondary); margin-right: 8px;">图例:</span>
             <span style="color: #15803d; font-weight: 600; margin-right: 12px;">█████ 优秀(8-10分/行业前20%)</span>
             <span style="color: #f59e0b; font-weight: 600; margin-right: 12px;">████ 良好(6-7.9分/行业前50%)</span>
             <span style="color: #f97316; font-weight: 600; margin-right: 12px;">███ 一般(4-5.9分)</span>
@@ -4600,6 +5134,66 @@
       const mediaStrategy = `<ul class="comp-strategy-list">${strategy.media.map(item => `<li>${item}</li>`).join('')}</ul>${mediaStrategyFlow}`;
       
       // 差异化内容策略气泡定位图
+      // 气泡数据：包含位置坐标、内容数量、重要性等信息
+      const contentBubbleData = [
+        { 
+          name: '国风文化深度解析', 
+          brand: '花西子', 
+          type: 'current',
+          x: 10, // 专业性（左）
+          y: 20, // 高价值（上）
+          count: 85, // 内容数量，用于计算大小
+          importance: 0.9 // 重要性，用于调整位置（0-1，越高越重要）
+        },
+        { 
+          name: '用户故事', 
+          brand: '', 
+          type: 'target',
+          x: 90, // 泛化性（右）
+          y: 20, // 高互动（上）
+          count: 0, // 目标位置，不计入大小
+          importance: 0.85
+        },
+        { 
+          name: '技术标准', 
+          brand: '完美日记', 
+          type: 'current',
+          x: 10, // 专业性（左）
+          y: 50, // 深度内容（中）
+          count: 65,
+          importance: 0.7
+        },
+        { 
+          name: '日常内容', 
+          brand: 'into you', 
+          type: 'current',
+          x: 90, // 泛化性（右）
+          y: 80, // 泛化内容（下）
+          count: 45,
+          importance: 0.5
+        }
+      ];
+      
+      // 计算气泡大小（根据内容数量）
+      const maxCount = Math.max(...contentBubbleData.filter(b => b.count > 0).map(b => b.count));
+      const minCount = Math.min(...contentBubbleData.filter(b => b.count > 0).map(b => b.count));
+      const getBubbleSize = (count, baseSize = 60) => {
+        if (count === 0) return baseSize; // 目标位置使用基础大小
+        const normalized = (count - minCount) / (maxCount - minCount || 1);
+        return Math.round(baseSize + normalized * 30); // 60-90px
+      };
+      
+      // 根据重要性调整位置（重要性高的更靠近中心）
+      const centerX = 50;
+      const centerY = 50;
+      const adjustPositionByImportance = (x, y, importance) => {
+        // 重要性越高，越靠近中心
+        const pullFactor = (1 - importance) * 0.3; // 重要性高的向中心拉近30%
+        const adjustedX = x + (centerX - x) * pullFactor;
+        const adjustedY = y + (centerY - y) * pullFactor;
+        return { x: adjustedX, y: adjustedY };
+      };
+      
       const contentStrategyBubbleChart = `
         <div class="content-strategy-bubble-chart">
           <div class="bubble-chart-container">
@@ -4616,32 +5210,35 @@
             <div class="bubble-chart-label top-right">高互动 ↑</div>
             <div class="bubble-chart-label bottom-right">泛化内容 ↓</div>
             
-            <!-- 气泡位置 -->
-            <!-- 花西子：国风文化深度解析（左上，高价值、专业性） -->
-            <div class="bubble-item" style="top: 20%; left: 10%;">
-              <div class="bubble current">国风文化<br/>深度解析</div>
-              <div class="bubble-brand">花西子</div>
-            </div>
+            <!-- 气泡位置（动态生成） -->
+            ${contentBubbleData.map((bubble, index) => {
+              const size = getBubbleSize(bubble.count);
+              const adjustedPos = adjustPositionByImportance(bubble.x, bubble.y, bubble.importance);
+              const isRightSide = adjustedPos.x > 50;
+              const flexDirection = isRightSide ? 'row-reverse' : 'row';
+              
+              return `
+                <div class="bubble-item" style="top: ${adjustedPos.y}%; left: ${adjustedPos.x}%; transform: translate(-50%, -50%); flex-direction: ${flexDirection};">
+                  <div class="bubble ${bubble.type}" style="width: ${size}px; height: ${size}px; font-size: ${Math.round(size * 0.15)}px;">${bubble.name}</div>
+                  ${bubble.brand ? `<div class="bubble-brand">${bubble.brand}</div>` : ''}
+                </div>
+              `;
+            }).join('')}
             
-            <!-- 花西子目标：用户故事（右上，高互动） -->
-            <div class="bubble-item" style="top: 20%; right: 10%; flex-direction: row-reverse;">
-              <div class="bubble target">用户故事</div>
-            </div>
-            
-            <!-- 花西子移动路径 -->
-            <div class="bubble-path" style="top: calc(20% + 30px); left: calc(10% + 68px); width: calc(80% - 136px); height: 2px; border-top: 2px dashed rgba(37, 99, 235, 0.4);"></div>
-            
-            <!-- 完美日记：技术标准（左中，专业性、深度内容） -->
-            <div class="bubble-item" style="top: 50%; left: 10%; transform: translateY(-50%);">
-              <div class="bubble current">技术标准</div>
-              <div class="bubble-brand">完美日记</div>
-            </div>
-            
-            <!-- into you：日常内容（右下，泛化性、泛化内容） -->
-            <div class="bubble-item" style="bottom: 20%; right: 10%; flex-direction: row-reverse;">
-              <div class="bubble current">日常内容</div>
-              <div class="bubble-brand">into you</div>
-            </div>
+            <!-- 花西子移动路径（连接当前位置和目标位置） -->
+            ${(() => {
+              const currentBubble = contentBubbleData.find(b => b.name === '国风文化深度解析');
+              const targetBubble = contentBubbleData.find(b => b.name === '用户故事');
+              if (currentBubble && targetBubble) {
+                const currentPos = adjustPositionByImportance(currentBubble.x, currentBubble.y, currentBubble.importance);
+                const targetPos = adjustPositionByImportance(targetBubble.x, targetBubble.y, targetBubble.importance);
+                const pathTop = Math.min(currentPos.y, targetPos.y) + 3;
+                const pathLeft = currentPos.x + 3;
+                const pathWidth = Math.abs(targetPos.x - currentPos.x) - 6;
+                return `<div class="bubble-path" style="top: ${pathTop}%; left: ${pathLeft}%; width: ${pathWidth}%; height: 2px; border-top: 2px dashed rgba(37, 99, 235, 0.4);"></div>`;
+              }
+              return '';
+            })()}
           </div>
           
           <!-- 图例 -->
@@ -4792,13 +5389,954 @@
         </div>`;
     }
 
-    function buildStrategyMetricCards() {
-      return `<div class="content-metric-grid">${strategyMetrics.map(item => `
-        <div class="content-metric-card">
-          <strong>${item.label}</strong>
-          <span>${item.value}</span>
+    function buildContentInsight() {
+      // 第一行：内容质量
+      const currentQuality = `
+        <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+          <li style="margin-bottom: 8px;">• 大模型友好指数：6.5/10</li>
+          <li style="margin-bottom: 8px;">• 信息正确率：85%</li>
+          <li style="margin-bottom: 8px;">• 情感度：正面70%</li>
+        </ul>
+      `;
+      
+      const qualityTarget = `
+        <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+          <li style="margin-bottom: 8px;">• 大模型友好指数：8.0+；措施：结构化内容占比60%</li>
+          <li style="margin-bottom: 8px;">• 信息正确率：95%+；措施：专业审核流程</li>
+          <li style="margin-bottom: 8px;">• 情感度：85%+；措施：情感表达模板</li>
+        </ul>
+      `;
+      
+      // 第二行：媒体表现
+      const currentMedia = `
+        <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+          <li style="margin-bottom: 8px;">• 小红书：互动率65% 覆盖率25%</li>
+          <li style="margin-bottom: 8px;">• 36氪：专业度85% 覆盖率20%</li>
+          <li style="margin-bottom: 8px;">• 抖音：覆盖率60% 专业内容15%</li>
+        </ul>
+      `;
+      
+      const mediaTarget = `
+        <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+          <li style="margin-bottom: 8px;">• 小红书：互动率75% 覆盖率35%；措施：专业内容频次40%</li>
+          <li style="margin-bottom: 8px;">• 36氪：专业度90% 覆盖率35%；措施：媒体深度合作</li>
+          <li style="margin-bottom: 8px;">• 抖音：覆盖率65% 专业内容25%；措施：内容分发策略优化</li>
+        </ul>
+      `;
+      
+      // 第三行：风险识别
+      const currentRisk = `
+        <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+          <li style="margin-bottom: 8px;">• 专业媒体合作不足(30%)</li>
+          <li style="margin-bottom: 8px;">• 内容同质化风险(相似度45%)</li>
+          <li style="margin-bottom: 8px;">• 负面信息应对待提升(响应>2h)</li>
+        </ul>
+      `;
+      
+      const riskTarget = `
+        <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+          <li style="margin-bottom: 8px;">• 专业媒体合作率：50%；措施：加强专业媒体合作</li>
+          <li style="margin-bottom: 8px;">• 内容同质化：相似度<30%；措施：差异化内容策略</li>
+          <li style="margin-bottom: 8px;">• 负面信息响应：<1h；措施：快速响应机制</li>
+        </ul>
+      `;
+      
+      return `
+        <div class="comp-insight-grid">
+          <div class="comp-insight-row">
+            <div class="comp-section-card">
+              <div class="comp-section-header">
+                <span class="icon">📊</span>
+                <div>
+                  <h4>当前内容质量水平</h4>
+                </div>
+              </div>
+              <div class="comp-section-content">
+                ${currentQuality}
+              </div>
             </div>
-      `).join('')}</div>`;
+            <div class="comp-section-card right-card">
+              <div class="comp-section-header">
+                <span class="icon">🎯</span>
+                <div>
+                  <h4>质量提升目标与措施</h4>
+                </div>
+              </div>
+              <div class="comp-section-content right-content">
+                ${qualityTarget}
+              </div>
+            </div>
+          </div>
+          <div class="comp-insight-row">
+            <div class="comp-section-card">
+              <div class="comp-section-header">
+                <span class="icon">📱</span>
+                <div>
+                  <h4>当前媒体表现状况</h4>
+                </div>
+              </div>
+              <div class="comp-section-content">
+                ${currentMedia}
+              </div>
+            </div>
+            <div class="comp-section-card right-card">
+              <div class="comp-section-header">
+                <span class="icon">🚀</span>
+                <div>
+                  <h4>媒体表现提升目标与措施</h4>
+                </div>
+              </div>
+              <div class="comp-section-content right-content">
+                ${mediaTarget}
+              </div>
+            </div>
+          </div>
+          <div class="comp-insight-row">
+            <div class="comp-section-card">
+              <div class="comp-section-header">
+                <span class="icon">⚠️</span>
+                <div>
+                  <h4>当前风险识别</h4>
+                </div>
+              </div>
+              <div class="comp-section-content">
+                ${currentRisk}
+              </div>
+            </div>
+            <div class="comp-section-card right-card">
+              <div class="comp-section-header">
+                <span class="icon">🛡️</span>
+                <div>
+                  <h4>风险应对目标与措施</h4>
+                </div>
+              </div>
+              <div class="comp-section-content right-content">
+                ${riskTarget}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function buildContentPlanning() {
+      return `
+        <div style="display: grid; gap: 20px;">
+          <!-- 内容填充计划 - 热力图 -->
+          <div style="border: 1px solid var(--card-border); border-radius: 14px; background: #fff; padding: 20px; display: grid; gap: 16px; overflow-x: auto;">
+              <!-- 热力图表格 -->
+              <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 12px; min-width: 1200px;">
+                  <!-- 表头 -->
+                  <thead>
+                    <tr>
+                      <th style="text-align: left; padding: 8px; font-weight: 600; color: var(--text-primary); border-bottom: 2px solid rgba(17, 24, 39, 0.1);">平台/月份</th>
+                      <th style="text-align: center; padding: 8px; font-weight: 500; color: var(--text-secondary); border-bottom: 2px solid rgba(17, 24, 39, 0.1);">1月</th>
+                      <th style="text-align: center; padding: 8px; font-weight: 500; color: var(--text-secondary); border-bottom: 2px solid rgba(17, 24, 39, 0.1);">2月</th>
+                      <th style="text-align: center; padding: 8px; font-weight: 500; color: var(--text-secondary); border-bottom: 2px solid rgba(17, 24, 39, 0.1);">3月</th>
+                      <th style="text-align: center; padding: 8px; font-weight: 500; color: var(--text-secondary); border-bottom: 2px solid rgba(17, 24, 39, 0.1);">4月</th>
+                      <th style="text-align: center; padding: 8px; font-weight: 500; color: var(--text-secondary); border-bottom: 2px solid rgba(17, 24, 39, 0.1);">5月</th>
+                      <th style="text-align: center; padding: 8px; font-weight: 500; color: var(--text-secondary); border-bottom: 2px solid rgba(17, 24, 39, 0.1);">6月</th>
+                      <th style="text-align: center; padding: 8px; font-weight: 500; color: var(--text-secondary); border-bottom: 2px solid rgba(17, 24, 39, 0.1);">7月</th>
+                      <th style="text-align: center; padding: 8px; font-weight: 500; color: var(--text-secondary); border-bottom: 2px solid rgba(17, 24, 39, 0.1);">8月</th>
+                      <th style="text-align: center; padding: 8px; font-weight: 500; color: var(--text-secondary); border-bottom: 2px solid rgba(17, 24, 39, 0.1);">9月</th>
+                      <th style="text-align: center; padding: 8px; font-weight: 500; color: var(--text-secondary); border-bottom: 2px solid rgba(17, 24, 39, 0.1);">10月</th>
+                      <th style="text-align: center; padding: 8px; font-weight: 500; color: var(--text-secondary); border-bottom: 2px solid rgba(17, 24, 39, 0.1);">11月</th>
+                      <th style="text-align: center; padding: 8px; font-weight: 500; color: var(--text-secondary); border-bottom: 2px solid rgba(17, 24, 39, 0.1);">12月</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- 小红书 -->
+                    <tr>
+                      <td style="padding: 12px 8px; font-weight: 600; color: var(--text-primary); vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">小红书</td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(37, 99, 235, 0.7); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">国风美学</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高互动</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(37, 99, 235, 0.5); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">科技解析</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(37, 99, 235, 0.7); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">品牌故事</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎中权威</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(37, 99, 235, 0.5); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">用户案例</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高流量</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(37, 99, 235, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">成分分析</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(37, 99, 235, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">行业趋势</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高价值</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(37, 99, 235, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">妆容教程</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎中专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(37, 99, 235, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">原料研发</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(37, 99, 235, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">工艺创新</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高价值</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(37, 99, 235, 0.5); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">色彩科学</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎中专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(37, 99, 235, 0.7); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">年度总结</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高权威</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(37, 99, 235, 0.7); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">年度总结</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高价值</div>
+                      </td>
+                    </tr>
+                    <!-- 36氪 -->
+                    <tr>
+                      <td style="padding: 12px 8px; font-weight: 600; color: var(--text-primary); vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">36氪</td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(220, 38, 38, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">科技解析</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(220, 38, 38, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">品牌发展</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高权威</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(220, 38, 38, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">行业趋势</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高价值</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(220, 38, 38, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">技术专利</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(220, 38, 38, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">市场分析</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎中权威</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(220, 38, 38, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">原料研发</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(220, 38, 38, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">包装设计</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高价值</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(220, 38, 38, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">文化IP</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高权威</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(220, 38, 38, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">跨界合作</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高价值</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(220, 38, 38, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">明星同款</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(220, 38, 38, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">行业标准</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高权威</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(220, 38, 38, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">行业标准</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高价值</div>
+                      </td>
+                    </tr>
+                    <!-- 抖音 -->
+                    <tr>
+                      <td style="padding: 12px 8px; font-weight: 600; color: var(--text-primary); vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">抖音</td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.7); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">节日限定</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高流量</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.7); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">快速上妆</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高互动</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.5); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">产品测评</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎中专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.5); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">场景分享</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高流量</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">妆容教程</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎中专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">使用体验</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高互动</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">明星同款</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高流量</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">节日促销</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高转化</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">定制服务</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高互动</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.5); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">年度盘点</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高流量</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.7); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">品牌活动</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高互动</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.7); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">品牌活动</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高流量</div>
+                      </td>
+                    </tr>
+                    <!-- OnlyLady -->
+                    <tr>
+                      <td style="padding: 12px 8px; font-weight: 600; color: var(--text-primary); vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">OnlyLady</td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">成分解析</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">专业教学</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高权威</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">品牌专访</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高价值</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">工艺创新</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">色彩科学</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高价值</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">包装设计</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高权威</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">原料研发</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">技术前沿</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高价值</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">跨界合作</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高权威</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">明星同款</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高专业</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">行业标准</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高权威</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(16, 185, 129, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">行业标准</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高价值</div>
+                      </td>
+                    </tr>
+                    <!-- 天猫 -->
+                    <tr>
+                      <td style="padding: 12px 8px; font-weight: 600; color: var(--text-primary); vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">天猫</td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(245, 158, 11, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">用户评测</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高转化</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(245, 158, 11, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">产品展示</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高流量</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(245, 158, 11, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">节日促销</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高转化</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(245, 158, 11, 0.2); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">定制服务</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高转化</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(245, 158, 11, 0.1); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">明星同款</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高流量</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(245, 158, 11, 0.1); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">年度盘点</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高转化</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(245, 158, 11, 0.1); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">促销活动</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高转化</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(245, 158, 11, 0.1); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">新品发布</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高流量</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(245, 158, 11, 0.1); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">限量版</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">💎高价值</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(245, 158, 11, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">双11</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高转化</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(245, 158, 11, 0.5); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">双12</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高转化</div>
+                      </td>
+                      <td style="padding: 8px 4px; text-align: center; vertical-align: top; border-bottom: 1px solid rgba(17, 24, 39, 0.08);">
+                        <div style="background: rgba(245, 158, 11, 0.3); color: white; padding: 4px; border-radius: 4px; margin-bottom: 4px; font-weight: 600;"></div>
+                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 2px;">双12</div>
+                        <div style="font-size: 12px; color: var(--accent-dark);">🔥高转化</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <!-- 图例说明 -->
+              <div style="margin-top: 16px; padding: 12px; font-size: 12px; color: var(--text-secondary); line-height: 1.8;">
+                <div style="margin-bottom: 8px;"><strong style="color: var(--text-primary);">图例说明</strong></div>
+                <div>• <strong>颜色深浅：</strong>发布强度（█=1-2篇 ███=3-4篇 █████=5-6篇）</div>
+                <div>• <strong>内容特性：</strong>🔥=流量/互动导向 💎=专业/价值导向</div>
+                <div>• <strong>季度重点</strong> Q1:🎨国风美学 Q2:📖品牌故事 Q3:🔬技术解析 Q4:📊年度总结</div>
+                <div>• <strong>平台特性</strong> 📱小红书:高互动 📰36氪:高专业 🎬抖音:高流量 💄OnlyLady:垂直</div>
+                <div>• <strong>质量监控</strong> 🎯指数≥7.0 📈重点≥7.5 💎优质≥8.0 🔄月度评估 ⚡季度调整</div>
+                <div>• <strong>风险预警</strong> ⚠️资源平衡 🚨效果追踪 ✅平台适配 🔍内容质量</div>
+              </div>
+            </div>
+        </div>
+      `;
+    }
+
+    function buildModelFriendlyIndex() {
+      return `
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 24px;">
+          <!-- 第一栏：指数雷达图 -->
+          <div style="border: 1px solid var(--card-border); border-radius: 14px; background: #fff; padding: 20px; display: grid; gap: 16px;">
+            <h4 style="margin: 0; font-size: 15px; font-weight: 600; color: var(--text-primary);">指数雷达图</h4>
+            <div id="modelFriendlyRadarChart" style="width: 100%; height: 280px;"></div>
+            <p class="radar-legend" style="margin-top: 12px;">🔵 当前 · 🟡 目标</p>
+            <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(17, 24, 39, 0.08); font-size: 13px; color: var(--text-secondary);">
+              <div style="margin-bottom: 4px;">大模型优化指数当前/目标：6.5/8.0</div>
+              <div style="margin-top: 8px;">六个维度当前短板：结构（+15%）、语义（+10%）、权威（+20%）</div>
+            </div>
+          </div>
+          
+          <!-- 第二栏：双轨应用 -->
+          <div style="border: 1px solid var(--card-border); border-radius: 14px; background: #fff; padding: 20px; display: grid; gap: 16px;">
+            <h4 style="margin: 0; font-size: 15px; font-weight: 600; color: var(--text-primary);">双轨应用</h4>
+            
+            <!-- 新内容质量监控 -->
+            <div>
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 8px;">新内容质量监控</div>
+              <div class="media-strategy-flow" style="grid-template-columns: repeat(5, 1fr);">
+                <div class="media-strategy-flow-item">
+                  <strong>内容创作</strong>
+                </div>
+                <div class="media-strategy-flow-item">
+                  <strong>实时检查</strong>
+                </div>
+                <div class="media-strategy-flow-item">
+                  <strong>优化建议</strong>
+                </div>
+                <div class="media-strategy-flow-item">
+                  <strong>审批建议</strong>
+                </div>
+                <div class="media-strategy-flow-item">
+                  <strong>高质量输出</strong>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 存量内容诊断 -->
+            <div>
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 8px;">存量内容诊断</div>
+              <div class="media-strategy-flow" style="grid-template-columns: repeat(4, 1fr);">
+                <div class="media-strategy-flow-item">
+                  <strong>数据输入</strong>
+                </div>
+                <div class="media-strategy-flow-item">
+                  <strong>模型识别</strong>
+                </div>
+                <div class="media-strategy-flow-item">
+                  <strong>校准决策</strong>
+                </div>
+                <div class="media-strategy-flow-item">
+                  <strong>存量优化</strong>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 检测标准 -->
+            <div style="padding: 12px; background: rgba(17, 24, 39, 0.04); border-radius: 8px; font-size: 13px; color: var(--text-secondary);">
+              <div style="margin-bottom: 4px;">检测标准：大模型友好指数≥7.0</div>
+              <div>优秀目标：大模型友好指数≥8.0</div>
+            </div>
+            
+            <!-- 应用成效 -->
+            <div>
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 8px;">应用成效</div>
+              <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+                <li>• 内容检测达标率+40%</li>
+                <li>• 正文引用率+25%</li>
+                <li>• 品牌可见度+35%</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- 第三栏：优化举措 -->
+          <div style="border: 1px solid var(--card-border); border-radius: 14px; background: #fff; padding: 20px; display: grid; gap: 16px;">
+            <h4 style="margin: 0; font-size: 15px; font-weight: 600; color: var(--text-primary);">优化举措</h4>
+            
+            <!-- 信息价值优化 -->
+            <div>
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 8px;">信息价值优化</div>
+              <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+                <li style="margin-bottom: 6px;">• 核心观点前置</li>
+                <li style="margin-bottom: 6px;">• 知识密度提升</li>
+                <li style="margin-bottom: 6px;">• 信息时效强化</li>
+              </ul>
+            </div>
+            
+            <!-- 结构清晰优化 -->
+            <div>
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 8px;">结构清晰优化</div>
+              <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+                <li style="margin-bottom: 6px;">• 层次分级明确</li>
+                <li style="margin-bottom: 6px;">• 逻辑关系清晰</li>
+                <li style="margin-bottom: 6px;">• 格式规范统一</li>
+              </ul>
+            </div>
+            
+            <!-- 语义关联优化 -->
+            <div>
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 8px;">语义关联优化</div>
+              <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+                <li style="margin-bottom: 6px;">• 关键词精准化</li>
+                <li style="margin-bottom: 6px;">• 上下文连贯性</li>
+                <li style="margin-bottom: 6px;">• 主题一致性</li>
+              </ul>
+            </div>
+            
+            <!-- 权威可信优化 -->
+            <div>
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 8px;">权威可信优化</div>
+              <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+                <li style="margin-bottom: 6px;">• 引用权威来源</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    
+    async function renderModelFriendlyRadarChart() {
+      const dom = document.getElementById('modelFriendlyRadarChart');
+      if (!dom) return;
+      
+      try {
+        await waitForECharts();
+        
+        const chart = safeEChartsInit(dom);
+        if (!chart) return;
+        
+        const option = {
+          radar: {
+            indicator: [
+              { name: '信息价值', max: 10 },
+              { name: '表达自然', max: 10 },
+              { name: '结构清晰', max: 10 },
+              { name: '原创独特', max: 10 },
+              { name: '语义关联', max: 10 },
+              { name: '权威可信', max: 10 }
+            ],
+            center: ['50%', '55%'],
+            radius: '70%',
+            nameGap: 8,
+            splitNumber: 5,
+            shape: 'polygon',
+            splitArea: {
+              show: true,
+              areaStyle: {
+                color: ['rgba(17, 24, 39, 0.02)', 'rgba(17, 24, 39, 0.05)', 'rgba(17, 24, 39, 0.08)', 'rgba(17, 24, 39, 0.11)', 'rgba(17, 24, 39, 0.14)']
+              }
+            },
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(17, 24, 39, 0.2)'
+              }
+            },
+            splitLine: {
+              lineStyle: {
+                color: 'rgba(17, 24, 39, 0.2)'
+              }
+            },
+            name: {
+              fontSize: 12,
+              color: 'var(--text-secondary)'
+            }
+          },
+          series: [{
+            type: 'radar',
+            data: [
+              {
+                value: [7.5, 7.2, 5.8, 7.0, 6.2, 6.0],
+                name: '当前',
+                areaStyle: {
+                  color: 'rgba(37, 99, 235, 0.2)'
+                },
+                lineStyle: {
+                  color: '#2563eb',
+                  width: 2
+                },
+                itemStyle: {
+                  color: '#2563eb'
+                }
+              },
+              {
+                value: [8.5, 8.2, 8.0, 8.0, 8.0, 8.0],
+                name: '目标',
+                areaStyle: {
+                  color: 'rgba(212, 175, 55, 0.15)'
+                },
+                lineStyle: {
+                  color: '#d4af37',
+                  width: 2
+                },
+                itemStyle: {
+                  color: '#d4af37'
+                }
+              }
+            ]
+          }],
+          tooltip: {
+            trigger: 'item'
+          },
+          legend: {
+            show: false
+          }
+        };
+        
+        chart.setOption(option);
+        
+        window.addEventListener('resize', () => {
+          if (chart && !chart.isDisposed()) {
+            chart.resize();
+          }
+        });
+      } catch (error) {
+        console.error('[GEO] model friendly radar chart error:', error);
+      }
+    }
+
+    async function renderContentTimelineChart() {
+      const dom = document.getElementById('contentTimelineChart');
+      if (!dom) return;
+      
+      try {
+        await waitForECharts(20000);
+        const chart = safeEChartsInit(dom);
+        if (!chart) return;
+        
+        // 时间线数据：每月重点话题和发布强度
+        const timelineData = [
+          { month: '1月', topic: '国风美学', intensity: 8, color: '#2563eb' },
+          { month: '2月', topic: '科技解析', intensity: 7, color: '#dc2626' },
+          { month: '3月', topic: '品牌故事', intensity: 9, color: '#10b981' },
+          { month: '4月', topic: '用户案例', intensity: 8, color: '#f59e0b' },
+          { month: '5月', topic: '成分分析', intensity: 7, color: '#8b5cf6' },
+          { month: '6月', topic: '行业趋势', intensity: 8, color: '#ec4899' },
+          { month: '7月', topic: '妆容教程', intensity: 7, color: '#2563eb' },
+          { month: '8月', topic: '原料研发', intensity: 6, color: '#dc2626' },
+          { month: '9月', topic: '工艺创新', intensity: 8, color: '#10b981' },
+          { month: '10月', topic: '色彩科学', intensity: 7, color: '#f59e0b' },
+          { month: '11月', topic: '节日营销', intensity: 9, color: '#8b5cf6' },
+          { month: '12月', topic: '年度总结', intensity: 8, color: '#ec4899' }
+        ];
+        
+        // 计算气泡大小（根据发布强度）
+        const maxIntensity = Math.max(...timelineData.map(d => d.intensity));
+        const minIntensity = Math.min(...timelineData.map(d => d.intensity));
+        const getBubbleSize = (intensity) => {
+          const normalized = (intensity - minIntensity) / (maxIntensity - minIntensity || 1);
+          return 20 + normalized * 30; // 20-50px
+        };
+        
+        // 准备散点图数据
+        const scatterData = timelineData.map((item, index) => ({
+          value: [index, item.intensity],
+          name: `${item.month} ${item.topic}`,
+          month: item.month,
+          topic: item.topic,
+          intensity: item.intensity,
+          color: item.color,
+          symbolSize: getBubbleSize(item.intensity),
+          itemStyle: {
+            color: item.color,
+            opacity: 0.8
+          },
+          label: {
+            color: item.color
+          }
+        }));
+        
+        const option = {
+          tooltip: {
+            trigger: 'item',
+            formatter: function(params) {
+              return `${params.data.month}<br/>${params.data.topic}<br/>发布强度: ${params.data.intensity}/10`;
+            }
+          },
+          grid: {
+            left: '8%',
+            right: '8%',
+            top: '15%',
+            bottom: '20%',
+            containLabel: false
+          },
+          xAxis: {
+            type: 'category',
+            data: timelineData.map(d => d.month),
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: 'rgba(17, 24, 39, 0.2)'
+              }
+            },
+            axisTick: {
+              show: false
+            },
+            axisLabel: {
+              fontSize: 12,
+              color: 'var(--text-secondary)',
+              rotate: 0
+            },
+            boundaryGap: false
+          },
+          yAxis: {
+            type: 'value',
+            name: '发布强度',
+            nameLocation: 'middle',
+            nameGap: 30,
+            min: 0,
+            max: 10,
+            splitNumber: 5,
+            axisLine: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            },
+            axisLabel: {
+              fontSize: 12,
+              color: 'var(--text-secondary)'
+            },
+            splitLine: {
+              show: false
+            }
+          },
+          series: [
+            {
+              type: 'scatter',
+              data: scatterData,
+              symbol: 'circle',
+              label: {
+                show: true,
+                position: 'top',
+                formatter: function(params) {
+                  return params.data.topic;
+                },
+                fontSize: 12,
+                fontWeight: 500,
+                offset: [0, -5]
+              },
+              emphasis: {
+                scale: true,
+                itemStyle: {
+                  shadowBlur: 10,
+                  shadowColor: 'rgba(0, 0, 0, 0.3)'
+                }
+              }
+            },
+            {
+              type: 'line',
+              data: timelineData.map(d => d.intensity),
+              smooth: true,
+              lineStyle: {
+                color: 'rgba(17, 24, 39, 0.2)',
+                width: 2,
+                type: 'dashed'
+              },
+              symbol: 'none',
+              z: 0
+            }
+          ]
+        };
+        
+        chart.setOption(option);
+        
+        window.addEventListener('resize', () => {
+          if (chart && !chart.isDisposed()) {
+            chart.resize();
+          }
+        });
+      } catch (error) {
+        console.error('[GEO] content timeline chart error:', error);
+      }
+    }
+
+    function buildStrategyMetricCards() {
+      return `
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px;">
+          <!-- 第一栏：基础信息 -->
+          <div style="border: 1px solid var(--card-border); border-radius: 14px; background: #fff; padding: 20px; display: grid; gap: 0;">
+            <h4 style="margin: 0 0 20px 0; font-size: 15px; font-weight: 600; color: var(--text-primary);">基础信息</h4>
+            
+            <!-- 媒体类型 -->
+            <div style="margin-bottom: 20px;">
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 12px; line-height: 1; height: 18px; display: flex; align-items: center; position: relative; padding-left: 0;">媒体类型</div>
+              <div class="media-bubble-cloud" id="mediaBubbleCloud"></div>
+            </div>
+            
+            <!-- 目标模型 -->
+            <div style="margin-bottom: 0;">
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 8px;">目标模型 (5个)</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+                ${(typeof modelPerformanceData !== 'undefined' && Array.isArray(modelPerformanceData) ? modelPerformanceData.filter(m => ['DeepSeek', '豆包', '元宝', 'Kimi', '通义千问'].includes(m.name)) : []).map(model => `
+                  <div class="model-logo" style="width: 32px; height: 32px;">
+                    ${model.logo ? `<img src="${model.logo}" alt="${model.name}" />` : `<span>${model.name.slice(0, 2)}</span>`}
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+          
+          <!-- 第二栏：内容规模 -->
+          <div style="border: 1px solid var(--card-border); border-radius: 14px; background: #fff; padding: 20px; display: grid; gap: 0;">
+            <h4 style="margin: 0 0 20px 0; font-size: 15px; font-weight: 600; color: var(--text-primary);">内容规模</h4>
+            
+            <!-- 总文章数 -->
+            <div style="margin-bottom: 20px;">
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 0; line-height: 1; height: 18px; display: flex; align-items: center;">总文章数</div>
+              <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">120篇</div>
+            </div>
+            
+            <!-- 优化执行周期 -->
+            <div style="margin-bottom: 20px;">
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 0; line-height: 1;">优化执行周期</div>
+              <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">2026年(12个月)</div>
+            </div>
+            
+            <!-- 发布频次 -->
+            <div style="margin-bottom: 20px;">
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 0; line-height: 1;">发布频次</div>
+              <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">10篇/月</div>
+            </div>
+            
+            <!-- 内容类型分布 -->
+            <div style="margin-bottom: 20px;">
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 8px;">内容类型分布</div>
+              <!-- 多色条形图 -->
+              <div style="width: 100%; height: 16px; background: rgba(17, 24, 39, 0.1); border-radius: 8px; position: relative; overflow: hidden; margin-bottom: 24px;">
+                <span style="position: absolute; left: 0%; width: 35%; height: 100%; background: #2563eb; display: block; border-radius: 8px 0 0 8px;"></span>
+                <span style="position: absolute; left: 35%; width: 25%; height: 100%; background: #10b981; display: block;"></span>
+                <span style="position: absolute; left: 60%; width: 20%; height: 100%; background: #f59e0b; display: block;"></span>
+                <span style="position: absolute; left: 80%; width: 20%; height: 100%; background: #8b5cf6; display: block; border-radius: 0 8px 8px 0;"></span>
+              </div>
+              <!-- 标签对齐 -->
+              <div style="position: relative; width: 100%; height: 14px;">
+                <span style="position: absolute; left: 17.5%; transform: translateX(-50%); font-size: 12px; color: var(--text-secondary); white-space: nowrap; top: 0;">专业35%</span>
+                <span style="position: absolute; left: 47.5%; transform: translateX(-50%); font-size: 12px; color: var(--text-secondary); white-space: nowrap; top: 0;">评测25%</span>
+                <span style="position: absolute; left: 70%; transform: translateX(-50%); font-size: 12px; color: var(--text-secondary); white-space: nowrap; top: 0;">用户20%</span>
+                <span style="position: absolute; left: 90%; transform: translateX(-50%); font-size: 12px; color: var(--text-secondary); white-space: nowrap; top: 0;">观点20%</span>
+              </div>
+            </div>
+            
+            <!-- 内容话题方向 -->
+            <div style="width: 100%; min-width: 0;">
+              <div style="font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 12px;">内容话题方向</div>
+              <div id="topicWordCloud" class="chart-container" style="height:400px; width: 100%; min-width: 0; overflow: hidden;"></div>
+            </div>
+          </div>
+        </div>
+      `;
     }
 
     function buildStrategyTimeline() {
@@ -5040,7 +6578,7 @@
                 },
                 label: {
                   show: true,
-                  fontSize: 11,
+                  fontSize: 12,
                   color: '#fff',
                   textBorderColor: 'rgba(0, 0, 0, 0.5)',
                   textBorderWidth: 1
@@ -5130,7 +6668,7 @@
             formatter: function(params) {
               return params.data[2]; // 显示媒体名称
             },
-            fontSize: 11,
+            fontSize: 12,
             color: '#333'
           }
         }));
@@ -5413,12 +6951,12 @@
           </div>
           <div class="glass-card">
             <h3>🔍 模型运营</h3>
-            <p style="margin:0 0 12px; font-size:12.5px; color:var(--text-secondary);">气泡越大代表模型内容运营越深入，可判断品牌在不同模型上的掌控强度。</p>
+            <p style="margin:0 0 12px; font-size: 12px; color:var(--text-secondary);">气泡越大代表模型内容运营越深入，可判断品牌在不同模型上的掌控强度。</p>
             <div id="modelOperationChart" class="chart-container" style="height:360px;"></div>
           </div>
           <div class="glass-card">
             <h3>📈 趋势对比</h3>
-            <p style="margin:0 0 12px; font-size:12.5px; color:var(--text-secondary);">追踪品牌可见度与 AI 认知指数在不同模型与品牌下的表现，支持灵活切换视角。</p>
+            <p style="margin:0 0 12px; font-size: 12px; color:var(--text-secondary);">追踪品牌可见度与 AI 认知指数在不同模型与品牌下的表现，支持灵活切换视角。</p>
             <div id="trendFilterToolbar"></div>
             <div id="competitorTrendChart" class="chart-container"></div>
           </div>
@@ -5562,6 +7100,11 @@
         
         container.innerHTML = htmlContent;
         
+        // 初始化媒体气泡云
+        setTimeout(() => {
+          initMediaBubbleCloud();
+        }, 100);
+        
         // 切换分模型媒体引用偏好行展开/收起（在全局作用域定义）
         if (!window.toggleModelMediaRow) {
           window.toggleModelMediaRow = function(rowId) {
@@ -5614,48 +7157,47 @@
       if (!container) return;
       
       try {
-        // 验证必要的数据是否存在
-        if (!contentDistributions || !Array.isArray(contentDistributions) || contentDistributions.length === 0) {
-          throw new Error('内容分布数据未定义');
-        }
-        if (!contentPerformanceMetrics || !Array.isArray(contentPerformanceMetrics) || contentPerformanceMetrics.length === 0) {
-          throw new Error('内容表现指标数据未定义');
-        }
-        if (!contentTopicHighlights || !Array.isArray(contentTopicHighlights) || contentTopicHighlights.length === 0) {
-          throw new Error('内容话题亮点数据未定义');
-        }
-        
         container.innerHTML = `
-        <div class="tab-section">
-          <div class="glass-card">
-            <h3>🎯 策略概览</h3>
+        <div class="tab-section" style="align-items: start;">
+          <div class="glass-card" style="align-self: start;">
+            <h3>🎯 内容策略概览</h3>
             ${buildStrategyMetricCards()}
           </div>
-          <div class="glass-card">
-            <h3>📅 策略时间轴</h3>
-            ${buildStrategyTimeline()}
+          <div class="glass-card" style="grid-column: 1 / -1;">
+            <h3>📊 大模型友好指数</h3>
+            <p style="margin: 8px 0 0; font-size: 13px; color: var(--text-secondary);">科学度量控制内容生产全链路，让AI喜欢的内容有迹可循</p>
+            ${buildModelFriendlyIndex()}
           </div>
-          <div class="glass-card">
-            <h3>🎪 平台策略计划</h3>
-            ${buildPlatformStrategyCards()}
+          <div class="glass-card" style="grid-column: 1 / -1;">
+            <h3 style="margin-bottom: 20px;">📋 内容规划</h3>
+            ${buildContentPlanning()}
           </div>
-          <div class="glass-card">
-            <h3>📝 内容类型分布</h3>
-            ${buildContentDistributionCards()}
+          <div class="glass-card" style="grid-column: 1 / -1;">
+            <h3>💡 内容洞察</h3>
+            <div style="margin-top: 24px;">
+              ${buildContentInsight()}
             </div>
-          <div class="glass-card">
-            <h3>📊 内容表现对比</h3>
-            ${buildContentPerformanceTable()}
-          </div>
-          <div class="glass-card">
-            <h3>🔥 热门话题对比</h3>
-            ${buildContentTopicList()}
-          </div>
-          <div class="glass-card">
-            <h3>🔧 内容生产标准</h3>
-            ${buildGuidelineCards()}
           </div>
         </div>`;
+        
+        // 初始化内容话题方向词云 - 延迟确保容器已渲染
+        setTimeout(() => {
+          renderTopicWordCloud();
+        }, 300);
+        
+        // 异步渲染雷达图
+        setTimeout(() => {
+          renderModelFriendlyRadarChart().catch(err => {
+            console.error('[GEO] renderModelFriendlyRadarChart error:', err);
+          });
+        }, 100);
+        
+        // 异步渲染时间线气泡图
+        setTimeout(() => {
+          renderContentTimelineChart().catch(err => {
+            console.error('[GEO] renderContentTimelineChart error:', err);
+          });
+        }, 200);
       } catch (error) {
         console.error('[GEO] renderContentTab error:', error);
         if (container) {
