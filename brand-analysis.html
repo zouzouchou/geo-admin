@@ -1222,7 +1222,7 @@
     }
     .media-heatmap-row { 
       display: grid; 
-      grid-template-columns: 140px repeat(5, 1fr); 
+      grid-template-columns: 140px repeat(7, 1fr); 
       gap: 8px; 
       align-items: center;
       padding: 10px 12px;
@@ -1955,6 +1955,79 @@
       ]
     };
 
+    // 媒体分布矩形树图数据（用于 Treemap）
+    const mediaDistributionTreemapData = [
+      {
+        name: '新闻门户',
+        value: 35,
+        itemStyle: { color: '#5470c6' },
+        children: [
+          { name: '搜狐', value: 15 },
+          { name: '网易', value: 12 },
+          { name: '新浪', value: 8 }
+        ]
+      },
+      {
+        name: '社交媒体',
+        value: 40,
+        itemStyle: { color: '#91cc75' },
+        children: [
+          { name: '小红书', value: 18 },
+          { name: '抖音', value: 12 },
+          { name: '微博', value: 10 }
+        ]
+      },
+      {
+        name: '知识社区',
+        value: 15,
+        itemStyle: { color: '#fac858' },
+        children: [
+          { name: '知乎', value: 8 },
+          { name: 'CSDN', value: 4 },
+          { name: '豆丁', value: 3 }
+        ]
+      },
+      {
+        name: '官方网站',
+        value: 5,
+        itemStyle: { color: '#ee6666' },
+        children: [
+          { name: '品牌官网', value: 3 },
+          { name: '官方APP', value: 2 }
+        ]
+      },
+      {
+        name: '电商平台',
+        value: 5,
+        itemStyle: { color: '#73c0de' },
+        children: [
+          { name: '天猫', value: 3 },
+          { name: '京东', value: 2 }
+        ]
+      }
+    ];
+
+    // 媒体质量与影响力矩阵数据
+    // 数据格式: [媒体名称, 专业度(0-100), 影响力(0-100), 象限]
+    const mediaQualityInfluenceMatrix = [
+      // I象限：高影响力+专业度 - 重点合作
+      { name: '小红书', professionalism: 85, influence: 92, quadrant: 'I', strategy: '重点合作，建立品牌权威' },
+      { name: '36氪', professionalism: 88, influence: 78, quadrant: 'I', strategy: '重点合作，建立品牌权威' },
+      { name: '虎嗅', professionalism: 82, influence: 75, quadrant: 'I', strategy: '重点合作，建立品牌权威' },
+      // II象限：高影响力+泛化度 - 广泛覆盖
+      { name: '抖音', professionalism: 45, influence: 95, quadrant: 'II', strategy: '广泛覆盖，提升品牌知名度' },
+      { name: '微博', professionalism: 40, influence: 88, quadrant: 'II', strategy: '广泛覆盖，提升品牌知名度' },
+      { name: '快手', professionalism: 38, influence: 82, quadrant: 'II', strategy: '广泛覆盖，提升品牌知名度' },
+      // III象限：低影响力+专业度 - 机会媒体
+      { name: 'CSDN', professionalism: 90, influence: 35, quadrant: 'III', strategy: '机会媒体，低成本建立专业形象' },
+      { name: '36氪研究院', professionalism: 85, influence: 28, quadrant: 'III', strategy: '机会媒体，低成本建立专业形象' },
+      { name: '行业论坛', professionalism: 80, influence: 25, quadrant: 'III', strategy: '机会媒体，低成本建立专业形象' },
+      // IV象限：低影响力+泛化度 - 广泛覆盖
+      { name: 'B站', professionalism: 35, influence: 45, quadrant: 'IV', strategy: '广泛覆盖，补充流量' },
+      { name: '什么值得买', professionalism: 30, influence: 40, quadrant: 'IV', strategy: '广泛覆盖，补充流量' },
+      { name: '小红书社区', professionalism: 25, influence: 35, quadrant: 'IV', strategy: '广泛覆盖，补充流量' }
+    ];
+
     const mediaRecommendations = {
       risk: [
         '小红书：围绕"脱妆"与"持妆"议题，推送权威测试与用户见证',
@@ -1966,6 +2039,138 @@
         '知乎：扩充专业问答覆盖，提升收录率与情感度',
         '抖音：引入场景化解决方案，提升模型可见度'
       ]
+    };
+
+    // 媒体匹配分析数据
+    const mediaMatchAnalysis = [
+      { media: '小红书', demandRatio: 30, brandCoverage: 25, matchRate: 83 },
+      { media: '36氪', demandRatio: 20, brandCoverage: 8, matchRate: 40 },
+      { media: '抖音', demandRatio: 15, brandCoverage: 20, matchRate: 133 },
+      { media: '知乎', demandRatio: 10, brandCoverage: 10, matchRate: 100 },
+      { media: '微博', demandRatio: 8, brandCoverage: 15, matchRate: 188 }
+    ];
+
+    // 分模型媒体引用偏好数据
+    // 注意：一级媒体的百分比总和必须为100%，二级媒体的百分比总和等于一级媒体的百分比
+    const modelMediaPreference = [
+      {
+        category: '新闻资讯类',
+        children: [
+          { name: '36氪', deepseek: 24, doubao: 5, yuanbao: 5, kimi: 16, tongyi: 16, wenxin: 12, benchmark: 30, brand: 20, brandTrend: '↓' },
+          { name: '虎嗅', deepseek: 18, doubao: 2, yuanbao: 2, kimi: 14, tongyi: 14, wenxin: 10, benchmark: 25, brand: 15, brandTrend: '↓' },
+          { name: '界面', deepseek: 11, doubao: 1, yuanbao: 1, kimi: 7, tongyi: 7, wenxin: 5, benchmark: 15, brand: 10, brandTrend: '' }
+        ],
+        deepseek: 53, // 24+18+11 = 53 ✓
+        doubao: 8, // 5+2+1 = 8 ✓
+        yuanbao: 8, // 5+2+1 = 8 ✓
+        kimi: 37, // 16+14+7 = 37 ✓
+        tongyi: 37, // 16+14+7 = 37 ✓
+        wenxin: 27, // 12+10+5 = 27 ✓
+        benchmark: 40,
+        brand: 70,
+        brandTrend: '↑'
+      },
+      {
+        category: '社交媒体类',
+        children: [
+          { name: '小红书', deepseek: 7, doubao: 30, yuanbao: 30, kimi: 16, tongyi: 16, wenxin: 22, benchmark: 30, brand: 75, brandTrend: '↑' },
+          { name: '抖音', deepseek: 3, doubao: 22, yuanbao: 22, kimi: 14, tongyi: 14, wenxin: 17, benchmark: 25, brand: 60, brandTrend: '↑' },
+          { name: '微博', deepseek: 1, doubao: 11, yuanbao: 11, kimi: 7, tongyi: 7, wenxin: 10, benchmark: 15, brand: 45, brandTrend: '↑' }
+        ],
+        deepseek: 11, // 7+3+1 = 11 ✓
+        doubao: 63, // 30+22+11 = 63 ✓
+        yuanbao: 63, // 30+22+11 = 63 ✓
+        kimi: 37, // 16+14+7 = 37 ✓
+        tongyi: 37, // 16+14+7 = 37 ✓
+        wenxin: 49, // 22+17+10 = 49 ✓
+        benchmark: 45,
+        brand: 85,
+        brandTrend: '↑'
+      },
+      {
+        category: '垂直行业类',
+        children: [
+          { name: 'OnlyLady', deepseek: 13, doubao: 2, yuanbao: 2, kimi: 8, tongyi: 8, wenxin: 6, benchmark: 20, brand: 55, brandTrend: '↑' },
+          { name: '闺蜜网', deepseek: 9, doubao: 1, yuanbao: 1, kimi: 6, tongyi: 6, wenxin: 4, benchmark: 15, brand: 25, brandTrend: '' },
+          { name: '中关村在线', deepseek: 7, doubao: 1, yuanbao: 1, kimi: 4, tongyi: 4, wenxin: 3, benchmark: 12, brand: 10, brandTrend: '' }
+        ],
+        deepseek: 29, // 13+9+7 = 29 ✓
+        doubao: 4, // 2+1+1 = 4 ✓
+        yuanbao: 4, // 2+1+1 = 4 ✓
+        kimi: 18, // 8+6+4 = 18 ✓
+        tongyi: 18, // 8+6+4 = 18 ✓
+        wenxin: 13, // 6+4+3 = 13 ✓
+        benchmark: 25,
+        brand: 40,
+        brandTrend: ''
+      },
+      {
+        category: '电商平台类',
+        children: [
+          { name: '天猫', deepseek: 4, doubao: 11, yuanbao: 11, kimi: 5, tongyi: 5, wenxin: 6, benchmark: 12, brand: 35, brandTrend: '↑' },
+          { name: '京东', deepseek: 3, doubao: 9, yuanbao: 9, kimi: 3, tongyi: 3, wenxin: 5, benchmark: 10, brand: 40, brandTrend: '↑' },
+          { name: '拼多多', deepseek: 0, doubao: 5, yuanbao: 5, kimi: 0, tongyi: 0, wenxin: 0, benchmark: 8, brand: 15, brandTrend: '' }
+        ],
+        deepseek: 7, // 4+3+0 = 7 ✓
+        doubao: 25, // 11+9+5 = 25 ✓
+        yuanbao: 25, // 11+9+5 = 25 ✓
+        kimi: 8, // 5+3+0 = 8 ✓
+        tongyi: 8, // 5+3+0 = 8 ✓
+        wenxin: 11, // 6+5+0 = 11 ✓
+        benchmark: 15,
+        brand: 50,
+        brandTrend: '↑'
+      }
+    ];
+    
+    // 验证数据：一级媒体百分比总和（确保为100%）
+    // DeepSeek: 53+11+29+7 = 100 ✓
+    // 豆包: 8+63+4+25 = 100 ✓
+    // 元宝: 8+63+4+25 = 100 ✓
+    // Kimi: 37+37+18+8 = 100 ✓
+    // 通义千问: 37+37+18+8 = 100 ✓
+    // 文心一言: 27+49+13+11 = 100 ✓
+
+    // 媒体洞察数据（左右结构）
+    const mediaInsight = {
+      currentStatus: {
+        title: '现状分析',
+        advantages: {
+          title: '优势领域',
+          items: [
+            '社交媒体：小红书(75%)、抖音(60%)、微博(45%)覆盖远超行业基准',
+            '电商平台：天猫(35%)、京东(40%)表现良好',
+            '美妆垂直：OnlyLady(55%)表现突出'
+          ]
+        },
+        improvements: {
+          title: '待改进领域',
+          items: [
+            '专业媒体：36氪(20%)、虎嗅(15%)覆盖率远低于行业基准',
+            '垂直媒体：闺蜜网(25%)、中关村在线(10%)有提升空间',
+            '匹配度低：36氪匹配度仅40%，需重点提升'
+          ]
+        }
+      },
+      strategies: {
+        title: '应对策略',
+        shortTerm: {
+          title: '短期策略（1-3个月）',
+          items: [
+            '加强36氪合作：目标覆盖率提升至35%',
+            '优化闺蜜网内容：提升覆盖率至35%',
+            '平衡社交媒体：适当减少微博投入，转移至专业媒体'
+          ]
+        },
+        longTerm: {
+          title: '长期策略（3-12个月）',
+          items: [
+            '建立专业媒体矩阵：与虎嗅、界面等建立深度合作',
+            '深耕垂直领域：拓展更多美妆时尚类垂直媒体',
+            '优化媒体结构：使品牌媒体分布更接近模型需求分布'
+          ]
+        }
+      }
     };
 
     // 媒体风控监测数据
@@ -3442,6 +3647,266 @@
         </table>`;
     }
 
+    function buildMediaMatchAnalysis() {
+      if (!mediaMatchAnalysis || !Array.isArray(mediaMatchAnalysis)) {
+        return '<div class="chart-fallback">媒体匹配分析数据未定义</div>';
+      }
+
+      const rows = mediaMatchAnalysis
+        .map(item => {
+          // 根据匹配度设置颜色
+          let matchColor = '#111827';
+          if (item.matchRate < 50) {
+            matchColor = '#dc2626'; // 红色 - 低匹配度
+          } else if (item.matchRate < 80) {
+            matchColor = '#f59e0b'; // 橙色 - 中等匹配度
+          } else if (item.matchRate <= 120) {
+            matchColor = '#10b981'; // 绿色 - 良好匹配度
+          } else {
+            matchColor = '#3b82f6'; // 蓝色 - 超匹配度
+          }
+
+          return `
+            <tr>
+              <td style="font-weight: 500;">${item.media}</td>
+              <td>${item.demandRatio}%</td>
+              <td>${item.brandCoverage}%</td>
+              <td style="color: ${matchColor}; font-weight: 600;">${item.matchRate}%</td>
+            </tr>`;
+        })
+        .join('');
+
+      const keyFindings = [
+        '36氪匹配度仅40%，需重点提升',
+        '微博、抖音覆盖远超模型需求'
+      ];
+
+      return `
+        <div>
+          <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: var(--text-primary); height: 40px; display: flex; align-items: center; padding: 0;">模型需求TOP5媒体匹配情况</h4>
+          <table class="data-table" style="margin-bottom: 16px; margin-top: 0;">
+            <thead>
+              <tr>
+                <th>媒体</th>
+                <th>需求占比</th>
+                <th>品牌覆盖</th>
+                <th>匹配度</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+          <div style="margin-top: 16px; padding: 12px; background: rgba(17, 24, 39, 0.02); border-radius: 6px; border-left: 3px solid var(--accent-blue);">
+            <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 8px; font-size: 13px;">关键发现：</div>
+            <ul style="margin: 0; padding-left: 20px; font-size: 12px; color: var(--text-secondary); line-height: 1.8;">
+              ${keyFindings.map(item => `<li style="margin-bottom: 4px;">${item}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      `;
+    }
+
+    function buildModelMediaPreference() {
+      if (!modelMediaPreference || !Array.isArray(modelMediaPreference)) {
+        return '<div class="chart-fallback">分模型媒体引用偏好数据未定义</div>';
+      }
+
+      // 获取百分比对应的颜色和块数（参考媒体结构健康度对比热力图）
+      function getHeatmapStyle(value) {
+        let blocks = '';
+        let color = '';
+        
+        if (value >= 81) {
+          blocks = '███';
+          color = '#15803d'; // 绿色
+        } else if (value >= 61) {
+          blocks = '██';
+          color = '#f59e0b'; // 黄色
+        } else if (value >= 41) {
+          blocks = '█';
+          color = '#f97316'; // 橙色
+        } else {
+          blocks = '░';
+          color = '#94a3b8'; // 灰色
+        }
+        
+        return { blocks, color };
+      }
+
+      // 渲染一行数据
+      function renderRow(category, isChild = false, parentId = '') {
+        const hasChildren = !isChild && category.children && category.children.length > 0;
+        const rowId = `model-media-row-${(parentId + '-' + category.category || category.name).replace(/[^\w\u4e00-\u9fa5]/g, '-')}`;
+        const isExpanded = window[`expanded_${rowId}`] || false;
+        
+        const categoryName = category.category || category.name;
+        const values = isChild ? category : {
+          deepseek: category.deepseek,
+          doubao: category.doubao,
+          yuanbao: category.yuanbao,
+          kimi: category.kimi,
+          tongyi: category.tongyi,
+          wenxin: category.wenxin,
+          benchmark: category.benchmark,
+          brand: category.brand,
+          brandTrend: category.brandTrend
+        };
+
+        let rowHtml = `
+          <div class="media-heatmap-row ${isChild ? 'media-heatmap-child' : ''}" data-row-id="${rowId}">
+            <div class="media-heatmap-cell media-heatmap-type">
+              ${hasChildren ? `<span class="media-expand-icon" onclick="toggleModelMediaRow('${rowId}')" style="cursor: pointer; margin-right: 4px; color: var(--accent-dark);">${isExpanded ? '▼' : '▶'}</span>` : '<span class="media-expand-icon" style="visibility: hidden; margin-right: 4px;">▶</span>'}
+              <span>${categoryName}</span>
+            </div>
+        `;
+
+        // 渲染各列数据（品牌现状单独在最后）
+        const modelColumns = [
+          { key: 'deepseek', label: 'DeepSeek' },
+          { key: 'doubao', label: '豆包' },
+          { key: 'yuanbao', label: '元宝' },
+          { key: 'kimi', label: 'Kimi' },
+          { key: 'tongyi', label: '通义千问' },
+          { key: 'benchmark', label: '行业基准' }
+        ];
+
+        // 先渲染模型列
+        modelColumns.forEach(col => {
+          const value = values[col.key];
+          const style = getHeatmapStyle(value);
+          rowHtml += `
+            <div class="media-heatmap-cell" style="text-align: center;">
+              <span style="color: ${style.color}; font-weight: 600; font-size: 13px; letter-spacing: 1px;">${style.blocks}</span>
+              <span style="margin-left: 6px; font-size: 11px; color: var(--text-secondary);">${value}%</span>
+            </div>
+          `;
+        });
+
+        // 品牌现状列单独渲染，添加分隔线样式
+        const brandValue = values.brand;
+        const brandStyle = getHeatmapStyle(brandValue);
+        const brandTrendHtml = values.brandTrend ? `<span style="color: ${values.brandTrend === '↑' ? '#10b981' : values.brandTrend === '↓' ? '#dc2626' : ''};">${values.brandTrend}</span>` : '';
+        rowHtml += `
+          <div class="media-heatmap-cell" style="text-align: center; border-left: 2px solid rgba(17, 24, 39, 0.2); padding-left: 12px;">
+            <span style="color: ${brandStyle.color}; font-weight: 600; font-size: 13px; letter-spacing: 1px;">${brandStyle.blocks}</span>
+            <span style="margin-left: 6px; font-size: 11px; color: var(--text-secondary);">${brandValue}%${brandTrendHtml}</span>
+          </div>
+        `;
+
+        rowHtml += `</div>`;
+
+        // 如果有子项且已展开，渲染子项
+        if (hasChildren && isExpanded) {
+          category.children.forEach(child => {
+            rowHtml += renderRow(child, true, rowId);
+          });
+        }
+
+        return rowHtml;
+      }
+
+      // 表头
+      const header = `
+        <div class="media-heatmap-row media-heatmap-header">
+          <div class="media-heatmap-cell media-heatmap-type" style="font-weight: 600; color: var(--accent-dark);">媒体类型</div>
+          <div class="media-heatmap-cell" style="text-align: center; font-weight: 600; color: var(--accent-dark);">DeepSeek</div>
+          <div class="media-heatmap-cell" style="text-align: center; font-weight: 600; color: var(--accent-dark);">豆包</div>
+          <div class="media-heatmap-cell" style="text-align: center; font-weight: 600; color: var(--accent-dark);">元宝</div>
+          <div class="media-heatmap-cell" style="text-align: center; font-weight: 600; color: var(--accent-dark);">Kimi</div>
+          <div class="media-heatmap-cell" style="text-align: center; font-weight: 600; color: var(--accent-dark);">通义千问</div>
+          <div class="media-heatmap-cell" style="text-align: center; font-weight: 600; color: var(--accent-dark);">行业基准</div>
+          <div class="media-heatmap-cell" style="text-align: center; font-weight: 600; color: var(--accent-dark); border-left: 2px solid rgba(17, 24, 39, 0.2); padding-left: 12px;">品牌现状</div>
+        </div>
+      `;
+
+      // 数据行
+      const rows = modelMediaPreference
+        .map(category => renderRow(category))
+        .join('');
+
+      // 图例
+      const legend = `
+        <div class="media-heatmap-legend">
+          <span style="font-size: 11px; color: var(--text-secondary); margin-right: 8px;">图例：</span>
+          <span style="color: #15803d; font-weight: 600; margin-right: 12px;">███ 81-100%</span>
+          <span style="color: #f59e0b; font-weight: 600; margin-right: 12px;">██ 61-80%</span>
+          <span style="color: #f97316; font-weight: 600; margin-right: 12px;">█ 41-60%</span>
+          <span style="color: #94a3b8; font-weight: 600; margin-right: 12px;">░ 21-40%</span>
+          <span style="margin-left: 12px; font-size: 11px; color: var(--text-secondary);">↑表示高于行业基准15%以上，↓表示低于行业基准15%以上</span>
+        </div>
+      `;
+
+      return `<div class="media-heatmap-container">${header}${rows}${legend}</div>`;
+    }
+
+    function buildMediaInsight() {
+      if (!mediaInsight) {
+        return '<div class="chart-fallback">媒体洞察数据未定义</div>';
+      }
+
+      // 构建现状分析部分
+      const advantagesItems = mediaInsight.currentStatus.advantages.items
+        .map(item => `<li style="margin-bottom: 8px;">• ${item}</li>`)
+        .join('');
+
+      const improvementsItems = mediaInsight.currentStatus.improvements.items
+        .map(item => `<li style="margin-bottom: 8px;">• ${item}</li>`)
+        .join('');
+
+      // 构建应对策略部分
+      const shortTermItems = mediaInsight.strategies.shortTerm.items
+        .map(item => `<li style="margin-bottom: 8px;">• ${item}</li>`)
+        .join('');
+
+      const longTermItems = mediaInsight.strategies.longTerm.items
+        .map(item => `<li style="margin-bottom: 8px;">• ${item}</li>`)
+        .join('');
+
+      return `
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; position: relative;">
+          <!-- 连接线 -->
+          <div style="position: absolute; top: 50%; left: calc(50% - 12px); width: 24px; height: 2px; background: linear-gradient(90deg, rgba(17, 24, 39, 0.45), rgba(212, 175, 55, 0.65)); transform: translateY(-50%); z-index: 1;"></div>
+          
+          <!-- 左侧：现状分析 -->
+          <div style="position: relative; border: 1px solid rgba(17, 24, 39, 0.12); border-radius: 14px; padding: 20px; background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,249,251,0.94));">
+            <h4 style="margin: 0 0 16px; font-size: 15px; font-weight: 600; color: var(--text-primary);">${mediaInsight.currentStatus.title}</h4>
+            
+            <div style="margin-bottom: 16px;">
+              <h5 style="margin: 0 0 12px; font-size: 14px; font-weight: 600; color: var(--text-primary);">${mediaInsight.currentStatus.advantages.title}</h5>
+              <ul style="margin: 0; padding-left: 20px; font-size: 12px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+                ${advantagesItems}
+              </ul>
+            </div>
+
+            <div>
+              <h5 style="margin: 0 0 12px; font-size: 14px; font-weight: 600; color: var(--text-primary);">${mediaInsight.currentStatus.improvements.title}</h5>
+              <ul style="margin: 0; padding-left: 20px; font-size: 12px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+                ${improvementsItems}
+              </ul>
+            </div>
+          </div>
+
+          <!-- 右侧：应对策略 -->
+          <div style="position: relative; border: 1px solid rgba(17, 24, 39, 0.12); border-radius: 14px; padding: 20px; background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,249,251,0.94));">
+            <h4 style="margin: 0 0 16px; font-size: 15px; font-weight: 600; color: var(--text-primary);">${mediaInsight.strategies.title}</h4>
+            
+            <div style="margin-bottom: 16px;">
+              <h5 style="margin: 0 0 12px; font-size: 14px; font-weight: 600; color: var(--text-primary);">${mediaInsight.strategies.shortTerm.title}</h5>
+              <ul style="margin: 0; padding-left: 20px; font-size: 12px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+                ${shortTermItems}
+              </ul>
+            </div>
+
+            <div>
+              <h5 style="margin: 0 0 12px; font-size: 14px; font-weight: 600; color: var(--text-primary);">${mediaInsight.strategies.longTerm.title}</h5>
+              <ul style="margin: 0; padding-left: 20px; font-size: 12px; color: var(--text-secondary); line-height: 1.8; list-style: none;">
+                ${longTermItems}
+              </ul>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
     async function renderMediaHeatmap() {
       const dom = $('mediaHeatmapChart');
       if (!dom) return;
@@ -3496,7 +3961,7 @@
       } catch (error) {
         console.error('[GEO] media heatmap error:', error);
         if (dom) {
-          dom.innerHTML = '<div class="chart-fallback">媒体热力图加载失败，请刷新重试</div>';
+        dom.innerHTML = '<div class="chart-fallback">媒体热力图加载失败，请刷新重试</div>';
         }
       }
     }
@@ -3557,7 +4022,7 @@
       } catch (error) {
         console.error('[GEO] media effect chart error:', error);
         if (dom) {
-          dom.innerHTML = '<div class="chart-fallback">效果矩阵加载失败，请刷新重试</div>';
+        dom.innerHTML = '<div class="chart-fallback">效果矩阵加载失败，请刷新重试</div>';
         }
       }
     }
@@ -4364,6 +4829,10 @@
       `).join('')}</div>`;
     }
 
+    // 媒体分布矩形树图状态管理
+    let mediaTreemapCurrentData = null;
+    let mediaTreemapChartInstance = null;
+
     async function renderMediaDistributionChart() {
       const dom = $('mediaDistributionChart');
       if (!dom) return;
@@ -4372,35 +4841,536 @@
         await waitForECharts();
         
         // 验证数据是否存在
-        if (!mediaTypeDistribution || !mediaTypeDistribution.categories || !mediaTypeDistribution.values || !mediaTypeDistribution.brands) {
-          throw new Error('媒体类型分布数据未定义');
+        if (!mediaDistributionTreemapData) {
+          throw new Error('媒体分布矩形树图数据未定义');
         }
         
         const chart = safeEChartsInit(dom);
         if (!chart) return;
         
-        const series = mediaTypeDistribution.categories.map((category, idx) => ({
-          name: category,
-          type: 'bar',
-          stack: 'total',
-          emphasis: { focus: 'series' },
-          itemStyle: { borderRadius: idx === mediaTypeDistribution.categories.length - 1 ? [0, 6, 6, 0] : 0 },
-          data: mediaTypeDistribution.values.map(row => row[idx])
-        }));
-        chart.setOption({
-          tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-          legend: {},
-          grid: { left: '6%', right: '6%', top: '12%', bottom: '10%' },
-          xAxis: { type: 'value', max: 100, axisLabel: { formatter: '{value}%' } },
-          yAxis: { type: 'category', data: mediaTypeDistribution.brands },
-          series
+        // 设置图表容器样式，去除所有内边距和外边距
+        dom.style.padding = '0';
+        dom.style.margin = '0';
+        
+        // 计算总数值（用于百分比显示）
+        const totalValue = mediaDistributionTreemapData.reduce((sum, item) => sum + item.value, 0);
+        
+        // 预处理数据，直接在name中添加百分比
+        // 所有媒体（一级和二级）都相对于全局总和（totalValue）计算百分比
+        const processTreemapData = function(data, parentValue, isChildLevel) {
+          return data.map(item => {
+            // 所有节点都相对于总数值计算百分比（全局比例）
+            const percent = ((item.value / totalValue) * 100).toFixed(1);
+            
+            const processedItem = {
+              ...item,
+              value: item.value || 0,
+              originalName: item.name // 保存原始名称供tooltip使用
+            };
+            
+            // 直接在name中添加百分比
+            // 一级节点：名称 + 空格 + 百分比
+            // 二级节点：名称 + 换行 + 百分比
+            if (!isChildLevel) {
+              processedItem.name = `${item.name}  ${percent}%`;
+            } else {
+              processedItem.name = `${item.name}\n${percent}%`;
+            }
+            
+            if (item.children && item.children.length > 0) {
+              processedItem.children = processTreemapData(item.children, item.value, true);
+            }
+            return processedItem;
+          });
+        };
+        
+        const processedData = processTreemapData(mediaDistributionTreemapData);
+        
+        // 保存图表实例和当前数据
+        mediaTreemapChartInstance = chart;
+        mediaTreemapCurrentData = processedData;
+        
+        console.log('[GEO] Total value:', totalValue);
+        console.log('[GEO] Processed data:', processedData);
+        console.log('[GEO] First level names:', processedData.map(d => d.name));
+        
+        // 创建百分比格式化函数（确保能访问 totalValue）
+        const formatPercent = function(value) {
+          if (!totalValue || totalValue === 0) {
+            console.warn('[GEO] totalValue is 0 or undefined');
+            return '0.0';
+          }
+          const percent = ((value / totalValue) * 100).toFixed(1);
+          return percent;
+        };
+        
+        // 辅助函数：从数据中查找节点信息
+        const findNodeInfo = function(name, data) {
+          for (let item of data) {
+            if (item.name === name) {
+              return item;
+            }
+            if (item.children) {
+              const found = findNodeInfo(name, item.children);
+              if (found) return found;
+            }
+          }
+          return null;
+        };
+        
+        // 配置矩形树图
+        const option = {
+          grid: {
+            top: -100,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            containLabel: false
+          },
+          tooltip: {
+            trigger: 'item',
+            formatter: function(info) {
+              const value = info.value || 0;
+              const treePathInfo = info.treePathInfo || [];
+              const percent = formatPercent(value);
+              let content = '';
+              
+              // 获取原始名称（如果存在）
+              const originalName = info.data?.originalName || info.name;
+              
+              if (treePathInfo.length === 1) {
+                // 一级分类
+                content = `<div style="font-weight:bold;margin-bottom:8px;color:${info.color};font-size:14px;">${originalName}</div>`;
+                content += `数值: <b>${value}</b><br>`;
+                content += `占比: <b>${percent}%</b><br>`;
+                if (info.data && info.data.children) {
+                  content += `包含 ${info.data.children.length} 个二级媒体`;
+                }
+              } else if (treePathInfo.length === 2) {
+                // 二级分类
+                content = `<div style="font-weight:bold;margin-bottom:8px;color:${info.color};font-size:14px;">${originalName}</div>`;
+                content += `数值: <b>${value}</b><br>`;
+                content += `占比: <b>${percent}%</b><br>`;
+                const parentOriginalName = treePathInfo[0]?.data?.originalName || treePathInfo[0]?.name || '';
+                if (parentOriginalName) {
+                  content += `所属分类: ${parentOriginalName}`;
+                }
+              }
+              
+              return content;
+            }
+          },
+          series: [{
+            type: 'treemap',
+            data: processedData,
+            roam: false,
+            nodeClick: false,
+            breadcrumb: {
+              show: false
+            },
+            left: 0,
+            right: 0,
+            top: -100,
+            bottom: 0,
+            visualMin: 0,
+            visualMax: 100,
+            visualDimension: 0,
+            labelLayout: {
+              hideOverlap: false
+            },
+            emphasis: {
+              focus: 'descendant'
+            },
+            animation: false,
+            animationDuration: 0,
+            levels: [
+              {
+                // 一级媒体类型
+                itemStyle: {
+                  borderColor: '#fff',
+                  borderWidth: 3,
+                  gapWidth: 3
+                },
+                upperLabel: {
+                  show: true,
+                  height: 35,
+                  backgroundColor: 'rgba(255,255,255,0.85)',
+                  color: '#333',
+                  fontSize: 15,
+                  fontWeight: 'bold',
+                  lineHeight: 35,
+                  offset: [0, -2],
+                  verticalAlign: 'top',
+                  padding: [0, 0, 0, 0]
+                  // 不使用formatter，直接使用数据中的name（已包含百分比）
+                },
+                label: {
+                  show: true,
+                  position: 'inside',
+                  fontSize: 15,
+                  fontWeight: 'bold',
+                  color: '#333',
+                  formatter: function(params) {
+                    // 一级节点使用label显示名称和百分比
+                    if (typeof params === 'string') {
+                      return params;
+                    }
+                    if (params && params.name) {
+                      return params.name;
+                    }
+                    if (params && params.data && params.data.name) {
+                      return params.data.name;
+                    }
+                    return '';
+                  }
+                }
+              },
+              {
+                // 二级具体媒体
+                itemStyle: {
+                  borderColor: '#fff',
+                  borderWidth: 1,
+                  gapWidth: 1
+                },
+                emphasis: {
+                  itemStyle: {
+                    borderColor: '#333',
+                    borderWidth: 2
+                  }
+                },
+                label: {
+                  show: true,
+                  fontSize: 11,
+                  color: '#fff',
+                  textBorderColor: 'rgba(0, 0, 0, 0.5)',
+                  textBorderWidth: 1
+                  // 不使用formatter，直接使用数据中的name（已包含百分比）
+                }
+              }
+            ]
+          }]
+        };
+        
+        chart.setOption(option);
+        
+        window.addEventListener('resize', () => {
+          if (chart && !chart.isDisposed()) {
+            chart.resize();
+          }
         });
-        window.addEventListener('resize', () => chart.resize());
       } catch (error) {
-        console.error('[GEO] media distribution error:', error);
+        console.error('[GEO] media distribution treemap error:', error);
+        console.error('[GEO] Error stack:', error.stack);
         if (dom) {
-          dom.innerHTML = '<div class="chart-fallback">媒体分布图加载失败，请刷新重试</div>';
+          dom.innerHTML = `<div class="chart-fallback">
+            <p style="margin: 0 0 10px; color: #dc2626; font-weight: 600;">媒体分布图加载失败</p>
+            <p style="margin: 0; font-size: 12px; color: #666;">错误信息: ${error.message || '未知错误'}</p>
+            <p style="margin: 10px 0 0; font-size: 12px; color: #666;">请刷新页面或检查控制台获取详细信息</p>
+          </div>`;
         }
+        throw error; // 重新抛出错误，让调用者知道
+      }
+    }
+
+    // 渲染媒体质量与影响力矩阵
+    async function renderMediaQualityInfluenceMatrix() {
+      const dom = $('mediaQualityInfluenceChart');
+      if (!dom) return;
+      
+      try {
+        await waitForECharts();
+        
+        if (!mediaQualityInfluenceMatrix || !Array.isArray(mediaQualityInfluenceMatrix)) {
+          throw new Error('媒体质量与影响力矩阵数据未定义');
+        }
+        
+        const chart = safeEChartsInit(dom);
+        if (!chart) return;
+        
+        // 准备散点图数据，按象限分组
+        const quadrantData = {
+          'I': { data: [], color: '#5470c6', name: 'I象限：重点合作' },
+          'II': { data: [], color: '#91cc75', name: 'II象限：广泛覆盖' },
+          'III': { data: [], color: '#fac858', name: 'III象限：机会媒体' },
+          'IV': { data: [], color: '#ee6666', name: 'IV象限：广泛覆盖' }
+        };
+        
+        mediaQualityInfluenceMatrix.forEach(item => {
+          quadrantData[item.quadrant].data.push([
+            item.professionalism,
+            item.influence,
+            item.name,
+            item.strategy
+          ]);
+        });
+        
+        // 构建系列数据
+        const series = Object.keys(quadrantData).map(quadrant => ({
+          name: quadrantData[quadrant].name,
+          type: 'scatter',
+          data: quadrantData[quadrant].data,
+          symbolSize: function(data) {
+            // 根据影响力调整点的大小
+            return Math.sqrt(data[1]) * 0.8 + 15;
+          },
+          itemStyle: {
+            color: quadrantData[quadrant].color,
+            opacity: 0.7
+          },
+          emphasis: {
+            itemStyle: {
+              opacity: 1,
+              borderColor: '#333',
+              borderWidth: 2
+            }
+          },
+          label: {
+            show: true,
+            position: 'right',
+            formatter: function(params) {
+              return params.data[2]; // 显示媒体名称
+            },
+            fontSize: 11,
+            color: '#333'
+          }
+        }));
+        
+        const option = {
+          title: {
+            text: '媒体质量与影响力四象限分析',
+            left: 'center',
+            top: 10,
+            textStyle: {
+              fontSize: 16,
+              fontWeight: 'bold'
+            }
+          },
+          tooltip: {
+            trigger: 'item',
+            formatter: function(params) {
+              const data = params.data;
+              return `
+                <div style="font-weight:bold;margin-bottom:8px;">${data[2]}</div>
+                <div>专业度: <b>${data[0]}</b></div>
+                <div>影响力: <b>${data[1]}</b></div>
+                <div style="margin-top:8px;color:#666;">策略: ${data[3]}</div>
+              `;
+            }
+          },
+          grid: {
+            left: '15%',
+            right: '10%',
+            top: '20%',
+            bottom: '15%',
+            containLabel: false
+          },
+          xAxis: {
+            type: 'value',
+            name: '专业度',
+            nameLocation: 'middle',
+            nameGap: 30,
+            min: 0,
+            max: 100,
+            splitLine: {
+              show: true,
+              lineStyle: {
+                type: 'dashed',
+                color: '#e0e0e0'
+              }
+            },
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: '#333'
+              }
+            },
+            axisLabel: {
+              formatter: '{value}'
+            }
+          },
+          yAxis: {
+            type: 'value',
+            name: '影响力',
+            nameLocation: 'middle',
+            nameGap: 50,
+            min: 0,
+            max: 100,
+            splitLine: {
+              show: true,
+              lineStyle: {
+                type: 'dashed',
+                color: '#e0e0e0'
+              }
+            },
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: '#333'
+              }
+            },
+            axisLabel: {
+              formatter: '{value}'
+            }
+          },
+          // 添加象限分割线和标注
+          graphic: [
+            // 垂直线（专业度分割线）
+            {
+              type: 'line',
+              left: '50%',
+              top: '20%',
+              bottom: '15%',
+              shape: {
+                x1: 0,
+                y1: 0,
+                x2: 0,
+                y2: 1
+              },
+              style: {
+                stroke: '#999',
+                lineWidth: 2,
+                lineDash: [5, 5]
+              }
+            },
+            // 水平线（影响力分割线）
+            {
+              type: 'line',
+              left: '15%',
+              right: '10%',
+              top: '50%',
+              shape: {
+                x1: 0,
+                y1: 0,
+                x2: 1,
+                y2: 0
+              },
+              style: {
+                stroke: '#999',
+                lineWidth: 2,
+                lineDash: [5, 5]
+              }
+            },
+            // 象限标注
+            {
+              type: 'text',
+              left: '25%',
+              top: '25%',
+              style: {
+                text: 'III\n机会媒体，低成本建立专业形象\n(低影响力+专业度)',
+                textAlign: 'center',
+                fill: '#666',
+                fontSize: 12
+              }
+            },
+            {
+              type: 'text',
+              left: '75%',
+              top: '25%',
+              style: {
+                text: 'I\n重点合作，建立品牌权威\n(高影响力+专业度)',
+                textAlign: 'center',
+                fill: '#666',
+                fontSize: 12
+              }
+            },
+            {
+              type: 'text',
+              left: '25%',
+              top: '75%',
+              style: {
+                text: 'IV\n广泛覆盖，补充流量\n(低影响力+泛化度)',
+                textAlign: 'center',
+                fill: '#666',
+                fontSize: 12
+              }
+            },
+            {
+              type: 'text',
+              left: '75%',
+              top: '75%',
+              style: {
+                text: 'II\n广泛覆盖，提升品牌知名度\n(高影响力+泛化度)',
+                textAlign: 'center',
+                fill: '#666',
+                fontSize: 12
+              }
+            },
+            // 坐标轴标签
+            {
+              type: 'text',
+              left: '15%',
+              top: '10%',
+              style: {
+                text: '高影响力 ↑',
+                textAlign: 'left',
+                fill: '#333',
+                fontSize: 12,
+                fontWeight: 'bold'
+              }
+            },
+            {
+              type: 'text',
+              left: '15%',
+              bottom: '5%',
+              style: {
+                text: '低影响力 ↓',
+                textAlign: 'left',
+                fill: '#333',
+                fontSize: 12,
+                fontWeight: 'bold'
+              }
+            },
+            {
+              type: 'text',
+              left: '5%',
+              top: '50%',
+              style: {
+                text: '专业度 ←',
+                textAlign: 'left',
+                fill: '#333',
+                fontSize: 12,
+                fontWeight: 'bold',
+                rotate: -90
+              }
+            },
+            {
+              type: 'text',
+              right: '5%',
+              top: '50%',
+              style: {
+                text: '→ 泛化度',
+                textAlign: 'right',
+                fill: '#333',
+                fontSize: 12,
+                fontWeight: 'bold',
+                rotate: 90
+              }
+            }
+          ],
+          series: series,
+          legend: {
+            data: series.map(s => s.name),
+            bottom: 10,
+            itemGap: 20
+          }
+        };
+        
+        chart.setOption(option);
+        
+        window.addEventListener('resize', () => {
+          if (chart && !chart.isDisposed()) {
+            chart.resize();
+          }
+        });
+      } catch (error) {
+        console.error('[GEO] media quality influence matrix error:', error);
+        if (dom) {
+          dom.innerHTML = `<div class="chart-fallback">
+            <p style="margin: 0 0 10px; color: #dc2626; font-weight: 600;">媒体质量与影响力矩阵加载失败</p>
+            <p style="margin: 0; font-size: 12px; color: #666;">错误信息: ${error.message || '未知错误'}</p>
+          </div>`;
+        }
+        throw error;
       }
     }
 
@@ -4529,55 +5499,87 @@
       
       try {
         // 先验证必要的数据是否存在
-        if (!mediaTypeDistribution) {
-          throw new Error('媒体类型分布数据未定义');
+        if (!mediaDistributionTreemapData) {
+          throw new Error('媒体分布矩形树图数据未定义');
         }
-        if (!mediaTopCoverage || !Array.isArray(mediaTopCoverage)) {
-          throw new Error('媒体覆盖数据未定义');
+        if (!mediaMatchAnalysis || !Array.isArray(mediaMatchAnalysis)) {
+          throw new Error('媒体匹配分析数据未定义');
         }
-        if (!mediaRecommendations) {
-          throw new Error('媒体推荐数据未定义');
+        if (!modelMediaPreference || !Array.isArray(modelMediaPreference)) {
+          throw new Error('分模型媒体引用偏好数据未定义');
         }
-        if (!mediaRiskRows || !Array.isArray(mediaRiskRows)) {
-          throw new Error('媒体风控数据未定义');
+        if (!mediaInsight) {
+          throw new Error('媒体洞察数据未定义');
         }
         
         // 构建 HTML 内容
         let htmlContent = '';
         try {
           htmlContent = `
-            <div class="tab-section media-grid">
-              <div class="glass-card">
-                <h3>📊 媒体类型分布对比</h3>
-                <div id="mediaDistributionChart" class="chart-container"></div>
+        <div class="tab-section media-grid">
+          <!-- 媒体分布总览 - 左右布局 -->
+          <div class="glass-card" style="grid-column: 1 / -1;">
+            <h3>📊 媒体分布总览</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; align-items: start;">
+              <!-- 左侧：媒体分布矩形树图 -->
+              <div style="display: flex; flex-direction: column;">
+                <h4 style="margin: 0 0 0 0; font-size: 14px; font-weight: 600; color: var(--text-primary); text-align: left; height: 40px; display: flex; align-items: center; padding: 0;">媒体类型分布</h4>
+                <div id="mediaDistributionChart" class="chart-container" style="height: 500px; margin: -100px 0 0 0; padding: 0; overflow: hidden;"></div>
               </div>
-              <div class="glass-card">
-                <h3>🎯 细分媒体覆盖 TOP5</h3>
-                ${buildMediaTopTable()}
+              <!-- 右侧：媒体匹配分析 -->
+              <div>
+                ${buildMediaMatchAnalysis()}
               </div>
-              <div class="glass-card">
-                <h3>🎯 媒体情感分布热力图</h3>
-                <div id="mediaHeatmapChart" class="chart-container"></div>
-              </div>
-              <div class="glass-card">
-                <h3>📈 媒体效果与风控矩阵</h3>
-                <div id="mediaEffectChart" class="chart-container"></div>
-              </div>
-              <div class="glass-card">
-                <h3>🛡️ 媒体策略优化建议</h3>
-                ${buildMediaRecommendationColumns()}
-              </div>
-              <div class="glass-card">
-                <h3>⚠️ 风控监测重点</h3>
-                ${buildMediaRiskTable()}
-              </div>
-            </div>`;
+            </div>
+          </div>
+          
+          <!-- 分模型媒体引用偏好 -->
+          <div class="glass-card" style="grid-column: 1 / -1;">
+            <h3>分模型媒体引用偏好</h3>
+            <div style="margin-top: 24px;">
+              ${buildModelMediaPreference()}
+            </div>
+          </div>
+          
+          <!-- 媒体质量与影响力矩阵 -->
+          <div class="glass-card">
+            <h3>📈 媒体质量与影响力矩阵</h3>
+            <div id="mediaQualityInfluenceChart" class="chart-container" style="height: 500px; margin-top: 24px;"></div>
+          </div>
+          
+          <!-- 媒体洞察 - 左右结构 -->
+          <div class="glass-card" style="grid-column: 1 / -1;">
+            <h3>💡 媒体洞察</h3>
+            <div style="margin-top: 24px;">
+              ${buildMediaInsight()}
+            </div>
+          </div>
+        </div>`;
         } catch (buildError) {
           console.error('[GEO] Error building media tab HTML:', buildError);
           throw new Error(`构建页面内容失败: ${buildError.message}`);
         }
         
         container.innerHTML = htmlContent;
+        
+        // 切换分模型媒体引用偏好行展开/收起（在全局作用域定义）
+        if (!window.toggleModelMediaRow) {
+          window.toggleModelMediaRow = function(rowId) {
+            window[`expanded_${rowId}`] = !window[`expanded_${rowId}`];
+            // 重新渲染媒体标签页
+            const mediaTab = document.getElementById('tab-media');
+            if (mediaTab) {
+              const oldContent = mediaTab.innerHTML;
+              renderMediaTab().catch(err => {
+                console.error('[GEO] Error re-rendering media tab:', err);
+                // 如果渲染失败，恢复原内容
+                if (!mediaTab.querySelector('.media-grid')) {
+                  mediaTab.innerHTML = oldContent;
+                }
+              });
+            }
+          };
+        }
         
         // 异步渲染图表，不阻塞页面，即使失败也不影响其他内容
         Promise.all([
@@ -4588,18 +5590,11 @@
               dom.innerHTML = '<div class="chart-fallback">媒体分布图加载失败，请刷新重试</div>';
             }
           }),
-          renderMediaHeatmap().catch(err => {
-            console.error('[GEO] renderMediaHeatmap error:', err);
-            const dom = $('mediaHeatmapChart');
+          renderMediaQualityInfluenceMatrix().catch(err => {
+            console.error('[GEO] renderMediaQualityInfluenceMatrix error:', err);
+            const dom = $('mediaQualityInfluenceChart');
             if (dom) {
-              dom.innerHTML = '<div class="chart-fallback">媒体热力图加载失败，请刷新重试</div>';
-            }
-          }),
-          renderMediaEffectChart().catch(err => {
-            console.error('[GEO] renderMediaEffectChart error:', err);
-            const dom = $('mediaEffectChart');
-            if (dom) {
-              dom.innerHTML = '<div class="chart-fallback">效果矩阵加载失败，请刷新重试</div>';
+              dom.innerHTML = '<div class="chart-fallback">媒体质量与影响力矩阵加载失败，请刷新重试</div>';
             }
           })
         ]).catch(error => {
@@ -4631,36 +5626,36 @@
         }
         
         container.innerHTML = `
-          <div class="tab-section">
-            <div class="glass-card">
-              <h3>🎯 策略概览</h3>
-              ${buildStrategyMetricCards()}
+        <div class="tab-section">
+          <div class="glass-card">
+            <h3>🎯 策略概览</h3>
+            ${buildStrategyMetricCards()}
+          </div>
+          <div class="glass-card">
+            <h3>📅 策略时间轴</h3>
+            ${buildStrategyTimeline()}
+          </div>
+          <div class="glass-card">
+            <h3>🎪 平台策略计划</h3>
+            ${buildPlatformStrategyCards()}
+          </div>
+          <div class="glass-card">
+            <h3>📝 内容类型分布</h3>
+            ${buildContentDistributionCards()}
             </div>
-            <div class="glass-card">
-              <h3>📅 策略时间轴</h3>
-              ${buildStrategyTimeline()}
-            </div>
-            <div class="glass-card">
-              <h3>🎪 平台策略计划</h3>
-              ${buildPlatformStrategyCards()}
-            </div>
-            <div class="glass-card">
-              <h3>📝 内容类型分布</h3>
-              ${buildContentDistributionCards()}
-            </div>
-            <div class="glass-card">
-              <h3>📊 内容表现对比</h3>
-              ${buildContentPerformanceTable()}
-            </div>
-            <div class="glass-card">
-              <h3>🔥 热门话题对比</h3>
-              ${buildContentTopicList()}
-            </div>
-            <div class="glass-card">
-              <h3>🔧 内容生产标准</h3>
-              ${buildGuidelineCards()}
-            </div>
-          </div>`;
+          <div class="glass-card">
+            <h3>📊 内容表现对比</h3>
+            ${buildContentPerformanceTable()}
+          </div>
+          <div class="glass-card">
+            <h3>🔥 热门话题对比</h3>
+            ${buildContentTopicList()}
+          </div>
+          <div class="glass-card">
+            <h3>🔧 内容生产标准</h3>
+            ${buildGuidelineCards()}
+          </div>
+        </div>`;
       } catch (error) {
         console.error('[GEO] renderContentTab error:', error);
         if (container) {
@@ -4741,10 +5736,10 @@
                 });
             } else {
               // 同步函数
-              safeExecute(() => {
-                tabRendered[target] = true;
-                window.dispatchEvent(new Event('resize'));
-              }, tabFallbacks[target]);
+            safeExecute(() => {
+              tabRendered[target] = true;
+              window.dispatchEvent(new Event('resize'));
+            }, tabFallbacks[target]);
             }
           } else {
             window.dispatchEvent(new Event('resize'));
@@ -4769,7 +5764,7 @@
       // 处理异步的 renderMediaTab
       renderMediaTab()
         .then(() => {
-          tabRendered.media = true;
+        tabRendered.media = true;
         })
         .catch(error => {
           console.error('[GEO] Media tab init error:', error);
